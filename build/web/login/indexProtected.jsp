@@ -62,14 +62,16 @@
 
                             <p>
                             <u>Events to date:</u><br><br>
-                            <u>-Premier-</u> <b>Onslaught</b><br>
+                            <u>-Premier-</u> <b>Onslaught(Fall)</b><br>
                             <u>-Premier-</u> <b>Winter War</b><br>
                             <u>-Premier-</u> <b>TOC: Cry Havoc</b><br>
                             <u>-Premier-</u> <b>OOTB Open</b><br>
                             <i>-Partner-</i> <b>Cadets Fundraiser</b><br>
                             <u>-Premier-</u> <b>TOC: Blood on the Snow</b><br>
                             <u>-Premier-</u> <b>Battle of the Beasts</b><br>
-                            <u>-Premier-</u> <b>March Madness</b><br><br>
+                            <u>-Premier-</u> <b>March Madness</b><br>
+                            <u>-Premier-</u> <b>Onslaught(Spring)</b><br>
+                            <i>-Partner-</i> <b>Grotscon</b><br><br>
                             </p>
                             <p>
                                 The top 20 players from the Warhammer 40,000 and Warhammer Fantasy standings will be invited to the GT in August. <br><br>
