@@ -44,7 +44,7 @@
                         <div style="width: 530px; text-align:center; height: 100% auto;">
                             <u>The next event is:</u><br><br>
                             <u>-Premier-</u> <b>Tournament OP</b><br>
-                            June 1<sup>st</sup> 2013<br>
+                            June 1<sup>st</sup> and 2<sup>nd</sup> 2013<br>
                             <a href="http://www.facebook.com/events/104322456418087/" target="_blank">Tournament OP Facebook Event Page</a><br>
                             <a href="http://www.facebook.com/TournamentOp?fref=ts" target="_blank">Team OP on Facebook</a><br>
                             <p>
