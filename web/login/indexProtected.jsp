@@ -43,23 +43,22 @@
                     <td>
                         <div style="width: 530px; text-align:center; height: 100% auto;">
                             <u>The next event is:</u><br><br>
-                            <u>-Premier-</u> <b>Tournament OP</b><br>
-                            June 1<sup>st</sup> and 2<sup>nd</sup> 2013<br>
-                            <a href="http://www.facebook.com/events/104322456418087/" target="_blank">Tournament OP Facebook Event Page</a><br>
-                            <a href="http://www.facebook.com/TournamentOp?fref=ts" target="_blank">Team OP on Facebook</a><br>
-                            <p>
+
                             <u>-Premier-</u> <b>It Came From Out of the Basement!</b><br>
                             July 13<sup>th</sup> and 14<sup>th</sup> 2013<br>
                             <a href="http://www.facebook.com/events/300894736702846/" target="_blank">It Came From Out of the Basment 2013 Facebook Event Page</a><br>
                             <a href="http://www.facebook.com/pages/It-Came-From-Out-of-the-Basement/139772266090656?fref=ts" target="_blank">It Came From Out of the Basement Facebook Group</a><br>
                             <a href="http://www.outofthebasementgaming.webs.com/" target="_blank">Out of the Basement Gaming Webpage</a>
+                            <p>
+                                <font size="4"><b>Warhammer'd!</b><br></font>
+                                July 27<sup>th</sup> and 28<sup>th</sup> 2013<br>
+                                <a href="http://warhammerd.blogspot.ca/" target="_blank">Warhammer'd Blog Site</a><br>                            
                             </p>
                             <p>
                                 <font size="4"><b>Alberta Wargaming GT!</b><br></font>
                                 August 17<sup>th</sup> and 18<sup>th</sup> 2013<br>
                                 <a href="http://www.facebook.com/AlbertaGrandTournamentCircuit" target="_blank">Alberta Wargaming GT Facebook Group</a><br>                            
                             </p><br>
-
                             <p>
                             <u>Events to date:</u><br><br>
                             <u>-Premier-</u> <b>Onslaught(Fall)</b><br>
@@ -71,7 +70,8 @@
                             <u>-Premier-</u> <b>Battle of the Beasts</b><br>
                             <u>-Premier-</u> <b>March Madness</b><br>
                             <u>-Premier-</u> <b>Onslaught(Spring)</b><br>
-                            <i>-Partner-</i> <b>Grotscon</b><br><br>
+                            <i>-Partner-</i> <b>Grotscon</b><br>
+                            <u>-Premier-</u> <b>Tournament OP</b><br><br>
                             </p>
                             <p>
                                 The top 20 players from the Warhammer 40,000 and Warhammer Fantasy standings will be invited to the GT in August. <br><br>

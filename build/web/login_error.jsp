@@ -19,7 +19,9 @@
     <body>
         <div style="text-align: center"><%@include file="/includes/banner.jsp" %><b>Login - Error:</b>
             <p>You did not log in successfully.</p>
-            <p>Please check your username and password and try again.</p></div>
+            <p>Please check your username and password and try again.</p>
+            <p>If you are unable to remember your pass word please send an email to <a href="mailto:stephen.r.lind@gmail.com?Subject=AWGT%20Forgotten%20Password">The Administrator.</a></p>
+        </div>
 
         <table cellspacing="5" border="0">
             <form action="j_security_check" method="get">
