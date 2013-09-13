@@ -2,6 +2,14 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     
     <servlet>
+        <servlet-name>UpdateWebsiteStringServlet</servlet-name>
+        <servlet-class>user.UpdateWebsiteStringServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WebPageStringServlet</servlet-name>
+        <servlet-class>user.WebPageStringServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CircuitStandingsServlet</servlet-name>
         <servlet-class>user.CircuitStandingsServlet</servlet-class>
     </servlet>
@@ -63,7 +71,14 @@
     </servlet>
     
        
-
+    <servlet-mapping>
+        <servlet-name>UpdateWebsiteStringServlet</servlet-name>
+        <url-pattern>/login/TO/updateString</url-pattern>
+    </servlet-mapping>   
+    <servlet-mapping>
+        <servlet-name>WebPageStringServlet</servlet-name>
+        <url-pattern>/login/getString</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ArmyRankingDataServlet</servlet-name>
         <url-pattern>/login/armyRankingData</url-pattern>

@@ -9,7 +9,8 @@
                 text-align: center;
                 font-size: 200%;
             }
-        </style>
+        </style> 
+        <jsp:include page="getString?stringId=eventInfo"/>
     </head>
     <body>
         <div id="fb-root"></div>
@@ -42,37 +43,18 @@
                 <tr valign="top">
                     <td>
                         <div style="width: 530px; text-align:center; height: 100% auto;">
-                            <u>The next event is:</u><br><br>
-
-                            <u>-Premier-</u> <b>It Came From Out of the Basement!</b><br>
-                            July 13<sup>th</sup> and 14<sup>th</sup> 2013<br>
-                            <a href="http://www.facebook.com/events/300894736702846/" target="_blank">It Came From Out of the Basment 2013 Facebook Event Page</a><br>
-                            <a href="http://www.facebook.com/pages/It-Came-From-Out-of-the-Basement/139772266090656?fref=ts" target="_blank">It Came From Out of the Basement Facebook Group</a><br>
-                            <a href="http://www.outofthebasementgaming.webs.com/" target="_blank">Out of the Basement Gaming Webpage</a>
-                            <p>
-                                <font size="4"><b>Warhammer'd!</b><br></font>
-                                July 27<sup>th</sup> and 28<sup>th</sup> 2013<br>
-                                <a href="http://warhammerd.blogspot.ca/" target="_blank">Warhammer'd Blog Site</a><br>                            
-                            </p>
-                            <p>
-                                <font size="4"><b>Alberta Wargaming GT!</b><br></font>
-                                August 17<sup>th</sup> and 18<sup>th</sup> 2013<br>
-                                <a href="http://www.facebook.com/AlbertaGrandTournamentCircuit" target="_blank">Alberta Wargaming GT Facebook Group</a><br>                            
-                            </p><br>
-                            <p>
-                            <u>Events to date:</u><br><br>
-                            <u>-Premier-</u> <b>Onslaught(Fall)</b><br>
-                            <u>-Premier-</u> <b>Winter War</b><br>
-                            <u>-Premier-</u> <b>TOC: Cry Havoc</b><br>
-                            <u>-Premier-</u> <b>OOTB Open</b><br>
-                            <i>-Partner-</i> <b>Cadets Fundraiser</b><br>
-                            <u>-Premier-</u> <b>TOC: Blood on the Snow</b><br>
-                            <u>-Premier-</u> <b>Battle of the Beasts</b><br>
-                            <u>-Premier-</u> <b>March Madness</b><br>
-                            <u>-Premier-</u> <b>Onslaught(Spring)</b><br>
-                            <i>-Partner-</i> <b>Grotscon</b><br>
-                            <u>-Premier-</u> <b>Tournament OP</b><br><br>
-                            </p>
+                            <div id="changeEventRoster">${text}</div>
+                            <%if (request.isUserInRole("TO") || request.isUserInRole("admin")) {%>
+                            <script>var html = document.getElementById("changeEventRoster").innerHTML </script>
+                            <form id="adminInput" action="TO/updateString" method="post">
+                                <textarea style="width:500px; height:400px" id="changes" name="text" form="adminInput"></textarea>
+                                <script> document.getElementById("changes").innerHTML = html; </script>
+                                <br />
+                                <input type="hidden" value="eventInfo" name="stringId">
+                                <input type="submit" value="Submit" >
+                            </form>
+                            <%}%>
+                            
                             <p>
                                 The top 20 players from the Warhammer 40,000 and Warhammer Fantasy standings will be invited to the GT in August. <br><br>
                                 Warmachine/Hordes player standings are here for informational purposes only. Warmachine/Hordes will not be included
@@ -88,17 +70,18 @@
                         <div style="width: 530px; text-align:center; height: 100% auto; text-align:justify;">
 
                             <center>Click on the results tab to view the current standings!</center>
-                            <br><br>
-                            The inaugural Alberta Wargaming GT will be held in August 2013, in Edmonton Alberta. The GT is an invitational event open to the top 20 finishers as ranked in the 2012-2013 Warhammer and Warhammer 40,000 tournament circuit.
+                            <br>
+                            <center><img src="../images/AlbertaGTPoster.jpg" width="510" height="600" alt="logo"/></center>
+                            <center><div class="fb-like" data-href="http://www.facebook.com/AlbertaGrandTournamentCircuit" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div></center>
+                            <br>
+                            <br>
+                            The inaugural Alberta Wargaming GT will be held in August 2013, in Calgary, Alberta. The GT is an invitational event open to the top 20 finishers as ranked in the 2012-2013 Warhammer and Warhammer 40,000 tournament circuit.
                             Players earn points towards their GT standings by competing in sanctioned Tournaments in Alberta. Each event gives away points proportional to the number of players in the event.
                             The first place player earns points equal to the number of players in the event, with each successive player earning one point less.
                             The Best Overall player will gain +10 points, while the Best Painted, Best Sport and Best General will earn +5 points.<br><br>
                             <center>Click on the ABOUT tab for more information!</center>
                             <br>
                             <br>
-                            <center><img src="../images/dan.jpg" width="265" height="245" alt="logo"/></center><br>
-                            <br>
-                            <center><div class="fb-like" data-href="http://www.facebook.com/AlbertaGrandTournamentCircuit" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div></center>
                         </div>
                     </td>
                 </tr>

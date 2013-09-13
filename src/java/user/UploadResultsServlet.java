@@ -290,8 +290,6 @@ public class UploadResultsServlet extends HttpServlet {
             }
         }
 
-        String url = "/login/indexProtected.jsp";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+        response.sendRedirect("/AlbertaWargaming/login/indexProtected.jsp");
     }
 }

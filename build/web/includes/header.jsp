@@ -34,6 +34,15 @@
         <ul id="menu">
             <li><a href="/AlbertaWargaming/login/indexProtected.jsp">Home</a></li>
             <li>
+                <a href="#">Players Pack/Scenarios</a>
+                <ul>
+                    <li><a href="https://dl.dropbox.com/s/e8ifjm2cv15oyr2/AWGTPlayersPackage.pdf" onclick="return !window.open(this.href,'Players Pack');">Players Pack</a></li>
+                    <!--<li><a href="" onclick="return !window.open(this.href,'40K Scenarios');">>40K Scenarios</a></li>
+                    <li><a href="" onclick="return !window.open(this.href,'Fantasy Scenarios');">>Fantasy Scenarios</a></li>-->
+                </ul>
+            </li>
+            
+            <li>
                 <a href="#">Results</a>
                 <ul>
                     <li><a href="/AlbertaWargaming/login/rankings">Current Standings</a></li>
