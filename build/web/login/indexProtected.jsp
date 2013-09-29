@@ -71,7 +71,6 @@
 
                             <center>Click on the results tab to view the current standings!</center>
                             <br>
-                            <center><img src="../images/AlbertaGTPoster.jpg" width="510" height="600" alt="logo"/></center>
                             <center><div class="fb-like" data-href="http://www.facebook.com/AlbertaGrandTournamentCircuit" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div></center>
                             <br>
                             <br>
