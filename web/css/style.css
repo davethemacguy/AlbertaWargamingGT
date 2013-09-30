@@ -6,6 +6,7 @@
         Purpose of the stylesheet follows.
 */
 
+
 #menu, #menu ul {
     margin: 0;
     padding: 0;
@@ -13,13 +14,15 @@
 }
 
 #menu {
-    margin-left: -10px;
-    margin-top: -120px;
+    z-index: 1;
+    left:50%;
+    margin-left: -566px;
+    margin-top: -80px;
     position: fixed;
-    width: 100%;
+    width: 1130px;
     border: 1px solid #222;
-    background-color: #111;
-    background-image: linear-gradient(#444, #111);
+    background-color: #888;
+    background-image: linear-gradient(#444, #888);
     box-shadow: 0 1px 1px #777;
 }
 
@@ -48,12 +51,16 @@
     border-right: 0px;
 }
 
+#menu img {
+    padding: 1px 10px;
+}
+
 #menu a {
     float: left;
-    padding: 12px 30px;
-    color: #999;
+    padding: 17px 20px 12px;
+    color: #c4c4c4;
     text-transform: uppercase;
-    font: bold 12px Arial, Helvetica;
+    font: bold 13px Tahoma;
     text-decoration: none;
     text-shadow: 0 1px 0 #000;
 }
@@ -62,7 +69,7 @@
     color: #fafafa;
 }
 
-*html #menu li a:hover { /* IE6 only */
+*html #menu li a:hover {  /*IE6 only*/ 
     color: #fafafa;
 }
 
@@ -71,11 +78,11 @@
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    top: 38px;
+    top: 47px;
     left: 0;
     z-index: 1;    
     background: #444;	
-    background: linear-gradient(#444, #111);
+    background: linear-gradient(#444, #888);
     box-shadow: 0 -1px 0 rgba(255,255,255,.3);	
     transition: all .2s ease-in-out;  
 }
@@ -157,14 +164,26 @@
     border-radius: 0 0 3px 3px;
 }
 
+/*Actual Page formatting*/
+
 #mainBody {
     margin-left: auto;
     margin-right: auto;
     width: 1100px;
 }
 
+#instafeedStyling
+{
+	height: 460px;
+        width: 530px;
+        overflow-y: hidden;
+        background: #f4f4f4;
+        position: relative;
+        z-index: 1;
+}
+
 body {
-    margin-top: 120px;
+    margin-top: 80px;
     font-family: Helvetica;
 }
 
