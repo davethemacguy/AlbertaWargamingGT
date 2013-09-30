@@ -39,7 +39,18 @@
                 tagName: 'awgt',
                 clientId: '8546acafc51e435083ffd6b1eb17de55',
                 sortBy: 'random',
-                template: '<div style="padding-bottom: 20px; padding-left: 10px; padding-right: 10px; float: left"><a href="{{link}}"><img src="{{image}}" /></a></div>',
+                template: '<div style="
+                    border: 2px solid black;
+                    border-radius: 20px;
+                    -moz-border-radius: 20px;
+                    -khtml-border-radius: 20px;
+                    -webkit-border-radius: 20px;
+                    padding-bottom: 20px; 
+                    padding-left: 10px; 
+                    padding-right: 10px; 
+                    float: left">
+                        <a href="{{link}}"><img src="{{image}}" /></a>
+                    </div>',
                 limit: '60'
             });
             feed.run();
