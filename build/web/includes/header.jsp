@@ -39,8 +39,8 @@
                 tagName: 'awgt',
                 clientId: '8546acafc51e435083ffd6b1eb17de55',
                 sortBy: 'random',
-                template: '<div style="padding-bottom: 20px; padding-left: 10px; padding-right: 10px; float: left"><a href="{{link}}"><img src="{{image}}" /></a></div>',
-                limit: '60'
+                limit: '60',
+                template: '<div style="padding-left:15px; padding-right:15px; padding-bottom:30px; float: left;"><div onclick="window.open(\'{{link}}\',\'instagram\');" style="cursor:hand; cursor:pointer; border: 2px solid black; border-radius: 20px; -moz-border-radius: 20px; -khtml-border-radius: 20px; -webkit-border-radius: 20px; width: 130px; height: 130px; background-position:center; background-image: url(\'{{image}}\');"></div></div>'            
             });
             feed.run();
         </script>
@@ -59,8 +59,8 @@
                     <li><a href="#">Past Circuit Seasons</a></li>
                 </ul>
             </li>
-            <li><a href="/AlbertaWargaming/login/events.jsp">Circuit Event Schedule</a></li>
             <li><a href="/AlbertaWargaming/login/tournaments.jsp">Tournaments</a></li>
+            <li><a href="/AlbertaWargaming/login/events.jsp">Circuit Event Schedule</a></li>
             <li>
                 <a href="#">Players Pack/Scenarios</a>
                 <ul>
