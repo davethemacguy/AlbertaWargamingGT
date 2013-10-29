@@ -28,7 +28,7 @@
                 }
             });
         </script>
-        
+
         <script type="text/javascript" src=<%request.getContextPath();%>"/AlbertaWargaming/includes/instafeed.min.js"></script>
         <script type="text/javascript">
             var feed = new Instafeed({
