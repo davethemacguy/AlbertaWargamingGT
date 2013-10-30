@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>AWGT</title>
         <%@include file="/includes/header.jsp" %>
         <!-- CSS goes in the document HEAD or added to your external stylesheet -->
         <style type="text/css">

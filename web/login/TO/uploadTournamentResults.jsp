@@ -1,8 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
     <head>
-        <title>AWG: Submit Tournament Results</title>
+        <title>AWGT: Submit Tournament Results</title>
 
         <script>function confirmation() {
             var answer = confirm("Are you sure you wish to submit?")

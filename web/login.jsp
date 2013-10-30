@@ -1,9 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
     <head>
-        <title>Alberta Wargaming GT</title>
+        <title>AWGT</title>
         <style type="text/css">
             table { 
                 margin: auto; 
@@ -23,6 +22,8 @@
                 <tr>
                     <td align="right">Username</td>
                     <td><input type="text" name="j_username"></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td align="right">Password</td>

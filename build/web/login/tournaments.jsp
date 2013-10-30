@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tournaments</title>
+        <title>AWGT</title>
         <%@include file="/includes/header.jsp" %>
         <style type="text/css">
             @-webkit-keyframes greenPulse {

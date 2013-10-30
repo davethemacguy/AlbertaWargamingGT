@@ -7,10 +7,10 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 4.01 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html>
     <head>
-        <title>Alberta Wargaming GT</title>
+        <title>AWGT</title>
         <LINK href="/AlbertaWargaming/css/style.css" rel="stylesheet" type="text/css">
         <link rel="icon" href="http://linds14sr20det.s20.eatj.com/AlbertaWargaming/images/webicon.ico"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -28,22 +28,6 @@
                 }
             });
         </script>
-
-        <script type="text/javascript" src=<%request.getContextPath();%>"/AlbertaWargaming/includes/instafeed.min.js"></script>
-        <script type="text/javascript">
-            var feed = new Instafeed({
-                /*get: 'user',
-                userId: '581985169',
-                accessToken: '581985169.467ede5.606f67a73cf0461b88541f13243a209b',*/
-                get: 'tagged',
-                tagName: 'awgt',
-                clientId: '8546acafc51e435083ffd6b1eb17de55',
-                sortBy: 'random',
-                limit: '60',
-                template: '<div style="padding-left:15px; padding-right:15px; padding-bottom:30px; float: left;"><div onclick="window.open(\'{{link}}\',\'instagram\');" style="cursor:hand; cursor:pointer; border: 2px solid black; border-radius: 20px; -moz-border-radius: 20px; -khtml-border-radius: 20px; -webkit-border-radius: 20px; width: 130px; height: 130px; background-position:center; background-image: url(\'{{image}}\');"></div></div>'            
-            });
-            feed.run();
-        </script>
     </head>   
 
     <body>
@@ -51,7 +35,7 @@
             <li><img src=<%request.getContextPath();%>"/AlbertaWargaming/images/menuLogo.png"></li>
             <li><a href="/AlbertaWargaming/login/indexProtected.jsp">Social Hub</a></li>           
             <li>
-                <a href="/AlbertaWargaming/login/rankings">Current Standings</a>
+                <a href="/AlbertaWargaming/login/rankings">Results</a>
                 <ul>
                     <li><a href="/AlbertaWargaming/login/rankings">2013-2014 Standings</a></li>
                     <li><a href="/AlbertaWargaming/login/populateTournaments">Tournament Results</a></li>
@@ -59,8 +43,8 @@
                     <li><a href="#">Past Circuit Seasons</a></li>
                 </ul>
             </li>
-            <li><a href="/AlbertaWargaming/login/tournaments.jsp">Tournaments</a></li>
-            <li><a href="/AlbertaWargaming/login/events.jsp">Circuit Event Schedule</a></li>
+            <li><a href="/AlbertaWargaming/login/tournaments.jsp">Participating Tournaments</a></li>
+            <li><a href="/AlbertaWargaming/login/events.jsp">Event Calendar</a></li>
             <li>
                 <a href="#">Players Pack/Scenarios</a>
                 <ul>

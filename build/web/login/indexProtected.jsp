@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 4.01 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>AWGT</title>
         <jsp:include page="getString?stringId=eventInfo"/>
         <%@include file="/includes/header.jsp" %>
 
@@ -24,8 +24,28 @@
                 margin-right: 50px;
                 margin-bottom: 25px;
             }
-            #mainLayout{
-                margin-left:25px;
+            #container {
+                width: 1130px; 
+                top: 7%; 
+                left: 50%;
+                margin-left: -565px;
+                position: absolute
+            }
+            #tableParams {
+                width:1130px;
+                text-align:center;
+            }
+            #tableParams td {
+                width:565px;
+            }
+            #instafeedStyling
+            {
+                height: 680px;
+                width: 515px;
+                overflow-y: hidden;
+                background: #f4f4f4;
+                z-index: 1;
+                margin-left:auto;
             }
         </style> 
         <script>
@@ -48,20 +68,35 @@
                 $('#nextEvent').append(events[0][0]);
             }
         </script>
+        <script type="text/javascript" src=<%request.getContextPath();%>"/AlbertaWargaming/includes/instafeed.min.js" ></script>
+        <script type="text/javascript" >
+            var feed = new Instafeed({
+                /*get: 'user',
+                userId: '581985169',
+                accessToken: '581985169.467ede5.606f67a73cf0461b88541f13243a209b',*/
+                get: 'tagged',
+                tagName: 'awgt',
+                clientId: '8546acafc51e435083ffd6b1eb17de55',
+                sortBy: 'random',
+                limit: '60',
+                template: '<div style="padding-left:15px; padding-right:15px; padding-bottom:30px; float: left;"><div onclick="window.open(\'{{link}}\',\'instagram\');" style="cursor:hand; cursor:pointer; border: 2px solid black; border-radius: 20px; -moz-border-radius: 20px; -khtml-border-radius: 20px; -webkit-border-radius: 20px; width: 130px; height: 130px; background-position:center; background-image: url(\'{{image}}\');"></div></div>'            
+            });
+            feed.run();
+        </script>
     </head>
 
     <body>
-        <div id="fb-root"></div>
-        <script>
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324891624285941";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-        <div id="mainBody">
+        <div id="container">
+            <div id="fb-root"></div>
+            <script>
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324891624285941";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
             <div class='title'>Stay Connected</div>
             <div class="hr"><hr /></div>
             <div id="changeEventRoster">${text}</div>
@@ -75,43 +110,34 @@
                 <input type="submit" value="Submit" >
             </form>
             <%}%>
-            <table id='mainLayout'>
-                <tr valign="top">
-                    <td>
-                        <div style ="text-align: center">
-                            <u>The next event is:</u><br>
-                            <div style="font-size: 20px" id ="nextEvent"> </div>
-                        </div>
-
+            <table id="tableParams">
+                <tr>
+                    <td style="vertical-align:text-top;">
+                        <div style="text-decoration:underline">The next event is:</div><br>
+                        <div style="font-size: 20px" id ="nextEvent"></div>
                         <div id="instafeedStyling">
                             <img style="float:left" src=<%request.getContextPath();%>"/AlbertaWargaming/images/instagram-logo.png"/> 
                             <div style="color: lightgray; float: right; padding-top: 10px">#awgt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                             <div style="float: right; padding-top: 10px">@albertawargaminggt&nbsp;</div>
                             <div style="height: 700px; float: left; overflow-y: scroll;" id="instafeed"></div>
                         </div>
-                        <br>
                     </td>
                     <td>
-                        <div style="width: 530px; text-align:center; height: 100% auto; text-align:justify;">
-                            <br>
-                            <center><div class="fb-like-box" data-href="https://www.facebook.com/AlbertaGrandTournamentCircuit"  data-width="530" data-height="730" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div></center>
-                            <!--Facebook script-->
-                            <script>(function(d, s, id) {
-                                var js, fjs = d.getElementsByTagName(s)[0];
-                                if (d.getElementById(id)) return;
-                                js = d.createElement(s); js.id = id;
-                                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324891624285941";
-                                fjs.parentNode.insertBefore(js, fjs);
-                            }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like-box" data-href="https://www.facebook.com/AlbertaGrandTournamentCircuit"  data-width="530" data-height="730" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
+                        <!--Facebook script-->
+                        <script>(function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324891624285941";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
 
-                            <!--Facebook button-->
-                            <center>
-                                <div class="social-button" style="width: 530px;">
-                                    <div class="fb-like" data-href="http://www.facebook.com/AlbertaGrandTournamentCircuit" data-send="true" data-width="530" data-show-faces="true"></div>
-                                </div>
-                            </center>
-                            <br>
+                        <!--Facebook button-->                      
+                        <div class="social-button" style="width: 530px;">
+                            <div class="fb-like" data-href="http://www.facebook.com/AlbertaGrandTournamentCircuit" data-send="true" data-width="530" data-show-faces="true"></div>
                         </div>
+                        <br>
                     </td>
                 </tr>
             </table>

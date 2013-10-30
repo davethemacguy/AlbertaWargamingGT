@@ -172,15 +172,7 @@
     width: 1100px;
 }
 
-#instafeedStyling
-{
-	height: 680px;
-        width: 515px;
-        overflow-y: hidden;
-        background: #f4f4f4;
-        position: relative;
-        z-index: 1;
-}
+
 
 body {
     margin-top: 80px;

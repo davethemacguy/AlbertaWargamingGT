@@ -1,10 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 
 <html>
 
     <head>
-        <title>Alberta Wargaming GT</title>
+        <title>AWGT</title>
         <script language="JavaScript">
             function validate(form) {
                 if (form.firstName.value=="") {
@@ -38,23 +37,23 @@
             }
         </style>
         <link rel="icon" href="http://linds14sr20det.s20.eatj.com/AlbertaWargaming/images/webicon.ico"/>
-    <%@include file="/includes/header.jsp" %>
-</head>
+        <%@include file="/includes/header.jsp" %>
+    </head>
 
-<body>
+    <body>
     <center>
-                <table>
-                    <tr>
-                        <td>
-                            <h1>Update Your Information:</h1>
-                        </td>
-                        <td>
-                            <%@include file="/includes/logo.jsp" %>
-                        </td>
-                    </tr>
-                </table>
-            </center>
-    
+        <table>
+            <tr>
+                <td>
+                    <h1>Update Your Information:</h1>
+                </td>
+                <td>
+                    <%@include file="/includes/logo.jsp" %>
+                </td>
+            </tr>
+        </table>
+    </center>
+
     <div id="mainBody" style="text-align: center">
         <form action="updateUser" method="post">
             <table cellspacing="5" border="0">
