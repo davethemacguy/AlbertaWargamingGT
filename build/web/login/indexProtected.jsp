@@ -4,6 +4,7 @@
         <title></title>
         <jsp:include page="getString?stringId=eventInfo"/>
         <%@include file="/includes/header.jsp" %>
+
         <style type="text/css">
             div.hr {
                 background: #FF0000  no-repeat scroll center;
@@ -23,18 +24,43 @@
                 margin-right: 50px;
                 margin-bottom: 25px;
             }
+            #mainLayout{
+                margin-left:25px;
+            }
         </style> 
+        <script>
+            var eventName = '';
+            var eventDate = '';
+            var events = new Array();
+            var gclaData = 'https://www.google.com/calendar/feeds/awgtcircuit%40gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=3&futureevents=true&alt=json';
+            $.getJSON(gclaData,callbackFunction);
+            
+            function callbackFunction(data)
+            {
+                for(var i = 0; i < data.feed.entry.length; i++){
+                    eventName = data.feed.entry[i].title.$t;
+                    eventDate = data.feed.entry[i].gd$when[0].startTime;
+                    var event = new Array();
+                    event[0] = eventName;
+                    event[1] = eventDate;
+                    window.events[i] = event;
+                }
+                $('#nextEvent').append(events[0][0]);
+            }
+        </script>
     </head>
 
     <body>
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324891624285941";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324891624285941";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <div id="mainBody">
             <div class='title'>Stay Connected</div>
             <div class="hr"><hr /></div>
@@ -49,42 +75,44 @@
                 <input type="submit" value="Submit" >
             </form>
             <%}%>
-            <table>
+            <table id='mainLayout'>
                 <tr valign="top">
                     <td>
-                <center><u>The next event is:</u><br></center>
-                    <%@include file="/includes/countdown.jsp"%>
+                        <div style ="text-align: center">
+                            <u>The next event is:</u><br>
+                            <div style="font-size: 20px" id ="nextEvent"> </div>
+                        </div>
 
-                <div id="instafeedStyling">
-                    <img style="float:left" src=<%request.getContextPath();%>"/AlbertaWargaming/images/instagram-logo.png"/> 
-                    <div style="color: lightgray; float: right; padding-top: 10px">#awgt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                    <div style="float: right; padding-top: 10px">@albertawargaminggt&nbsp;</div>
-                    <div style="height: 700px; float: left; overflow-y: scroll;" id="instafeed"></div>
-                </div>
-                <br>
-                </td>
-                <td>
-                    <div style="width: 530px; text-align:center; height: 100% auto; text-align:justify;">
+                        <div id="instafeedStyling">
+                            <img style="float:left" src=<%request.getContextPath();%>"/AlbertaWargaming/images/instagram-logo.png"/> 
+                            <div style="color: lightgray; float: right; padding-top: 10px">#awgt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div style="float: right; padding-top: 10px">@albertawargaminggt&nbsp;</div>
+                            <div style="height: 700px; float: left; overflow-y: scroll;" id="instafeed"></div>
+                        </div>
                         <br>
-                        <center><div class="fb-like-box" data-href="https://www.facebook.com/AlbertaGrandTournamentCircuit"  data-width="530" data-height="730" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div></center>
-                        <!--Facebook script-->
-                        <script>(function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) return;
-                        js = d.createElement(s); js.id = id;
-                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324891624285941";
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));</script>
+                    </td>
+                    <td>
+                        <div style="width: 530px; text-align:center; height: 100% auto; text-align:justify;">
+                            <br>
+                            <center><div class="fb-like-box" data-href="https://www.facebook.com/AlbertaGrandTournamentCircuit"  data-width="530" data-height="730" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div></center>
+                            <!--Facebook script-->
+                            <script>(function(d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324891624285941";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
 
-                        <!--Facebook button-->
-                        <center>
-                            <div class="social-button" style="width: 530px;">
-                                <div class="fb-like" data-href="http://www.facebook.com/AlbertaGrandTournamentCircuit" data-send="true" data-width="530" data-show-faces="true"></div>
-                            </div>
-                        </center>
-                        <br>
-                    </div>
-                </td>
+                            <!--Facebook button-->
+                            <center>
+                                <div class="social-button" style="width: 530px;">
+                                    <div class="fb-like" data-href="http://www.facebook.com/AlbertaGrandTournamentCircuit" data-send="true" data-width="530" data-show-faces="true"></div>
+                                </div>
+                            </center>
+                            <br>
+                        </div>
+                    </td>
                 </tr>
             </table>
         </div>
