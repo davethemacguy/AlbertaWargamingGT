@@ -71,9 +71,13 @@
         <script type="text/javascript" src=<%request.getContextPath();%>"/AlbertaWargaming/includes/instafeed.min.js" ></script>
         <script type="text/javascript" >
             var feed = new Instafeed({
-                /*get: 'user',
-                userId: '581985169',
-                accessToken: '581985169.467ede5.606f67a73cf0461b88541f13243a209b',*/
+                /*clientId: 'a51bca432d644a518280ffae5045cd95',
+                accessToken: '538640816.a51bca4.995ad8d2a8f641a18fc75cba333efc97',
+                template: '<div style="padding-left:15px; padding-right:15px; padding-bottom:30px; float: left;"><div onclick="window.open(\'{{link}}\',\'instagram\');" style="cursor:hand; cursor:pointer; border: 2px solid black; border-radius: 20px; -moz-border-radius: 20px; -khtml-border-radius: 20px; -webkit-border-radius: 20px; width: 130px; height: 130px; background-position:center; background-image: url(\'{{image}}\');"></div></div>',
+                get: 'user',
+                userId: '538640816',
+                sortBy: 'most-recent',
+                limit: '60'*/
                 get: 'tagged',
                 tagName: 'awgt',
                 clientId: '8546acafc51e435083ffd6b1eb17de55',

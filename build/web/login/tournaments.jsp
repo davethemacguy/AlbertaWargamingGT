@@ -95,7 +95,7 @@
             }
             .tourneyTextDescription {
                 width: 450px;
-                height: 150px;
+                height: 110px;
                 margin-left:auto;
                 margin-right:auto;
                 padding-top: 10px;
