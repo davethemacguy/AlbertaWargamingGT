@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>AWGT</title>
         <%@include file="/includes/header.jsp" %>
         <!-- CSS goes in the document HEAD or added to your external stylesheet -->
         <style type="text/css">
@@ -38,6 +37,8 @@
             }
         </style>
 
+        
+            
     </head>
 
     <body>
@@ -54,15 +55,24 @@
                             <%@include file="/includes/logo.jsp" %>
                         </td>
                     </tr>
+                   
                 </table>
             </center>
 
             <center>
                 <form action="tournamentRankings" method="post">
+                    
+                    <select name="tournamentSeason">
+                        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                        <c:forEach var="season" items="${seasons}">
+                            <option value="tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
+                        </c:forEach>
+                    </select>
+                    
                     <select name="tournament">
                         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <c:forEach var="tournament" items="${tournaments}">
-                            <option value="tournamentName = '${tournament.tournamentName}' AND tournamentDate = '${tournament.tournamentDate}' AND system = '${tournament.system}'">${tournament.tournamentName} ${tournament.system} ${tournament.tournamentDate}</option>
+                            <option value= "tournamentName = '${tournament.tournamentName}' AND tournamentDate = '${tournament.tournamentDate}' AND system = '${tournament.system}'">${tournament.tournamentName} ${tournament.system} ${tournament.tournamentDate}</option>
                         </c:forEach>
                     </select>
 
@@ -73,7 +83,7 @@
                 <table style="text-align:center;">
                     <tr>
                         <td>
-                            <h3>${tournamentInfo}</h3>
+                            <h3>${currentSeason}</h3>
                         </td>
                     </tr>
                     <tr>

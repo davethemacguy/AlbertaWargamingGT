@@ -1,8 +1,9 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
-        <title>AWGT</title>
+        <title>Alberta Wargaming GT</title>
         <style type="text/css">
             table { margin: auto; }
             h1 { text-align: center; }
@@ -19,23 +20,22 @@
         <div style="text-align: center"><%@include file="/includes/banner.jsp" %><b>Login - Error:</b>
             <p>You did not log in successfully.</p>
             <p>Please check your username and password and try again.</p>
-            <p>If you are unable to remember your password please send an email to <a href="mailto:stephen.r.lind@gmail.com?Subject=AWGT%20Forgotten%20Password">The Administrator.</a></p>
+            <p>If you are unable to remember your pass word please send an email to <a href="mailto:stephen.r.lind@gmail.com?Subject=AWGT%20Forgotten%20Password">The Administrator.</a></p>
         </div>
-        <form action="j_security_check" method="get">
-            <table cellspacing="5" border="0">
+
+        <table cellspacing="5" border="0">
+            <form action="j_security_check" method="get">
                 <tr>
                     <td align="right">Username</td>
                     <td><input type="text" name="j_username"></td>
-                    <td></td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td align="right">Password</td>
                     <td><input type="password" name="j_password"></td>
-                    <td colspan="2" style="text-align:center"><input type="submit" value="Login"></td>
+                    <td colspan="2" align="center"><input type="submit" value="Login"></td>
                 </tr>
-            </table>
-        </form>
+            </form>
+        </table>
         <form style="text-align: center" action="/AlbertaWargaming" method="get">
             <input type="submit" value="Return to Homepage">
         </form>

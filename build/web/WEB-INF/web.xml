@@ -140,7 +140,7 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     
-    <!-- Define four security roles -->
+    <!-- Define security roles -->
     <security-role>
         <description>Administrators</description>
         <role-name>admin</role-name>
@@ -153,6 +153,9 @@
         <description>Player</description>
         <role-name>user</role-name>
     </security-role>
+    
+    
+    
     <!-- Restrict access to all files in the /admin folder -->
     <security-constraint>
         <web-resource-collection>
@@ -164,6 +167,8 @@
             <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
+    
+    
     <!-- Restrict access to all files in the /TO folder -->
     <security-constraint>
         <web-resource-collection>
@@ -177,9 +182,13 @@
         </auth-constraint>
     </security-constraint>
     
-    <!-- Restrict access to the website! -->
+   
     
-    <security-constraint>
+    
+        
+        
+        <!-- Restrict access to the website! -->
+    <security-constraint>    
         <web-resource-collection>
             <web-resource-name>Protected Area</web-resource-name>
             <url-pattern>/login/*</url-pattern>
@@ -200,7 +209,7 @@
             <form-login-page>/login.jsp</form-login-page>
             <form-error-page>/login_error.jsp</form-error-page>
         </form-login-config>
-    </login-config>
+    </login-config>    
         
              
     <session-config>

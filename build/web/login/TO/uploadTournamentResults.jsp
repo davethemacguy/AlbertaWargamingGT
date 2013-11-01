@@ -1,10 +1,11 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>AWGT: Submit Tournament Results</title>
+        <title>AWG: Submit Tournament Results</title>
 
         <script>function confirmation() {
-            var answer = confirm("Are you sure you wish to submit?")
+            var answer = confirm("Are you sure you wish to submit?");
             if (answer)
             {
                 document.getElementById("tourneyInput").submit();
@@ -28,7 +29,7 @@
                     $('#inputFortyK' + num40K).remove();     // remove the last element
  
                     // if only one element remains, disable the "remove" button
-                    if (num40K-1 == 1)
+                    if (num40K-1 === 1)
                         $('#remove40K').attr('disabled','disabled');
                 });
             
@@ -60,7 +61,7 @@
                     $('#inputFantasy' + numFantasy).remove();     // remove the last element
  
                     // if only one element remains, disable the "remove" button
-                    if (numFantasy-1 == 1)
+                    if (numFantasy-1 === 1)
                         $('#removeFantasy').attr('disabled','disabled');
                 });
             

@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>AWGT</title>
         <%@include file="/includes/header.jsp" %>
         <!-- CSS goes in the document HEAD or added to your external stylesheet -->
         <style type="text/css">
@@ -56,10 +55,30 @@
                             <%@include file="/includes/logo.jsp" %>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <form action="rankings" method="post">
+                         
+                                <select name="fk_tournamentSeason">
+                        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                        <c:forEach var="season" items="${seasons}">
+                            <option value="fk_tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
+                        </c:forEach>
+                    </select>
+                        
+                               <input type="submit" value="Go!">
+                             </form>
+                            
+                       </td>
+                    </tr>
                 </table>
             </center>
 
+                                    
             <center>
+                
+               
+                
                 <table>
                     <tr>
                         <td><h2><b>Warhammer 40,000</b></h2>

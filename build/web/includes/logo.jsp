@@ -13,6 +13,6 @@
         <title>Banner</title>
     </head>
     <body>
-        <img src=<%request.getContextPath();%>"/AlbertaWargaming/images/bannerLogo.png" width="98" height="103" alt="logo"/>
+        <img src=<%request.getContextPath();%>"/AlbertaWargaming/images/bannerLogo.jpg" width="98" height="103" alt="logo"/>
     </body>
 </html>
