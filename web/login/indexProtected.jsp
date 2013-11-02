@@ -106,10 +106,10 @@
             <div id="changeEventRoster">${text}</div>
             <%if (request.isUserInRole("TO") || request.isUserInRole("admin")) {%>
             <script>var html = document.getElementById("changeEventRoster").innerHTML </script>
-            <form id="adminInput" action="TO/updateString" method="post">
+            <form style="text-align:center" id="adminInput" action="TO/updateString" method="post">
                 <textarea style="width:500px; height:400px; overflow-y: hidden" id="changes" name="text" form="adminInput"></textarea>
                 <script> document.getElementById("changes").innerHTML = html; </script>
-                <br />
+                <br/>
                 <input type="hidden" value="eventInfo" name="stringId">
                 <input type="submit" value="Submit" >
             </form>
