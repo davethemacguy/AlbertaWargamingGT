@@ -20,7 +20,7 @@ public class User implements Serializable
         lastName = "";
         emailAddress = "";
         userID = "";
-        passWord = "";
+        passWord="";
         userRole = "";
         userDelete = "";
 
@@ -51,10 +51,6 @@ public class User implements Serializable
         return lastName;
     }
 
-    public String getPassWord() {
-        return passWord;
-    }
-
     public String getUserDelete() {
         return userDelete;
     }
@@ -69,6 +65,10 @@ public class User implements Serializable
 
     public String getUserRole() {
         return userRole;
+    }
+    
+    public String getPassWord() {
+        return passWord;
     }
 
     public void setEmailAddress(String emailAddress) {

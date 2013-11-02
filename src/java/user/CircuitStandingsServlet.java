@@ -1,6 +1,7 @@
 package user;
 
 import business.SystemResults;
+import business.Tournament;
 import data.TournamentResultsDB;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,11 +17,22 @@ public class CircuitStandingsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<SystemResults> arrayOf40K = TournamentResultsDB.select40K();
-        ArrayList<SystemResults> arrayOfFantasy = TournamentResultsDB.selectFantasy();
-        ArrayList<SystemResults> arrayOfWarmaHordes = TournamentResultsDB.selectWarmaHordes();
+        
+        
+        
+        String fk_tournamentSeason = request.getParameter("fk_tournamentSeason");
 
+        
+        ArrayList<Tournament> arrayOfSeasons = TournamentResultsDB.selectTournamentSeasons();
+        ArrayList<SystemResults> arrayOf40K = TournamentResultsDB.select40K(fk_tournamentSeason);
+        ArrayList<SystemResults> arrayOfFantasy = TournamentResultsDB.selectFantasy(fk_tournamentSeason);
+        ArrayList<SystemResults> arrayOfWarmaHordes = TournamentResultsDB.selectWarmaHordes(fk_tournamentSeason);
+
+       
+        
         HttpSession session = request.getSession();
+        session.setAttribute("fk_tournamentSeason", fk_tournamentSeason);
+        session.setAttribute("seasons", arrayOfSeasons);
         session.setAttribute("results40K", arrayOf40K);
         session.setAttribute("resultsFantasy", arrayOfFantasy);
         session.setAttribute("resultsWarmaHordes", arrayOfWarmaHordes);

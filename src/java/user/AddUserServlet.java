@@ -1,11 +1,13 @@
 package user;
 
+
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 import business.User;
 import data.UserDB;
+
 
 public class AddUserServlet extends HttpServlet {
 
@@ -19,7 +21,9 @@ public class AddUserServlet extends HttpServlet {
         String passWord = request.getParameter("passWord");
         String userRole = request.getParameter("userRole");
         String userDelete = request.getParameter("userDelete");
+     
 
+                
         User user = new User();
 
         user.setUserName(userName);

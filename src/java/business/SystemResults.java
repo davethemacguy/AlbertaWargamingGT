@@ -16,6 +16,7 @@ public class SystemResults {
     String optOut;
     String awards;
     String army;
+    String tournamentSeason;
 
     public SystemResults() {
         this.playerName = null;
@@ -24,6 +25,7 @@ public class SystemResults {
         this.optOut = null;
         this.awards = null;
         this.army = null;
+        this.tournamentSeason = null;
     }
 
     public void setArmy(String army) {
@@ -57,6 +59,10 @@ public class SystemResults {
     public String getInvite() {
         return invite;
     }
+    
+    public String getTournamentSeason() {
+        return tournamentSeason;
+    }
 
     public void setOptOut(String optOut) {
         if (optOut.equals("yes")) {
@@ -76,4 +82,10 @@ public class SystemResults {
     public void setInvite(String invite) {
         this.invite = invite;
     }
+    
+    public void setTournamentSeason(String tournamentSeason) {
+        this.tournamentSeason = tournamentSeason;
+    }
+    
+    
 }

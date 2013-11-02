@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 public class Tournament implements Serializable {
 
+    String tournamentSeason;
     String tournamentName;
     String tournamentDate;
     String system;
@@ -20,8 +21,9 @@ public class Tournament implements Serializable {
     String bestPainted;
     String bestSport;
 
-    public Tournament(String tournamentName, String tournamentDate, String system, String bestOverall, String bestGeneral, String bestPainted, String bestSport) {
-        this.tournamentName = tournamentName;
+    public Tournament(String tournamentSeason, String tournamentName, String tournamentDate, String system, String bestOverall, String bestGeneral, String bestPainted, String bestSport) {
+        this.tournamentSeason = tournamentSeason;
+ 	this.tournamentName = tournamentName;
         this.tournamentDate = tournamentDate;
         this.system = system;
         this.bestOverall = bestOverall;
@@ -31,6 +33,7 @@ public class Tournament implements Serializable {
     }
 
     public Tournament() {
+	this.tournamentSeason = null;
         this.tournamentName = null;
         this.tournamentDate = null;
         this.system = null;
@@ -68,6 +71,10 @@ public class Tournament implements Serializable {
         return tournamentName;
     }
 
+    public String getTournamentSeason() {
+	return tournamentSeason;
+    }
+
     public void setBestGeneral(String bestGeneral) {
         this.bestGeneral = bestGeneral;
     }
@@ -86,6 +93,10 @@ public class Tournament implements Serializable {
 
     public void setSystem(String system) {
         this.system = system;
+    }
+
+    public void setTournamentSeason(String tournamentSeason) {
+	this.tournamentSeason = tournamentSeason;
     }
 
     public void setTournamentDate(String tournamentDate) {

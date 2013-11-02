@@ -8,6 +8,7 @@ import business.Tournament;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+/*import java.util.Calendar;*/
 
 /**
  *
@@ -20,20 +21,23 @@ public class TournamentDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
-        String query = "INSERT INTO linds14sr20det.Tournaments (tournamentName, tournamentDate, system, bestOverall, bestGeneral, bestPainted, bestSport) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+       
+        
+        String query = "INSERT INTO linds14sr20det.Tournaments (tournamentSeason, tournamentName, tournamentDate, system, bestOverall, bestGeneral, bestPainted, bestSport) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 
         try {
             ps = connection.prepareStatement(query);
 
-            ps.setString(1, tournament.getTournamentName());
-            ps.setString(2, tournament.getTournamentDate());
-            ps.setString(3, tournament.getSystem());
-            ps.setString(4, tournament.getBestOverall());
-            ps.setString(5, tournament.getBestGeneral());
-            ps.setString(6, tournament.getBestPainted());
-            ps.setString(7, tournament.getBestSport());
+            ps.setString(1, tournament.getTournamentSeason());
+            ps.setString(2, tournament.getTournamentName());
+            ps.setString(3, tournament.getTournamentDate());
+            ps.setString(4, tournament.getSystem());
+            ps.setString(5, tournament.getBestOverall());
+            ps.setString(6, tournament.getBestGeneral());
+            ps.setString(7, tournament.getBestPainted());
+            ps.setString(8, tournament.getBestSport());
             return ps.executeUpdate();
 
         } catch (SQLException e) {

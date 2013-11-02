@@ -9,6 +9,7 @@ import business.TournamentResults;
 import data.TournamentDB;
 import data.TournamentResultsDB;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -23,7 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Stephen
  */
 public class UploadResultsServlet extends HttpServlet {
-
+ 
+    
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -41,8 +43,38 @@ public class UploadResultsServlet extends HttpServlet {
         /*
          * 40K results read in
          */
+        
+        
+                
+        Calendar currentDate = Calendar.getInstance();
+        
+        int seasonStart=7;
+        int currentMonth = currentDate.get(Calendar.MONTH);
+        int currentYear = currentDate.get(Calendar.YEAR);
+        int startYear;
+        int endYear;
+        
+        
+        
+        
+        if (currentMonth > seasonStart) {
+            startYear = currentYear;
+            endYear = currentYear+1;
+        }   else    {
+            startYear = currentYear-1;
+            endYear = currentYear;
+        }
+            
+        String tournamentSeason = "";
+        tournamentSeason = ""+startYear+"-"+endYear;
+            
+        
+        
+        
+        
         if (!request.getParameter("bestGeneralFortyK").equals("")) {
             Tournament tournament = new Tournament();
+            tournament.setTournamentSeason(tournamentSeason);
             tournament.setTournamentName(request.getParameter("tournamentName"));
             tournament.setTournamentDate(request.getParameter("tournamentDate"));
             tournament.setSystem("40K");
@@ -114,6 +146,7 @@ public class UploadResultsServlet extends HttpServlet {
                         fortyKResults.setOptOut(fortyKOptOut.get(string));
                     }
                 }
+                fortyKResults.setTournamentSeason(tournamentSeason);
                 fortyKResults.setSystem("40K");
                 fortyKResults.setTournamentName(request.getParameter("tournamentName"));
                 fortyKResults.setTournamentDate(request.getParameter("tournamentDate"));

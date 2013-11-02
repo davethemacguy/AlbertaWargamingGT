@@ -25,19 +25,20 @@ public class TournamentResultsDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
-        String query = "INSERT INTO TournamentResults (fk_tournamentName, fk_tournamentDate, playerName, score, army, fk_system, optOut) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO TournamentResults (fk_tournamentSeason, fk_tournamentName, fk_tournamentDate, playerName, score, army, fk_system, optOut) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, tournament.getTournamentName());
-            ps.setString(2, tournament.getTournamentDate());
-            ps.setString(3, tournament.getPlayerName());
-            ps.setString(4, tournament.getScore());
-            ps.setString(5, tournament.getArmy());
-            ps.setString(6, tournament.getSystem());
-            ps.setString(7, tournament.getOptOut());
+            ps.setString(1, tournament.getTournamentSeason());
+            ps.setString(2, tournament.getTournamentName());
+            ps.setString(3, tournament.getTournamentDate());
+            ps.setString(4, tournament.getPlayerName());
+            ps.setString(5, tournament.getScore());
+            ps.setString(6, tournament.getArmy());
+            ps.setString(7, tournament.getSystem());
+            ps.setString(8, tournament.getOptOut());
             return ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -50,14 +51,15 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<SystemResults> select40K() {
+    public static ArrayList<SystemResults> select40K(String fk_tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<SystemResults> results = new ArrayList<SystemResults>();
+        
 
-        String query = "SELECT playerName, finalScore, IF(invite>0, 'yes', 'no') AS invite, IF(optOut=0, 'yes', 'no') AS optOut FROM (SELECT playerName, SUM(optOut) AS optOut, SUM(scoreFinal+overAll) AS finalScore, SUM(overAll) AS invite FROM (SELECT *, IF(test.playerName=Tournaments.bestOverall, 10, 0) AS overAll, IF(test.playerName=Tournaments.bestSport OR test.playerName=Tournaments.bestPainted OR test.playerName=Tournaments.bestGeneral, test.score+5, test.score) AS scoreFinal FROM Tournaments INNER JOIN (SELECT * FROM TournamentResults WHERE fk_system = '40K') AS test ON test.fk_system = Tournaments.system AND test.fk_tournamentName=Tournaments.tournamentName AND test.fk_tournamentDate=Tournaments.tournamentDate) AS test1 GROUP BY playerName) AS finalTable ORDER BY invite DESC, finalScore DESC;";
+        String query = "SELECT playerName, finalScore, IF(invite>0, 'yes', 'no') AS invite, IF(optOut=0, 'yes', 'no') AS optOut FROM (SELECT playerName, SUM(optOut) AS optOut, SUM(scoreFinal+overAll) AS finalScore, SUM(overAll) AS invite FROM (SELECT *, IF(test.playerName=Tournaments.bestOverall, 10, 0) AS overAll, IF(test.playerName=Tournaments.bestSport OR test.playerName=Tournaments.bestPainted OR test.playerName=Tournaments.bestGeneral, test.score+5, test.score) AS scoreFinal FROM Tournaments INNER JOIN (SELECT * FROM TournamentResults WHERE fk_system = '40K' AND "+ fk_tournamentSeason +") AS test ON test.fk_system = Tournaments.system AND test.fk_tournamentName=Tournaments.tournamentName AND test.fk_tournamentDate=Tournaments.tournamentDate AND test.fk_tournamentSeason=Tournaments.tournamentSeason) AS test1 GROUP BY playerName) AS finalTable ORDER BY invite DESC, finalScore DESC;";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -85,14 +87,14 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<SystemResults> selectFantasy() {
+    public static ArrayList<SystemResults> selectFantasy(String fk_tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<SystemResults> results = new ArrayList<SystemResults>();
 
-        String query = "SELECT playerName, finalScore, IF(invite>0, 'yes', 'no') AS invite, IF(optOut=0, 'yes', 'no') AS optOut FROM (SELECT playerName, SUM(optOut) AS optOut, SUM(scoreFinal+overAll) AS finalScore, SUM(overAll) AS invite FROM (SELECT *, IF(test.playerName=Tournaments.bestOverall, 10, 0) AS overAll, IF(test.playerName=Tournaments.bestSport OR test.playerName=Tournaments.bestPainted OR test.playerName=Tournaments.bestGeneral, test.score+5, test.score) AS scoreFinal FROM Tournaments INNER JOIN (SELECT * FROM TournamentResults WHERE fk_system = 'Fantasy') AS test ON test.fk_system =Tournaments.system AND test.fk_tournamentName=Tournaments.tournamentName AND test.fk_tournamentDate=Tournaments.tournamentDate) AS test1 GROUP BY playerName) AS finalTable ORDER BY invite DESC, finalScore DESC;";
+        String query = "SELECT playerName, finalScore, IF(invite>0, 'yes', 'no') AS invite, IF(optOut=0, 'yes', 'no') AS optOut FROM (SELECT playerName, SUM(optOut) AS optOut, SUM(scoreFinal+overAll) AS finalScore, SUM(overAll) AS invite FROM (SELECT *, IF(test.playerName=Tournaments.bestOverall, 10, 0) AS overAll, IF(test.playerName=Tournaments.bestSport OR test.playerName=Tournaments.bestPainted OR test.playerName=Tournaments.bestGeneral, test.score+5, test.score) AS scoreFinal FROM Tournaments INNER JOIN (SELECT * FROM TournamentResults WHERE fk_system = 'Fantasy' AND "+ fk_tournamentSeason +") AS test ON test.fk_system =Tournaments.system AND test.fk_tournamentName=Tournaments.tournamentName AND test.fk_tournamentDate=Tournaments.tournamentDate) AS test1 GROUP BY playerName) AS finalTable ORDER BY invite DESC, finalScore DESC;";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -120,14 +122,14 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<SystemResults> selectWarmaHordes() {
+    public static ArrayList<SystemResults> selectWarmaHordes(String fk_tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<SystemResults> results = new ArrayList<SystemResults>();
 
-        String query = "SELECT playerName, finalScore, IF(invite>0, 'yes', 'no') AS invite, IF(optOut=0, 'yes', 'no') AS optOut FROM (SELECT playerName, SUM(optOut) AS optOut, SUM(scoreFinal+overAll) AS finalScore, SUM(overAll) AS invite FROM (SELECT *, IF(test.playerName=Tournaments.bestOverall, 10, 0) AS overAll, IF(test.playerName=Tournaments.bestSport OR test.playerName=Tournaments.bestPainted OR test.playerName=Tournaments.bestGeneral, test.score+5, test.score) AS scoreFinal FROM Tournaments INNER JOIN (SELECT * FROM TournamentResults WHERE fk_system = 'WarmaHordes') AS test ON test.fk_system =Tournaments.system AND test.fk_tournamentName=Tournaments.tournamentName AND test.fk_tournamentDate=Tournaments.tournamentDate) AS test1 GROUP BY playerName) AS finalTable ORDER BY invite DESC, finalScore DESC;";
+        String query = "SELECT playerName, finalScore, IF(invite>0, 'yes', 'no') AS invite, IF(optOut=0, 'yes', 'no') AS optOut FROM (SELECT playerName, SUM(optOut) AS optOut, SUM(scoreFinal+overAll) AS finalScore, SUM(overAll) AS invite FROM (SELECT *, IF(test.playerName=Tournaments.bestOverall, 10, 0) AS overAll, IF(test.playerName=Tournaments.bestSport OR test.playerName=Tournaments.bestPainted OR test.playerName=Tournaments.bestGeneral, test.score+5, test.score) AS scoreFinal FROM Tournaments INNER JOIN (SELECT * FROM TournamentResults WHERE fk_system = 'WarmaHordes' AND "+ fk_tournamentSeason +") AS test ON test.fk_system =Tournaments.system AND test.fk_tournamentName=Tournaments.tournamentName AND test.fk_tournamentDate=Tournaments.tournamentDate) AS test1 GROUP BY playerName) AS finalTable ORDER BY invite DESC, finalScore DESC;";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -155,15 +157,16 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<SystemResults> selectTournamentResults(String tournament) {
+    public static ArrayList<SystemResults> selectTournamentResults(String tournament, String tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<SystemResults> results = new ArrayList<SystemResults>();
         String query = "SELECT playerName, army, optOut, CASE WHEN Tournaments.bestOverall = TournamentResults.playerName THEN 'Best Overall' WHEN Tournaments.bestPainted = TournamentResults.playerName THEN 'Best Painted' WHEN Tournaments.bestGeneral = TournamentResults.playerName THEN 'Best General' WHEN Tournaments.bestSport = TournamentResults.playerName THEN 'Best Sport' ElSE '' END AS awards, score FROM TournamentResults INNER JOIN (SELECT * FROM Tournaments WHERE "
-                + tournament
-                + ") AS Tournaments ON TournamentResults.fk_tournamentName = Tournaments.tournamentName AND TournamentResults.fk_tournamentDate = Tournaments.tournamentDate AND TournamentResults.fk_system = Tournaments.system ORDER BY score DESC";
+                + tournament +" AND "
+                + tournamentSeason
+                +" ) AS Tournaments ON TournamentResults.fk_tournamentName = Tournaments.tournamentName AND TournamentResults.fk_tournamentDate = Tournaments.tournamentDate AND TournamentResults.fk_system = Tournaments.system AND TournamentResults.fk_tournamentSeason = Tournaments.tournamentSeason ORDER BY score DESC";
         System.out.println(query);
         try {
             ps = connection.prepareStatement(query);
@@ -201,6 +204,7 @@ public class TournamentResultsDB {
         ArrayList<Tournament> tournaments = new ArrayList<Tournament>();
 
         String query = "SELECT * from Tournaments";
+                
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -211,6 +215,7 @@ public class TournamentResultsDB {
                 event.setTournamentName(rs.getString("tournamentName"));
                 event.setSystem(rs.getString("system"));
                 event.setTournamentDate(rs.getString("tournamentDate"));
+                event.setTournamentSeason(rs.getString("tournamentSeason"));
                 tournaments.add(event);
             }
 
@@ -226,6 +231,38 @@ public class TournamentResultsDB {
         }
     }
 
+    public static ArrayList<Tournament> selectTournamentSeasons() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Tournament> seasons = new ArrayList<Tournament>();
+        
+        String query = "SELECT DISTINCT tournamentSeason FROM Tournaments";
+        
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Tournament event = new Tournament();
+                event.setTournamentSeason(rs.getString("tournamentSeason"));
+                seasons.add(event);
+            }
+            
+            return seasons;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+        
+        
     public static String selectTournamentInfo(String tournament) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -238,11 +275,13 @@ public class TournamentResultsDB {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
 
+            
             while (rs.next()) {
                 tournamentInfo = rs.getString("tournamentName") + ", " + rs.getString("system") + ", " + rs.getString("tournamentDate");
             }
 
             return tournamentInfo;
+            
 
         } catch (SQLException e) {
             e.printStackTrace();

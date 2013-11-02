@@ -13,7 +13,7 @@ public class UserDB {
         PreparedStatement ps = null;
 
         String query =
-                "INSERT INTO UserData (userName, firstName, lastName, emailAddress, passWord, userRole, userDelete) "
+                "INSERT INTO UserData (userName, firstName, lastName, emailAddress, userRole, passWord,  userDelete) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 
@@ -23,8 +23,8 @@ public class UserDB {
             ps.setString(2, user.getFirstName());
             ps.setString(3, user.getLastName());
             ps.setString(4, user.getEmailAddress());
-            ps.setString(5, user.getPassWord());
-            ps.setString(6, user.getUserRole());
+            ps.setString(5, user.getUserRole());
+            ps.setString(6, user.getPassWord());
             ps.setString(7, user.getUserDelete());
             return ps.executeUpdate();
 
@@ -82,7 +82,8 @@ public class UserDB {
                 + "firstName = ?, "
                 + "lastName = ?, "
                 + "emailAddress = ?, "
-                + "passWord = ?, "
+                + "passWordHash = ?, "
+                + "passWordSalt = ?, "
                 + "userRole = ?, "
                 + "userDelete = ? "
                 + "WHERE userID = ? ";
@@ -366,5 +367,21 @@ public class UserDB {
             pool.freeConnection(connection);
         }
         return userID;
+        
+        
+    
     }
-}
+ 
+    
+   
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    

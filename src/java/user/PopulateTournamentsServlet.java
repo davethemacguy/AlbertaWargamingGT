@@ -16,10 +16,16 @@ public class PopulateTournamentsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Tournament> arrayOfTournaments = TournamentResultsDB.selectTournaments();
+        
+                
 
+        String tournamentSeason = request.getParameter("tournamentSeason");
+        
+        ArrayList<Tournament> arrayOfTournaments = TournamentResultsDB.selectTournaments();
+        ArrayList<Tournament> arrayOfSeasons = TournamentResultsDB.selectTournamentSeasons();
         HttpSession session = request.getSession();
         session.setAttribute("tournaments", arrayOfTournaments);
+        session.setAttribute("seasons", arrayOfSeasons);
         String url = "/login/tournamentRankings.jsp";
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

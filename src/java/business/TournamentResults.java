@@ -4,11 +4,15 @@
  */
 package business;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author Stephen
  */
 public class TournamentResults {
+    String tournamentSeason;
     String tournamentName;
     String tournamentDate;
     String system;
@@ -16,8 +20,11 @@ public class TournamentResults {
     String score;
     String army;
     String optOut;
+   
+
     
-    public TournamentResults(String tournamentName, String tournamentDate, String system, String playerName, String army, String score, String optOut){
+    public TournamentResults(String tournamentSeason, String tournamentName, String tournamentDate, String system, String playerName, String army, String score, String optOut){
+ 	this.tournamentSeason = tournamentSeason;
         this.tournamentName = tournamentName;
         this.tournamentDate = tournamentDate;
         this.system = system;
@@ -25,9 +32,11 @@ public class TournamentResults {
         this.score = score;
         this.army = army;
         this.optOut = optOut;
+     
     }
     
     public TournamentResults(){
+        this.tournamentSeason = null;
         this.tournamentName = null;
         this.tournamentDate = null;
         this.system = null;
@@ -38,6 +47,7 @@ public class TournamentResults {
     }
     
     public void clearTournamentResults(){
+        this.tournamentSeason = null;
         this.tournamentName = null;
         this.tournamentDate = null;
         this.system = null;
@@ -67,14 +77,20 @@ public class TournamentResults {
         return system;
     }
 
+
     public String getTournamentDate() {
         return tournamentDate;
     }
+  
 
     public String getTournamentName() {
         return tournamentName;
     }
 
+    public String getTournamentSeason() {
+        return tournamentSeason;
+    }
+    
     public void setOptOut(String optOut) {
         this.optOut = optOut;
     }
@@ -95,6 +111,7 @@ public class TournamentResults {
         this.system = system;
     }
 
+
     public void setTournamentDate(String tournamentDate) {
         this.tournamentDate = tournamentDate;
     }
@@ -102,5 +119,10 @@ public class TournamentResults {
     public void setTournamentName(String tournamentName) {
         this.tournamentName = tournamentName;
     }
+    
+    public void setTournamentSeason(String tournamentSeason) {
+           this.tournamentSeason = tournamentSeason;
+    }
+    
     
 }
