@@ -24,12 +24,11 @@ public class RetrievePasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("usernameemail");
+        String username = request.getParameter("username");
         User user = UserDB.selectUserName(username);
         HttpSession session = request.getSession();
         String status = "failed";
         String userEmail = "";
-
         if (user != null) {
             status = "success";
             userEmail = user.getEmailAddress();
