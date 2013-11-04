@@ -6,7 +6,7 @@
         Purpose of the stylesheet follows.
 */
 
-
+/*MENU CSS*/
 #menu, #menu ul {
     margin: 0;
     padding: 0;
@@ -163,26 +163,9 @@
 #menu ul li:last-child > a {
     border-radius: 0 0 3px 3px;
 }
+/*END MENU CSS*/
 
-/*Actual Page formatting*/
-
-#mainBody {
-    margin-left: auto;
-    margin-right: auto;
-    width: 1100px;
-}
-
-
-
-body {
-    margin-top: 80px;
-    font-family: Helvetica;
-}
-
-root { 
-    display: block;
-}
-
+/*Global website formatting*/
 html {
     overflow-y: scroll;
     background-image: url('http://linds14sr20det.s20.eatj.com/AlbertaWargaming/images/backgroundscroll.jpg'), url('http://linds14sr20det.s20.eatj.com/AlbertaWargaming/images/background.jpg');
@@ -192,3 +175,71 @@ html {
     background-repeat: repeat-y;
 }
 
+root { 
+    display: block;
+}
+
+body {
+    margin-top: 80px;
+    font-family: Helvetica;
+}
+
+#container {
+    width: 1130px; 
+    top: 7%; 
+    left: 50%;
+    margin-left: -565px;
+    position: absolute;
+}
+/*END of global website formatting*/
+
+/*Page title and description formatting*/
+div.hr {
+    background: #FF0000  no-repeat scroll center;
+    margin-left: 50px;
+    width:40%;
+    height:5px;
+}
+div.hr hr {
+    display: none;
+}
+.title{
+    font-size: 25px;
+    margin-left:50px;
+}
+.titleDescription{
+    margin-left:50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+/*END of page title and description formatting*/
+
+/*Results table formatting*/
+table.hovertable {
+    width:300px;
+    margin: auto;
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+}
+table.hovertable th {
+    background-color:#808080;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #4F4F4F;
+}
+table.hovertable tr {
+    max-width: 330px;
+    background-color:#A1A1A1;
+}
+table.hovertable td {
+    height: 30px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #4F4F4F;
+}
+/*END of results table formatting*/

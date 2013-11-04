@@ -33,18 +33,17 @@
     <body>
         <ul id="menu">
             <li><img src=<%request.getContextPath();%>"/AlbertaWargaming/images/menuLogo.png"></li>
-            <li><a href="/AlbertaWargaming/login/indexProtected.jsp">Social Hub</a></li>           
+            <li><a href="/AlbertaWargaming/login/events.jsp">Event Calendar</a></li>
+            <li><a href="/AlbertaWargaming/login/tournaments.jsp">Participating Tournaments</a></li>          
             <li>
                 <a href="/AlbertaWargaming/login/rankings">Results</a>
                 <ul>
-                    <li><a href="/AlbertaWargaming/login/rankings">2013-2014 Standings</a></li>
+                    <li><a href="/AlbertaWargaming/login/rankings">Season Standings</a></li>
                     <li><a href="/AlbertaWargaming/login/populateTournaments">Tournament Results</a></li>
                     <li><a href="/AlbertaWargaming/login/armyRankings.jsp">Army Rankings</a></li>
-                    <li><a href="#">Past Circuit Seasons</a></li>
                 </ul>
             </li>
-            <li><a href="/AlbertaWargaming/login/tournaments.jsp">Participating Tournaments</a></li>
-            <li><a href="/AlbertaWargaming/login/events.jsp">Event Calendar</a></li>
+            <li><a href="/AlbertaWargaming/login/indexProtected.jsp">Social Hub</a></li>             
             <li>
                 <a href="#">Players Pack/Scenarios</a>
                 <ul>

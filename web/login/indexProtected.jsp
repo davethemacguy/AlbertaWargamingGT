@@ -6,41 +6,19 @@
         <%@include file="/includes/header.jsp" %>
 
         <style type="text/css">
-            div.hr {
-                background: #FF0000  no-repeat scroll center;
-                margin-left: 50px;
-                width:40%;
-                height:5px;
-            }
-            div.hr hr {
-                display: none;
-            }
-            .title{
-                font-size: 25px;
-                margin-left:50px;
-            }
+
             #changeEventRoster{
                 margin-left:50px;
                 margin-right: 50px;
                 margin-bottom: 25px;
             }
-            #container {
-                width: 1130px; 
-                top: 7%; 
-                left: 50%;
-                margin-left: -565px;
-                position: absolute
-            }
             #tableParams {
                 width:1130px;
                 text-align:center;
             }
-            #tableParams td {
-                width:565px;
-            }
             #instafeedStyling
             {
-                height: 680px;
+                height: 740px;
                 width: 515px;
                 overflow-y: hidden;
                 background: #f4f4f4;
@@ -127,7 +105,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="fb-like-box" data-href="https://www.facebook.com/AlbertaGrandTournamentCircuit"  data-width="530" data-height="730" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
+                        <div class="fb-like-box" data-href="https://www.facebook.com/AlbertaGrandTournamentCircuit"  data-width="530" data-height="740" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
                         <!--Facebook script-->
                         <script>(function(d, s, id) {
                             var js, fjs = d.getElementsByTagName(s)[0];
