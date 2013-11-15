@@ -371,12 +371,37 @@ public class UserDB {
         
     
     }
- 
     
-   
+     public static String getFullName(String currentUser) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String playerName = null;
+        /* String playerName = "David Rowland"; */
+        
+        String query = "SELECT firstName, lastName FROM UserData WHERE userName='davethemacguy'";
+        /* String query = "SELECT firstName, lastName FROM UserData WHERE "+currentUser; */
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            playerName = rs.getString("firstName") + " " + rs.getString("lastName");
+           
+            
+            return playerName;
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        } 
+    } 
+}
     
-    
-    }
     
     
     

@@ -19,13 +19,14 @@ public class PopulateTournamentsServlet extends HttpServlet {
         
                 
 
-        String tournamentSeason = request.getParameter("tournamentSeason");
         
         ArrayList<Tournament> arrayOfTournaments = TournamentResultsDB.selectTournaments();
         ArrayList<Tournament> arrayOfSeasons = TournamentResultsDB.selectTournamentSeasons();
+        ArrayList<Tournament> arrayOfSystems = TournamentResultsDB.selectSystem();
         HttpSession session = request.getSession();
         session.setAttribute("tournaments", arrayOfTournaments);
         session.setAttribute("seasons", arrayOfSeasons);
+        session.setAttribute("systems", arrayOfSystems);
         String url = "/login/tournamentRankings.jsp";
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);
