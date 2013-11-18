@@ -18,25 +18,21 @@ public class FullNameServlet extends HttpServlet
             HttpServletResponse response) 
             throws ServletException, IOException
     {
-        String userName = request.getRemoteUser();
-        String currentUser = userName;
-        User userInfo = UserDB.selectUserName(userName);
-        
-        
-        /* String playerName = UserDB.getFullName(currentUser); */
-        String playerName ="David Rowland";
-        
-        ArrayList<SystemResults> userResults = TournamentResultsDB.selectIndividualTournamentResults(playerName);
         
         HttpSession session = request.getSession();
-       
-        session.setAttribute("currentUser", currentUser);
-        session.setAttribute("userName", userName);
-        session.setAttribute("user", userInfo);
-        session.setAttribute("playerName", playerName);
-        session.setAttribute("results", userResults);
         
-        /* session.setAttribute("results", userResults); */
+        String userName = request.getRemoteUser();
+        int userID = UserDB.getUserID(userName);
+        String fullName = UserDB.getFullName(userName);
+        
+        ArrayList<SystemResults> userResults = TournamentResultsDB.selectIndividualTournamentResults(fullName);
+        
+        
+        
+        session.setAttribute("user", userName);
+        session.setAttribute("userID", userID);
+        session.setAttribute("fullName", fullName);
+        session.setAttribute("results", userResults);
         
         
         String url = "/login/fullName.jsp";

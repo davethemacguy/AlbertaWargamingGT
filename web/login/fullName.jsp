@@ -38,36 +38,37 @@
                        <tr></tr>
                        <tr></tr>
                        <tr>
-                           <%-- Working --%>
-                           <td><p>${userName}</td>
+                           <%-- Working  --%>
+                           <td><p>Hello Mr. ${user}</td> 
                        </tr>
-                       <tr></tr>
                        <tr>
-                           <%-- Working --%>
-                           <td><p>${currentUser}</td>
+                           <td><p>${userID}</td>
+                       </tr>
+                       <tr>
+                           <td><p>Hello ${fullName}</td>
+                       </tr>
+                       <tr>
+                           <%-- Working 
+                           <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+                           <td><p><c:out value="${currentUser.username}" /></td> --%>
                        </tr> 
                        <tr>
-                            <%-- Working --%>
+                            <%-- Working 
                             <td><p>${user.userName}</td>
                             <td><p>${user.firstName}</td>
                             <td><p>${user.lastName}</td>
                             <td><p>${user.emailAddress}</td>
-                            <td><p>${user.userRole}</td>
+                            <td><p>${user.userRole}</td> --%>
                         </tr>
                         <tr></tr>
-                        <tr></tr>
-                        <tr>
-                             <%-- Not Working --%>
-                            <td><p>${playerName}</td>
-                        </tr>
+                        <tr></tr>                             
                         <tr></tr>
                         <tr>
                             <td><p>${results.tournamentName}</td>
                             <td><p>${results.tournamentDate}</td>
                             <td><p>${results.army}</td>
-                            <td><p>${results.points}</td>
+                            <td><p>${results.points}</td>  --%>
                         </tr>
-                    </c:forEach>
                     
                 </table>
             </div>

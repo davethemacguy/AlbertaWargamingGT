@@ -198,21 +198,21 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<SystemResults> selectIndividualTournamentResults(String playerName) {
+    public static ArrayList<SystemResults> selectIndividualTournamentResults(String fullName) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        ArrayList<User> userInfo = new ArrayList<User>();
+        
         ArrayList<SystemResults> results = new ArrayList<SystemResults>();
-        String query =  "SELECT * FROM TournamentResults WHERE playerName='David Rowland'";
-        System.out.println(query);
+        String query =  "SELECT * FROM TournamentResults WHERE playerName= ?";
+        
         try {
             ps = connection.prepareStatement(query);
+            ps.setString(1, fullName);
             rs = ps.executeQuery();
-            userInfo = null;
 
-            while (rs.next()) {
+           if (rs.next()) {
 
                 SystemResults event = new SystemResults();
                 event.setTournamentName(rs.getString("fk_tournamentName"));

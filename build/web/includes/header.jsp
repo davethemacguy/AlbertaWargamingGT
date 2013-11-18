@@ -4,17 +4,20 @@
     Author     : Stephen
 --%>
 
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 4.01 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html>
     <head>
+        <title>AWGT</title>
+        <LINK href="/AlbertaWargaming/css/style.css" rel="stylesheet" type="text/css">
+        <link rel="icon" href="http://linds14sr20det.s20.eatj.com/AlbertaWargaming/images/webicon.ico"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <title>Alberta Wargaming GT</title>
 
         <script src=<%request.getContextPath();%>"/AlbertaWargaming/includes/jquery-1.8.1.min.js"></script>
         <script>
-            $(function() {
+            $(document).ready(function() {
                 if ($.browser.msie && $.browser.version.substr(0,1)<7)
                 {
                     $('li').has('ul').mouseover(function(){
@@ -23,35 +26,32 @@
                         $(this).children('ul').css('visibility','hidden');
                     })
                 }
-            }); 
+            });
         </script>
-        <LINK href="/AlbertaWargaming/css/style.css" rel="stylesheet" type="text/css">
-        <link rel="icon" href="http://linds14sr20det.s20.eatj.com/AlbertaWargaming/images/webicon.ico"/>
-
     </head>   
 
     <body>
         <ul id="menu">
-            <li><a href="/AlbertaWargaming/login/indexProtected.jsp">Home</a></li>
+            <li><img src=<%request.getContextPath();%>"/AlbertaWargaming/images/menuLogo.png"></li>
+            <li><a href="/AlbertaWargaming/login/events.jsp">Event Calendar</a></li>
+            <li><a href="/AlbertaWargaming/login/tournaments.jsp">Participating Tournaments</a></li>          
+            <li>
+                <a href="/AlbertaWargaming/login/rankings">Results</a>
+                <ul>
+                    <li><a href="/AlbertaWargaming/login/rankings">Season Standings</a></li>
+                    <li><a href="/AlbertaWargaming/login/populateTournaments">Tournament Results</a></li>
+                    <li><a href="/AlbertaWargaming/login/armyRankings.jsp">Army Rankings</a></li>
+                    <li><a href="/AlbertaWargaming/login/individualResults">Individual Results</a></li>
+                    <li><a href="/AlbertaWargaming/login/fullName">Full Name</a></li>
+                </ul>
+            </li>
+            <li><a href="/AlbertaWargaming/login/indexProtected.jsp">Social Hub</a></li>             
             <li>
                 <a href="#">Players Pack/Scenarios</a>
                 <ul>
-                    <li><a href="https://dl.dropbox.com/s/e8ifjm2cv15oyr2/AWGTPlayersPackage.pdf" onclick="return !window.open(this.href,'Players Pack');">Players Pack</a></li>
-                    <!--<li><a href="" onclick="return !window.open(this.href,'40K Scenarios');">>40K Scenarios</a></li>
-                    <li><a href="" onclick="return !window.open(this.href,'Fantasy Scenarios');">>Fantasy Scenarios</a></li>-->
+                    <li><a href="https://dl.dropbox.com/s/e8ifjm2cv15oyr2/AWGTPlayersPackage.pdf" onclick="return !window.open(this.href,'Players Pack');">2013 Players Pack</a></li>
                 </ul>
             </li>
-            
-            <li>
-                <a href="#">Results</a>
-                <ul>
-                    <li><a href="/AlbertaWargaming/login/rankings">Current Rankings</a></li>
-                    <li><a href="/AlbertaWargaming/login/populateTournaments">Tournament Results</a></li>
-                    <li><a href="/AlbertaWargaming/login/armyRankings.jsp">Army Rankings</a></li>
-                </ul>
-            </li>
-            <li><a href="/AlbertaWargaming/login/about.jsp">About</a></li>
-            <li><a href="/AlbertaWargaming/login/contact.jsp">Contact</a></li>
             <li id="finalBar">
                 <a href="#">User Control Panel</a>
                 <ul>
