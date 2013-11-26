@@ -42,7 +42,6 @@
                     <li><a href="/AlbertaWargaming/login/populateTournaments">Tournament Results</a></li>
                     <li><a href="/AlbertaWargaming/login/armyRankings.jsp">Army Rankings</a></li>
                     <li><a href="/AlbertaWargaming/login/individualResults">Individual Results</a></li>
-                    <li><a href="/AlbertaWargaming/login/fullName">Full Name</a></li>
                 </ul>
             </li>
             <li><a href="/AlbertaWargaming/login/indexProtected.jsp">Social Hub</a></li>             

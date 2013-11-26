@@ -25,7 +25,8 @@ public class FullNameServlet extends HttpServlet
         int userID = UserDB.getUserID(userName);
         String fullName = UserDB.getFullName(userName);
         
-        ArrayList<SystemResults> userResults = TournamentResultsDB.selectIndividualTournamentResults(fullName);
+        ArrayList<TournamentResults> userResults = TournamentResultsDB.selectIndividualTournamentResults(fullName);
+        ArrayList<User> activeUsers = UserDB.selectActiveUsers();
         
         
         
@@ -33,6 +34,7 @@ public class FullNameServlet extends HttpServlet
         session.setAttribute("userID", userID);
         session.setAttribute("fullName", fullName);
         session.setAttribute("results", userResults);
+        session.setAttribute("activeUsers", activeUsers);
         
         
         String url = "/login/fullName.jsp";

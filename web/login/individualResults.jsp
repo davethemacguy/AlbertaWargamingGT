@@ -22,11 +22,15 @@
             }
         </style>
 
+        <%
+            String userName = request.getRemoteUser();
+            session.setAttribute("userName", userName);
+        %>
         
     </head>
     <body>
         <script type="text/javascript">var col = 1;</script>
-        <script type="text/javascript">var userName = {pageContext.reques.remoteUser}</script>
+        <script type="text/javascript">var userName = ${pageContext.request.remoteUser}</script>
         <div id="container">
             <div class='title'>Tournament Results</div>
             <div class="hr"><hr /></div>
@@ -34,8 +38,31 @@
                 Here you can view all past tournaments that you have participated in the GT circuit!
             </div>
             
+              
+                <%--
+            <table class="hovertable" style="width:600px">
+              
+                <tr>
+                    <th>Tournament Date</th>
+                    <th>Tournament Name</th>
+                    <th>Army</th>
+                    <th>Points</th>
+                </tr>
+                           
+                            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                            <c:forEach var="player" items="${userResults}">
+                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                    <td><p>${player.tournamentDate}</p></td>
+                                    <td><p>${player.tournamentName}</p></td>
+                                    <td><p>${player.army}</p></td>
+                                    <td><p>${player.score}</p></td>
+                                </tr>
+                            </c:forEach>
+                
+            </table>    --%>
 
             <table id="tableParams">
+                
                 <tr>
                     <td>
                     </td>
@@ -44,25 +71,25 @@
                     <td>
                     </td>
                 </tr>
+                
                 <tr>
-                    <td>
-                        <b>Player Results for ${pageContext.request.userPrincipal.name}</b>
-                        <form action="individualResults" method="get">
-                            <input type="submit" value="Show Results">
-                        </form>
-                        <b>${userName}</b>
-                        <b>${fullName}</b>
-                    </td>
-                    <td>
-                        
-                    </td>
+                    <td>${fullName}</td>
                 </tr>
-                <tr>
-                    <td>${userName}</td>
-                </tr>
+              
                
                 
-                
+                <form action="individualResults" method="post">
+                           <td>
+                           <select name="playerName">
+                                <option selected="selected"></option>
+                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                <c:forEach var="name" items="${activeUsers}">
+                                    <option value="playerName = '${name.fullName}'">${name.fullName}</option>
+                                </c:forEach>
+                            </select>
+                                <input type="submit" value="Go!">
+                           </td>
+                        </form>
                 
                 
                 <tr>
@@ -74,17 +101,16 @@
                                 <th>Army</th>
                                 <th>Points</th>
                             </tr>
+                           
                             
-                           <%-- <c:forEach var="player" items="${tournamentResults}">
-                            <c:forEach var="tournament" items="${results}">
+                            <c:forEach var="player" items="${results}">
                                 <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
-                                    <td><p><script type="text/javascript">document.write(col++);</script></p></td>
-                                    <td><p>${tournament.tournamentDate}</p></td>
-                                    <td><p>${tournament.tournamentName}</p></td>
-                                    <td><p>${tournament.army}</p></td>
-                                    <td><p>${tournament.score}</p></td>
+                                    <td><p>${player.tournamentDate}</p></td>
+                                    <td><p>${player.tournamentName}</p></td>
+                                    <td><p>${player.army}</p></td>
+                                    <td><p>${player.score}</p></td>
                                 </tr>
-                            </c:forEach> --%>
+                            </c:forEach>
                            
                         </table>
                     </td>

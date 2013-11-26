@@ -198,23 +198,24 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<SystemResults> selectIndividualTournamentResults(String fullName) {
+    public static ArrayList<TournamentResults> selectIndividualTournamentResults(String playerName) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        ArrayList<SystemResults> results = new ArrayList<SystemResults>();
-        String query =  "SELECT * FROM TournamentResults WHERE playerName= ?";
-        
+        ArrayList<TournamentResults> results = new ArrayList<TournamentResults>();
+        String query =  "SELECT * FROM TournamentResults WHERE "+playerName+" ORDER BY fk_tournamentDate DESC";
+        System.out.println(query);
+
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, fullName);
             rs = ps.executeQuery();
+            TournamentResults event = null;
 
-           if (rs.next()) {
+           while (rs.next()) {
 
-                SystemResults event = new SystemResults();
+                event = new TournamentResults();
                 event.setTournamentName(rs.getString("fk_tournamentName"));
                 event.setTournamentDate(rs.getString("fk_tournamentDate"));
                 event.setArmy(rs.getString("army"));

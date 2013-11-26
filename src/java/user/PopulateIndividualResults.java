@@ -7,7 +7,6 @@
 package user;
 
 import business.SystemResults;
-import business.Tournament;
 import business.TournamentResults;
 import business.User;
 import data.TournamentResultsDB;
@@ -31,17 +30,19 @@ public class PopulateIndividualResults extends HttpServlet {
             throws ServletException, IOException {
         
         
-            HttpSession session = request.getSession();
+            
+           
             String userName = request.getParameter("userName");
+            String fullName = UserDB.getFullName(userName);
+            String playerName = request.getParameter("playerName");
             
+            ArrayList<TournamentResults> arrayOfUserTournamentResults = TournamentResultsDB.selectIndividualTournamentResults(playerName);
+            ArrayList<User> activeUsers = UserDB.selectTournamentParticipants();
             
-            User fullName = UserDB.selectUserName(userName);
-            ArrayList<SystemResults> results = TournamentResultsDB.selectIndividualTournamentResults(userName);
-            
-            
-            session.setAttribute("userName", userName);
+            HttpSession session = request.getSession();
+            session.setAttribute("results", arrayOfUserTournamentResults);
+            session.setAttribute("activeUsers", activeUsers);
             session.setAttribute("fullName", fullName);
-            session.setAttribute("results", results);
             
             String url = "/login/individualResults.jsp";
             
