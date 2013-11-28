@@ -65,7 +65,7 @@ public class UploadResultsServlet extends HttpServlet {
             endYear = currentYear;
         }
             
-        String tournamentSeason = "";
+        String tournamentSeason = null;
         tournamentSeason = ""+startYear+"-"+endYear;
             
         
@@ -160,6 +160,7 @@ public class UploadResultsServlet extends HttpServlet {
         if (!request.getParameter("bestGeneralFantasy").equals("")) {
             Iterator parameterIterator1 = paramsFromForm.keySet().iterator();
             Tournament tournament = new Tournament();
+            tournament.setTournamentSeason(tournamentSeason);
             tournament.setTournamentName(request.getParameter("tournamentName"));
             tournament.setTournamentDate(request.getParameter("tournamentDate"));
             tournament.setSystem("Fantasy");
@@ -234,6 +235,7 @@ public class UploadResultsServlet extends HttpServlet {
                     }
                 }
 
+                fantasyResults.setTournamentSeason(tournamentSeason);
                 fantasyResults.setSystem("Fantasy");
                 fantasyResults.setTournamentName(request.getParameter("tournamentName"));
                 fantasyResults.setTournamentDate(request.getParameter("tournamentDate"));
@@ -246,6 +248,7 @@ public class UploadResultsServlet extends HttpServlet {
         if (!request.getParameter("bestGeneralWarmaHordes").equals("")) {
             Iterator parameterIterator2 = paramsFromForm.keySet().iterator();
             Tournament tournament = new Tournament();
+            tournament.setTournamentSeason(tournamentSeason);
             tournament.setTournamentName(request.getParameter("tournamentName"));
             tournament.setTournamentDate(request.getParameter("tournamentDate"));
             tournament.setSystem("WarmaHordes");
@@ -316,6 +319,7 @@ public class UploadResultsServlet extends HttpServlet {
                         warmaHordesResults.setOptOut(warmaHordesOptOut.get(string));
                     }
                 }
+                warmaHordesResults.setTournamentSeason(tournamentSeason);
                 warmaHordesResults.setSystem("WarmaHordes");
                 warmaHordesResults.setTournamentName(request.getParameter("tournamentName"));
                 warmaHordesResults.setTournamentDate(request.getParameter("tournamentDate"));
