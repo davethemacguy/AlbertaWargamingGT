@@ -14,16 +14,16 @@
         <servlet-class>user.CircuitStandingsServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ArmyRankingDataServlet</servlet-name>
-        <servlet-class>user.ArmyRankingDataServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>TournamentResultsIndividualServlet</servlet-name>
         <servlet-class>user.TournamentResultsIndividualServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PopulateTournamentsServlet</servlet-name>
         <servlet-class>user.PopulateTournamentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PopulateArmyRankingsServlet</servlet-name>
+        <servlet-class>user.PopulateArmyRankingsServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UploadResultsServlet</servlet-name>
@@ -78,8 +78,12 @@
         <servlet-class>user.PopulateIndividualResults</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FullNameServlet</servlet-name>
-        <servlet-class>user.FullNameServlet</servlet-class>
+        <servlet-name>PopulateTestPage</servlet-name>
+        <servlet-class>user.PopulateTestPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ArmyRankingDataServlet</servlet-name>
+        <servlet-class>user.ArmyRankingDataServlet</servlet-class>
     </servlet>
     
        
@@ -92,8 +96,12 @@
         <url-pattern>/login/getString</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>PopulateArmyRankingsServlet</servlet-name>
+        <url-pattern>/login/populateArmyRankings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ArmyRankingDataServlet</servlet-name>
-        <url-pattern>/login/armyRankingData</url-pattern>
+        <url-pattern>/login/armyRankings</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CircuitStandingsServlet</servlet-name>
@@ -160,8 +168,8 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FullNameServlet</servlet-name>
-        <url-pattern>/login/fullName</url-pattern>
+        <servlet-name>PopulateTestPage</servlet-name>
+        <url-pattern>/login/populateTestPage</url-pattern>
     </servlet-mapping>
     
     
@@ -245,6 +253,7 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    --&gt;    
+
+        --&gt;    
              
 </web-app>

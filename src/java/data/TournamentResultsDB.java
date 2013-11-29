@@ -361,14 +361,14 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<Army> selectArmyPerformance40K() {
+    public static ArrayList<Army> selectArmyPerformance40K(String tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<Army> results = new ArrayList<Army>();
 
-        String query = "SELECT army, SUM(score)AS score FROM TournamentResults WHERE fk_system='40K' GROUP BY army ORDER BY score DESC";
+        String query = "SELECT army, SUM(score)AS score FROM TournamentResults WHERE fk_system='40K' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -392,14 +392,14 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<Army> selectArmyAveragePerformance40K() {
+    public static ArrayList<Army> selectArmyAveragePerformance40K(String tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<Army> results = new ArrayList<Army>();
 
-        String query = "SELECT army, AVG(score)AS score FROM TournamentResults WHERE fk_system='40K' GROUP BY army ORDER BY score DESC";
+        String query = "SELECT army, AVG(score)AS score FROM TournamentResults WHERE fk_system='40K' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -423,108 +423,14 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<Army> selectArmyPopularity40K() {
+    public static ArrayList<Army> selectArmyPopularity40K(String tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<Army> results = new ArrayList<Army>();
 
-        String query = "SELECT army, COUNT(*)AS score FROM TournamentResults WHERE fk_system='40K' GROUP BY army ORDER BY score DESC";
-        try {
-            ps = connection.prepareStatement(query);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Army army = new Army();
-                army.setArmyName(rs.getString("army"));
-                army.setScore(rs.getString("score"));
-                results.add(army);
-            }
-
-            return results;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            DBUtil.closeResultSet(rs);
-            DBUtil.closePreparedStatement(ps);
-            pool.freeConnection(connection);
-        }
-    }
-    
-    
-    public static ArrayList<Army> selectArmyPerformanceFantasy() {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        ArrayList<Army> results = new ArrayList<Army>();
-
-        String query = "SELECT army, SUM(score)AS score FROM TournamentResults WHERE fk_system='Fantasy' GROUP BY army ORDER BY score DESC";
-        try {
-            ps = connection.prepareStatement(query);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Army army = new Army();
-                army.setArmyName(rs.getString("army"));
-                army.setScore(rs.getString("score"));
-                results.add(army);
-            }
-
-            return results;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            DBUtil.closeResultSet(rs);
-            DBUtil.closePreparedStatement(ps);
-            pool.freeConnection(connection);
-        }
-    }
-
-    public static ArrayList<Army> selectArmyAveragePerformanceFantasy() {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        ArrayList<Army> results = new ArrayList<Army>();
-
-        String query = "SELECT army, AVG(score)AS score FROM TournamentResults WHERE fk_system='Fantasy' GROUP BY army ORDER BY score DESC";
-        try {
-            ps = connection.prepareStatement(query);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Army army = new Army();
-                army.setArmyName(rs.getString("army"));
-                army.setScore(rs.getString("score"));
-                results.add(army);
-            }
-
-            return results;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            DBUtil.closeResultSet(rs);
-            DBUtil.closePreparedStatement(ps);
-            pool.freeConnection(connection);
-        }
-    }
-
-    public static ArrayList<Army> selectArmyPopularityFantasy() {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        ArrayList<Army> results = new ArrayList<Army>();
-
-        String query = "SELECT army, COUNT(*)AS score FROM TournamentResults WHERE fk_system='Fantasy' GROUP BY army ORDER BY score DESC";
+        String query = "SELECT army, COUNT(*)AS score FROM TournamentResults WHERE fk_system='40K' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -549,14 +455,14 @@ public class TournamentResultsDB {
     }
     
     
-    public static ArrayList<Army> selectArmyPerformanceWarmaHordes() {
+    public static ArrayList<Army> selectArmyPerformanceFantasy(String tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<Army> results = new ArrayList<Army>();
 
-        String query = "SELECT army, SUM(score)AS score FROM TournamentResults WHERE fk_system='WarmaHordes' GROUP BY army ORDER BY score DESC";
+        String query = "SELECT army, SUM(score)AS score FROM TournamentResults WHERE fk_system='Fantasy' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -580,14 +486,14 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<Army> selectArmyAveragePerformanceWarmaHordes() {
+    public static ArrayList<Army> selectArmyAveragePerformanceFantasy(String tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<Army> results = new ArrayList<Army>();
 
-        String query = "SELECT army, AVG(score)AS score FROM TournamentResults WHERE fk_system='WarmaHordes' GROUP BY army ORDER BY score DESC";
+        String query = "SELECT army, AVG(score)AS score FROM TournamentResults WHERE fk_system='Fantasy' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -611,14 +517,108 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<Army> selectArmyPopularityWarmaHordes() {
+    public static ArrayList<Army> selectArmyPopularityFantasy(String tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<Army> results = new ArrayList<Army>();
 
-        String query = "SELECT army, COUNT(*)AS score FROM TournamentResults WHERE fk_system='WarmaHordes' GROUP BY army ORDER BY score DESC";
+        String query = "SELECT army, COUNT(*)AS score FROM TournamentResults WHERE fk_system='Fantasy' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Army army = new Army();
+                army.setArmyName(rs.getString("army"));
+                army.setScore(rs.getString("score"));
+                results.add(army);
+            }
+
+            return results;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
+    
+    public static ArrayList<Army> selectArmyPerformanceWarmaHordes(String tournamentSeason) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Army> results = new ArrayList<Army>();
+
+        String query = "SELECT army, SUM(score)AS score FROM TournamentResults WHERE fk_system='WarmaHordes' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Army army = new Army();
+                army.setArmyName(rs.getString("army"));
+                army.setScore(rs.getString("score"));
+                results.add(army);
+            }
+
+            return results;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+
+    public static ArrayList<Army> selectArmyAveragePerformanceWarmaHordes(String tournamentSeason) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Army> results = new ArrayList<Army>();
+
+        String query = "SELECT army, AVG(score)AS score FROM TournamentResults WHERE fk_system='WarmaHordes' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Army army = new Army();
+                army.setArmyName(rs.getString("army"));
+                army.setScore(rs.getString("score"));
+                results.add(army);
+            }
+
+            return results;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+
+    public static ArrayList<Army> selectArmyPopularityWarmaHordes(String tournamentSeason) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Army> results = new ArrayList<Army>();
+
+        String query = "SELECT army, COUNT(*)AS score FROM TournamentResults WHERE fk_system='WarmaHordes' AND "+ tournamentSeason +" GROUP BY army ORDER BY score DESC";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();

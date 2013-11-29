@@ -23,6 +23,7 @@ public class PopulateTournamentsServlet extends HttpServlet {
         ArrayList<Tournament> arrayOfTournaments = TournamentResultsDB.selectTournaments();
         ArrayList<Tournament> arrayOfSeasons = TournamentResultsDB.selectTournamentSeasons();
         ArrayList<Tournament> arrayOfSystems = TournamentResultsDB.selectSystem();
+        
         HttpSession session = request.getSession();
         session.setAttribute("tournaments", arrayOfTournaments);
         session.setAttribute("seasons", arrayOfSeasons);

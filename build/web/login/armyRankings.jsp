@@ -1,5 +1,5 @@
 <%-- 
-    Document   : tournamentRankings
+    Document   : armyRankings
     Created on : 4-Jan-2013, 11:21:58 AM
     Author     : Stephen
 --%>
@@ -39,9 +39,22 @@
             <script type="text/javascript">var colNumWarmaHordes = 1;</script>
             <table id="tableParams">
                 <tr>
-                    <td></td>
                     <td>
-                        <form action="armyRankingData" method="post">
+                    </td>
+                    <td>
+                        
+                        
+                        
+                      <form action="armyRankings" method="post">
+                      
+                            <select name="fk_tournamentSeason">
+                                <option selected="currentSeason"></option>
+                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                <c:forEach var="season" items="${seasons}">
+                                    <option value="fk_tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
+                                </c:forEach>
+                            </select>
+                          
                             <select name="dataSelection">
                                 <option selected="selected"></option>
                                 <option value="Popularity">Popularity</option>
@@ -57,6 +70,7 @@
                 <tr>
                     <td colspan ="3">
                         <h3>${dataSelectionType}</h3>
+                          
                     </td>
                 </tr>
                 <tr>
