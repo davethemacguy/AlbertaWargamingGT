@@ -21,6 +21,23 @@
                 vertical-align: top;
             }
         </style>
+
+        <script>
+            function selectSeason()
+            {
+                var tournamentSeason=document.getElementById("tournamentSeason");
+                var myArray = new Array("1", "2", "3")
+                var tournamentSelect=document.getElementById("tournamentSelect");
+                for(var i = 0; i < myArray.length; i++) {
+                    var opt = options[i];
+                    var el = document.createElement("option");
+                    el.textContent = opt;
+                    el.value = opt;
+                    tournamentSelect.appendChild(el);
+                }
+                
+            }
+        </script>
     </head>
 
     <body>
@@ -35,7 +52,7 @@
             <table id="tableParams">
                 <tr>
                     <td><form action="tournamentRankings" method="post">
-                            <select name="tournamentSeason">
+                            <select id="tournamentSeason" name="tournamentSeason" onchange="selectSeason()">
                                 <option selected="selected"></option>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 <c:forEach var="season" items="${seasons}">
@@ -49,7 +66,9 @@
                                     <option value= "tournamentName = '${tournament.tournamentName}' AND tournamentDate = '${tournament.tournamentDate}' AND system = '${tournament.system}'">${tournament.tournamentName} ${tournament.system} ${tournament.tournamentDate}</option>
                                 </c:forEach>
                             </select>
-
+                            <select id="tournamentSelect" name="tournament">
+                                <option selected="selected"></option>
+                            </select>
                             <input type="submit" value="Go!">
                         </form>
                     </td>
@@ -77,14 +96,17 @@
                             <c:forEach var="player" items="${tournamentResults}">
                                 <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
                                     <td><p><script type="text/javascript">document.write(colNum40K++);</script></p></td>
-                                    <c:choose>
-                                        <c:when test="${player.optOut=='0'}">
-                                            <td><p><i>Excommunicate Traitoris</i></p></td>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <td><p>${player.playerName}</p></td>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <td><p>
+                                            <c:choose>
+                                                <c:when test="${player.optOut=='0'}">
+                                                    <i>Excommunicate Traitoris</i>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    ${player.playerName}
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </p>
+                                    </td>
                                     <td><p>${player.army}</p></td>
                                     <td><p>${player.awards}</p></td>
                                 </tr>
