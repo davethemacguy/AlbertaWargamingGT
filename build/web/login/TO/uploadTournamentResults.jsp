@@ -149,6 +149,7 @@
                                     First name:<input type="text" name="firstNameFortyK1" id="firstNameFortyK1" value="1">
                                     Last name:<input type="text" name="lastNameFortyK1" id="lastNameFortyK1">
                                     Army:<select name="armyFortyK1" id="armyFortyK1">
+                                        <option value="Unknown">Unknown</option>
                                         <option value="Blood Angels">Blood Angels</option>
                                         <option value="Chaos Daemons">Chaos Daemons</option>
                                         <option value="Chaos Space Marines">Chaos Space Marines</option>
@@ -184,6 +185,7 @@
                                     First name:<input type="text" name="firstNameFantasy1" id="firstNameFantasy1" value="1">
                                     Last name:<input type="text" name="lastNameFantasy1" id="lastNameFantasy1">
                                     Army:<select name="armyFantasy1" id="armyFantasy1">
+                                        <option value="Unknown">Unknown</option>
                                         <option value="Beastmen">Beastmen</option>
                                         <option value="Bretonnia">Bretonnia</option>
                                         <option value="Daemons of Chaos">Daemons of Chaos</option>
@@ -220,6 +222,7 @@
                                     First name:<input type="text" name="firstNameWarmaHordes1" id="firstNameWarmaHordes1" value="1">
                                     Last name:<input type="text" name="lastNameWarmaHordes1" id="lastNameWarmaHordes1">
                                     Army:<select name="armyWarmaHordes1" id="armyWarmaHordes1">
+                                        <option value="Unknown">Unknown</option>
                                         <option value="Cygnar">Cygnar</option>
                                         <option value="The Prectorate of Menoth">The Prectorate of Menoth</option>
                                         <option value="Khador">Kahdor</option>
