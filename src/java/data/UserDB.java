@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import business.User;
+import java.util.List;
 
 public class UserDB {
 
@@ -316,7 +317,77 @@ public class UserDB {
             pool.freeConnection(connection);
         }
     }
+    
+    
+    public static ArrayList<User> selectFirstNames() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<User> firstNames = new ArrayList<User>();
 
+        
+        String query = "SELECT DISTINCT firstName FROM UserData ORDER BY firstName ASC";
+
+            try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            User user = null;
+
+                    while (rs.next()) {
+                        user = new User();
+                        user.setFirstName(rs.getString("firstName"));
+                
+                        firstNames.add(user);
+                    }
+                    return firstNames;
+            
+            } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+        
+    }
+    
+    public static ArrayList<User> selectLastNames() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<User> lastNames = new ArrayList<User>();
+        
+                String query = "SELECT DISTINCT lastName FROM UserData ORDER BY lastName ASC";
+
+            try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            User user = null;
+
+            while (rs.next()) {
+                user = new User();
+                user.setLastName(rs.getString("lastName"));
+               
+
+                lastNames.add(user);
+            }
+
+            return lastNames;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+        
+    }
+ 
     public static boolean noUsers() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();

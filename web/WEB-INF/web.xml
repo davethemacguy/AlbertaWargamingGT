@@ -78,12 +78,12 @@
         <servlet-class>user.PopulateIndividualResults</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PopulateTestPage</servlet-name>
-        <servlet-class>user.PopulateTestPage</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ArmyRankingDataServlet</servlet-name>
         <servlet-class>user.ArmyRankingDataServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PopulateAutocomplete</servlet-name>
+        <servlet-class>user.PopulateAutocomplete</servlet-class>
     </servlet>
     
        
@@ -168,8 +168,8 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PopulateTestPage</servlet-name>
-        <url-pattern>/login/populateTestPage</url-pattern>
+        <servlet-name>PopulateAutocomplete</servlet-name>
+        <url-pattern>/login/TO/populateAutocomplete</url-pattern>
     </servlet-mapping>
     
     
@@ -253,6 +253,7 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+  
 
         --&gt;    
              
