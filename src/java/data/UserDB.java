@@ -209,7 +209,7 @@ public class UserDB {
         ArrayList<User> users = new ArrayList<User>();
 
         String query = "SELECT * FROM UserData "
-                + "WHERE userDelete = 'n'";
+                + "WHERE userDelete = 'n' ORDER BY firstName ASC";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -267,6 +267,40 @@ public class UserDB {
                 user.setUserRole(rs.getString("userRole"));
                 user.setUserDelete(rs.getString("userDelete"));
 
+
+                users.add(user);
+            }
+
+            return users;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
+    public static ArrayList<User> selectTournamentParticipants(){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<User> users = new ArrayList<User>();
+
+        String query = "SELECT DISTINCT playerName FROM TournamentResults ORDER BY playerName ASC";
+          
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            User user = null;
+
+            while (rs.next()) {
+                user = new User();
+                user.setFullName(rs.getString("playerName"));
+               
 
                 users.add(user);
             }
@@ -371,12 +405,39 @@ public class UserDB {
         
     
     }
- 
     
-   
+     public static String getFullName(String userName) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String fullName = null;
+        
+        String query = "SELECT firstName, lastName FROM UserData WHERE userName = ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, userName);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                fullName = rs.getString("firstName") + " " + rs.getString("lastName");
+            }
+           
+            
+            return fullName;
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        } 
+    } 
+}
     
-    
-    }
     
     
     

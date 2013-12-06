@@ -20,9 +20,11 @@ public class TournamentResultsIndividualServlet extends HttpServlet {
         
         String tournament = request.getParameter("tournament");
         String tournamentSeason = request.getParameter("tournamentSeason");
+        String system = request.getParameter("system");
         
-        ArrayList<SystemResults> arrayOfTournamentResults = TournamentResultsDB.selectTournamentResults(tournament, tournamentSeason);
+        ArrayList<SystemResults> arrayOfTournamentResults = TournamentResultsDB.selectTournamentResults(tournament, tournamentSeason, system);
         ArrayList<Tournament> arrayOfSeasons = TournamentResultsDB.selectTournamentSeasons();
+        ArrayList<Tournament> arrayofSystems = TournamentResultsDB.selectSystem();
 
         String tournamentInfo = TournamentResultsDB.selectTournamentInfo(tournament);
    
@@ -31,7 +33,7 @@ public class TournamentResultsIndividualServlet extends HttpServlet {
         session.setAttribute("tournamentInfo", tournamentInfo);
         session.setAttribute("tournamentResults", arrayOfTournamentResults);
         session.setAttribute("seasons", arrayOfSeasons);
-        session.setAttribute("currentSeason", tournamentSeason);
+        session.setAttribute("systems", arrayofSystems);
 
         String url = "/login/tournamentRankings.jsp";
         RequestDispatcher dispatcher =

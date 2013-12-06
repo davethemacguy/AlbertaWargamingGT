@@ -12,6 +12,7 @@ public class User implements Serializable
     private String userRole;
     private String passWord;
     private String userDelete;
+    private String fullName;
     
     public User()
     {
@@ -23,6 +24,7 @@ public class User implements Serializable
         passWord="";
         userRole = "";
         userDelete = "";
+        fullName = "";
 
     }
     
@@ -70,6 +72,10 @@ public class User implements Serializable
     public String getPassWord() {
         return passWord;
     }
+    
+    public String getFullName() {
+        return fullName;
+    }
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
@@ -101,6 +107,10 @@ public class User implements Serializable
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+    
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
     
     

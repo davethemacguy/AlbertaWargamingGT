@@ -73,6 +73,14 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>user.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PopulateIndividualResults</servlet-name>
+        <servlet-class>user.PopulateIndividualResults</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FullNameServlet</servlet-name>
+        <servlet-class>user.FullNameServlet</servlet-class>
+    </servlet>
     
        
     <servlet-mapping>
@@ -94,6 +102,10 @@
     <servlet-mapping>
         <servlet-name>TournamentResultsIndividualServlet</servlet-name>
         <url-pattern>/login/tournamentRankings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopulateIndividualResults</servlet-name>
+        <url-pattern>/login/individualResults</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PopulateTournamentsServlet</servlet-name>
@@ -147,6 +159,11 @@
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FullNameServlet</servlet-name>
+        <url-pattern>/login/fullName</url-pattern>
+    </servlet-mapping>
+    
     
     <!-- Define security roles -->
     <security-role>

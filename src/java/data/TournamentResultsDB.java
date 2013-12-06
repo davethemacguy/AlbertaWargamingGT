@@ -8,6 +8,7 @@ import business.Army;
 import business.SystemResults;
 import business.Tournament;
 import business.TournamentResults;
+import business.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -157,7 +158,7 @@ public class TournamentResultsDB {
         }
     }
 
-    public static ArrayList<SystemResults> selectTournamentResults(String tournament, String tournamentSeason) {
+    public static ArrayList<SystemResults> selectTournamentResults(String tournament, String tournamentSeason, String system) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -165,7 +166,8 @@ public class TournamentResultsDB {
         ArrayList<SystemResults> results = new ArrayList<SystemResults>();
         String query = "SELECT playerName, army, optOut, CASE WHEN Tournaments.bestOverall = TournamentResults.playerName THEN 'Best Overall' WHEN Tournaments.bestPainted = TournamentResults.playerName THEN 'Best Painted' WHEN Tournaments.bestGeneral = TournamentResults.playerName THEN 'Best General' WHEN Tournaments.bestSport = TournamentResults.playerName THEN 'Best Sport' ElSE '' END AS awards, score FROM TournamentResults INNER JOIN (SELECT * FROM Tournaments WHERE "
                 + tournament +" AND "
-                + tournamentSeason
+                + tournamentSeason +" AND "
+                + system
                 +" ) AS Tournaments ON TournamentResults.fk_tournamentName = Tournaments.tournamentName AND TournamentResults.fk_tournamentDate = Tournaments.tournamentDate AND TournamentResults.fk_system = Tournaments.system AND TournamentResults.fk_tournamentSeason = Tournaments.tournamentSeason ORDER BY score DESC";
         System.out.println(query);
         try {
@@ -196,6 +198,44 @@ public class TournamentResultsDB {
         }
     }
 
+    public static ArrayList<TournamentResults> selectIndividualTournamentResults(String playerName) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        ArrayList<TournamentResults> results = new ArrayList<TournamentResults>();
+        String query =  "SELECT * FROM TournamentResults WHERE "+playerName+" ORDER BY fk_tournamentDate DESC";
+        System.out.println(query);
+
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            TournamentResults event = null;
+
+           while (rs.next()) {
+
+                event = new TournamentResults();
+                event.setTournamentName(rs.getString("fk_tournamentName"));
+                event.setTournamentDate(rs.getString("fk_tournamentDate"));
+                event.setArmy(rs.getString("army"));
+                event.setScore(rs.getString("score"));
+                results.add(event);
+            }
+            return results;
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null; 
+        
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
     public static ArrayList<Tournament> selectTournaments() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -203,7 +243,7 @@ public class TournamentResultsDB {
         ResultSet rs = null;
         ArrayList<Tournament> tournaments = new ArrayList<Tournament>();
 
-        String query = "SELECT * from Tournaments";
+        String query = "SELECT DISTINCT tournamentName FROM Tournaments";
                 
         try {
             ps = connection.prepareStatement(query);
@@ -213,9 +253,6 @@ public class TournamentResultsDB {
 
                 Tournament event = new Tournament();
                 event.setTournamentName(rs.getString("tournamentName"));
-                event.setSystem(rs.getString("system"));
-                event.setTournamentDate(rs.getString("tournamentDate"));
-                event.setTournamentSeason(rs.getString("tournamentSeason"));
                 tournaments.add(event);
             }
 
@@ -261,8 +298,39 @@ public class TournamentResultsDB {
             pool.freeConnection(connection);
         }
     }
+    
+    public static ArrayList<Tournament> selectSystem() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Tournament> systems = new ArrayList<Tournament>();
         
+        String query = "SELECT DISTINCT system FROM Tournaments";
         
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Tournament event = new Tournament();
+                event.setSystem(rs.getString("system"));
+                systems.add(event);
+            }
+            
+            return systems;
+            
+            } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+ 
+    }   
+    
     public static String selectTournamentInfo(String tournament) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();

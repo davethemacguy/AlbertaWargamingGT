@@ -2,7 +2,7 @@
 <Context path="/AlbertaWargaming">
     
 <!--eatJ's Context-->
-<!--
+<!---->
     <Realm className="org.apache.catalina.realm.JDBCRealm" 
            driverName="com.mysql.jdbc.Driver"
            connectionURL="jdbc:mysql://localhost/linds14sr20det" debug="99" 
@@ -27,13 +27,13 @@
           type="javax.sql.DataSource" 
           url="jdbc:mysql://localhost/linds14sr20det?autoReconnect=true" 
           username="linds14sr20det"/>
--->
+
 
 <!--Steve's Context-->
-    <!---->
+    <!--
     <Realm className="org.apache.catalina.realm.JDBCRealm" connectionName="root" connectionPassword="sesame" connectionURL="jdbc:mysql://localhost:3306/linds14sr20det" debug="99" driverName="com.mysql.jdbc.Driver" roleNameCol="userRole" userCredCol="passWord" userNameCol="userName" userRoleTable="UserData" userTable="UserData"/>
     <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" logAbandoned="true" maxActive="100" maxIdle="30" maxWait="10000" name="jdbc/linds14sr20det" password="sesame" removeAbandoned="true" removeAbandonedTimeout="60" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/linds14sr20det?autoReconnect=true" username="root"/>
-    
+    -->
     
 <!--David's Context-->
 <!--
