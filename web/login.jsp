@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <title>AWGT</title>
         <style type="text/css">
@@ -17,7 +16,7 @@
         <div style="text-align: center"><%@include file="/includes/banner.jsp" %><b>Login:</b></div>
         <br>
         <p style="text-align: center">Please enter your username and password to continue.</p>
-            <form action="j_security_check" method="post">
+        <form action=<%request.getContextPath();%>"/AlbertaWargaming/loginredir" method="post" autocomplete="off">
                 <table cellspacing="5" border="0">
                     <tr>
                         <td><input type="text" placeholder="Username" name="j_username"></td>
@@ -33,5 +32,4 @@
             <input type="submit" value="Return to Homepage">
         </form>
     </body>
-
 </html>

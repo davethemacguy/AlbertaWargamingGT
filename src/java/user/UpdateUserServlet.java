@@ -1,15 +1,19 @@
 package user;
 
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-
 import business.User;
 import data.UserDB;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class UpdateUserServlet extends HttpServlet
 {
 
+    @Override
     protected void doPost(HttpServletRequest request, 
             HttpServletResponse response) 
             throws ServletException, IOException
@@ -34,6 +38,7 @@ public class UpdateUserServlet extends HttpServlet
         user.setPassWord(passWord);
         user.setUserID(userID);
         user.setUserRole(userRole);
+        user.setCreationTime(user.getCreationTime());
         user.setUserDelete(userDelete);
       
         UserDB.update(user);     

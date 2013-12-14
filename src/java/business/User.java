@@ -13,6 +13,7 @@ public class User implements Serializable
     private String passWord;
     private String userDelete;
     private String fullName;
+    private long creationTime;
     
     public User()
     {
@@ -25,11 +26,12 @@ public class User implements Serializable
         userRole = "";
         userDelete = "";
         fullName = "";
+        creationTime = 0;
 
     }
     
     public User(String uname, String first, String last, String email, 
-            String id, String pw, String ur, String ud)
+            String id, String pw, String ur, String ud, long ct)
     {
         userName = uname;
         firstName = first;
@@ -39,6 +41,7 @@ public class User implements Serializable
         userRole = ur;
         passWord = pw;
         userDelete = ud;
+        creationTime = ct;
     }
 
     public String getEmailAddress() {
@@ -76,6 +79,10 @@ public class User implements Serializable
     public String getFullName() {
         return fullName;
     }
+    
+    public long getCreationTime() {
+        return creationTime;
+    }
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
@@ -111,6 +118,10 @@ public class User implements Serializable
     
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public void setCreationTime(long epoch) {
+        this.creationTime = epoch;
     }
     
     

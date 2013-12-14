@@ -15,7 +15,7 @@
             <p>You did not log in successfully.</p>
             <p>Please check your username and password and try again.</p>
         </div>
-        <form action="j_security_check" method="get">
+        <form action=<%request.getContextPath();%>"/AlbertaWargaming/loginredir" method="post">
             <table cellspacing="5" border="0">
                 <tr>
                     <td align="right">Username</td>
