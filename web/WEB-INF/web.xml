@@ -29,6 +29,10 @@
         <servlet-class>user.UploadResultsServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UploadGTResultsServlet</servlet-name>
+        <servlet-class>user.UploadGTResultsServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>EmptyTableServlet</servlet-name>
         <servlet-class>user.EmptyTableServlet</servlet-class>
     </servlet>
@@ -92,6 +96,11 @@
         <servlet-name>ConvertPasswordServlet</servlet-name>
         <servlet-class>user.ConvertPasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PopulateTopPlayers</servlet-name>
+        <servlet-class>user.PopulateTopPlayers</servlet-class>
+    </servlet>
+    
     
     <servlet-mapping>
         <servlet-name>UpdateWebsiteStringServlet</servlet-name>
@@ -128,6 +137,10 @@
     <servlet-mapping>
         <servlet-name>UploadResultsServlet</servlet-name>
         <url-pattern>/login/TO/uploadResults</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadGTResultsServlet</servlet-name>
+        <url-pattern>/login/TO/uploadGTResults</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EmptyTableServlet</servlet-name>
@@ -185,7 +198,13 @@
         <servlet-name>ConvertPasswordServlet</servlet-name>
         <url-pattern>/login/admin/convertpasswords</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopulateTopPlayers</servlet-name>
+        <url-pattern>/login/populateTopPlayers</url-pattern>
+    </servlet-mapping>
+   
     
+            
     <!-- Define security roles -->
     <security-role>
         <description>Administrators</description>

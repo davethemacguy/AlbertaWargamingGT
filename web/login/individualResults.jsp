@@ -39,27 +39,7 @@
             </div>
             
               
-                <%--
-            <table class="hovertable" style="width:600px">
-              
-                <tr>
-                    <th>Tournament Date</th>
-                    <th>Tournament Name</th>
-                    <th>Army</th>
-                    <th>Points</th>
-                </tr>
-                           
-                            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                            <c:forEach var="player" items="${userResults}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
-                                    <td><p>${player.tournamentDate}</p></td>
-                                    <td><p>${player.tournamentName}</p></td>
-                                    <td><p>${player.army}</p></td>
-                                    <td><p>${player.score}</p></td>
-                                </tr>
-                            </c:forEach>
-                
-            </table>    --%>
+            
 
             <table id="tableParams">
                 
@@ -89,7 +69,7 @@
                             </select>
                                 <input type="submit" value="Go!">
                            </td>
-                        </form>
+                </form>
                 
                 
                 <tr>

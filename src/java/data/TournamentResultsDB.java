@@ -51,6 +51,37 @@ public class TournamentResultsDB {
             pool.freeConnection(connection);
         }
     }
+    
+    public static int addGT(TournamentResults tournament) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+
+        String query = "INSERT INTO GTTournamentResults (fk_tournamentSeason, fk_tournamentName, fk_tournamentDate, playerName, score, army, fk_system, optOut) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, tournament.getTournamentSeason());
+            ps.setString(2, tournament.getTournamentName());
+            ps.setString(3, tournament.getTournamentDate());
+            ps.setString(4, tournament.getPlayerName());
+            ps.setString(5, tournament.getScore());
+            ps.setString(6, tournament.getArmy());
+            ps.setString(7, tournament.getSystem());
+            ps.setString(8, tournament.getOptOut());
+            return ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            DBUtil.closePreparedStatement(ps);
+
+            pool.freeConnection(connection);
+        }
+    }
 
     public static ArrayList<SystemResults> select40K(String fk_tournamentSeason) {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -641,4 +672,42 @@ public class TournamentResultsDB {
             pool.freeConnection(connection);
         }
     }
+    
+    public static ArrayList<Tournament> selectTopPlayers(String tournamentSeason) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Tournament> results = new ArrayList<Tournament>();
+        
+        String query = "SELECT tournamentName, tournamentDate, system, bestOverall, bestGeneral, bestPainted, bestSport FROM Tournaments WHERE "+tournamentSeason+" ORDER BY tournamentSeason ASC";
+        
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Tournament event = new Tournament();
+                event.setTournamentName(rs.getString("tournamentName"));
+                event.setTournamentDate(rs.getString("tournamentDate"));
+                event.setSystem(rs.getString("system"));
+                event.setBestOverall(rs.getString("bestOverall"));
+                event.setBestGeneral(rs.getString("bestGeneral"));
+                event.setBestSport(rs.getString("bestSport"));
+                event.setBestPainted(rs.getString("bestPainted"));
+                results.add(event);
+            }
+            
+            return results;
+            
+            } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+ 
+    }   
 }
