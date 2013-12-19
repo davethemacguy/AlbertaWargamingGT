@@ -8,6 +8,7 @@ package user;
 
 import business.Tournament;
 import data.TournamentResultsDB;
+import data.UserDB;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -27,10 +28,13 @@ public class TestPage extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
-            String selectedSeason = request.getParameter("season");
+            String userName ="davethemacguy";
+            
+            String fullName = UserDB.getFullName(userName);
             
             HttpSession session = request.getSession();
-            session.setAttribute("yourSeason", selectedSeason);
+            session.setAttribute("userName", userName);
+            session.setAttribute("fullName", fullName);
             
             String url = "/login/testPage.jsp";
             RequestDispatcher dispatcher =

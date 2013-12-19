@@ -249,6 +249,7 @@ public class TournamentResultsDB {
                 event = new TournamentResults();
                 event.setTournamentName(rs.getString("fk_tournamentName"));
                 event.setTournamentDate(rs.getString("fk_tournamentDate"));
+                event.setSystem(rs.getString("fk_system"));
                 event.setArmy(rs.getString("army"));
                 event.setScore(rs.getString("score"));
                 results.add(event);

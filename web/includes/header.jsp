@@ -64,7 +64,7 @@
                     <%}%>
                     <%if (request.isUserInRole("admin")) {%> 
                     <li><a href="/AlbertaWargaming/login/admin/displayUsers">Manage Users</a></li>
-                   <%-- <li><a href="/AlbertaWargaming/login/populateTestPage">Test Page</a></li> --%>
+                    <li><a href="/AlbertaWargaming/login/populateTestPage">Test Page</a></li>
                     <%}%>
                 </ul>
             </li>

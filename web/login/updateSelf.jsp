@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -54,6 +55,10 @@
             <form action="updateUser" method="post">
                 <table>
                     <tr>
+                        <td>Full Name:</td>
+                        <td>${fullName}</td>
+                    </tr>
+                    <tr>
                         <td>First name:</td>
                         <td><input type="text" name="firstName" 
                                    value="${user.firstName}">
@@ -66,6 +71,11 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>User Name:</td>
+                        <td><input type=""text" name="userName"
+                                   value="${userName}">
+                        </td>
+                    <tr>
                         <td>Email address:</td>
                         <td><input type="text" name="emailAddress"
                                    value="${user.emailAddress}">
@@ -76,12 +86,26 @@
                         <td><input type="password" name="passWord">
                         </td>
                     </tr>
+                    <table>
+                        <tr>
+                            <th>Tournament Name</th>
+                            <th>Tournament Date</th>
+                            <th>Army Played</th>
+                        </tr>
                     <tr>
-                        <td></td>
-                        <td><input type="hidden" name="userName"
-                                   value="${user.userName}">
+                        <td>
+                            <c:forEach var="item" items="${results}">
+                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                    <td><p>${item.tournamentName}</p></td>
+                                    <td><p>${item.tournamentDate}</p></td>
+                                    <td><input type="text" name="army" value="${item.army}"></td>
+                                    <td><p>${item.score}</p></td>
+                                    <td><input type="hidden" name="tournamentName" value="${item.tournamentName}">
+                                    <td><input type="hidden" name="tournamentDate" value="${item.tournamentDate}">
+                            </c:forEach>
                         </td>
                     </tr>
+                    </table>
                     <tr>
                         <td></td>
                         <td><input type="hidden" name="userRole"

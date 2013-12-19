@@ -187,6 +187,7 @@ public class UserDB {
                 user.setUserRole(rs.getString("userRole"));
                 user.setPassWord(rs.getString("passWord"));
                 user.setUserDelete(rs.getString("userDelete"));
+                user.setFullName(rs.getString("fullName"));
                 user.setCreationTime(rs.getLong("creationTime"));
             }
             return user;
@@ -474,26 +475,26 @@ public class UserDB {
     
     }
     
-     public static String getFullName(String userName) {
+     public static String getFullName(String currentUser) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String fullName = null;
         
-        String query = "SELECT firstName, lastName FROM UserData WHERE userName = ?";
+        
+        String query = "SELECT fullName FROM UserData WHERE userName = ?";
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, userName);
+            ps.setString(1, currentUser);
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                fullName = rs.getString("firstName") + " " + rs.getString("lastName");
+                currentUser = rs.getString("fullName");
             }
            
             
-            return fullName;
+            return currentUser;
            
         } catch (SQLException e) {
             e.printStackTrace();

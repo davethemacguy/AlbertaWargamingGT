@@ -52,20 +52,14 @@
                     </td>
                 </tr>
                 
-                <tr>
-                    <td>${fullName}</td>
-                </tr>
-              
-               
-                
                 <form action="individualResults" method="post">
                            <td>
                            <select name="playerName">
-                                <option selected="selected"></option>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                <c:forEach var="name" items="${activeUsers}">
-                                    <option value="playerName = '${name.fullName}'">${name.fullName}</option>
-                                </c:forEach>
+                                        <option value="playerName = '${fullName}'" selected>${fullName}</option>
+                                        <c:forEach var="name" items="${activeUsers}">
+                                        <option value="playerName = '${name.fullName}'">${name.fullName}</option>
+                                        </c:forEach>
                             </select>
                                 <input type="submit" value="Go!">
                            </td>
@@ -78,6 +72,7 @@
                             <tr>
                                 <th>Tournament Date</th>
                                 <th>Tournament Name</th>
+                                <th>System</th>
                                 <th>Army</th>
                                 <th>Points</th>
                             </tr>
@@ -87,11 +82,14 @@
                                 <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
                                     <td><p>${player.tournamentDate}</p></td>
                                     <td><p>${player.tournamentName}</p></td>
+                                    <td><p>${player.system}</p></td>
                                     <td><p>${player.army}</p></td>
                                     <td><p>${player.score}</p></td>
                                 </tr>
+                                
                             </c:forEach>
-                           
+                                
+                                
                         </table>
                     </td>
                 </tr>

@@ -28,20 +28,19 @@ public class PopulateIndividualResults extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-            
-           
-            String userName = request.getParameter("userName");
-            String fullName = UserDB.getFullName(userName);
+
             String playerName = request.getParameter("playerName");
+            String remoteUser = request.getRemoteUser();
             
+            String fullName =UserDB.getFullName(remoteUser);
             ArrayList<TournamentResults> arrayOfUserTournamentResults = TournamentResultsDB.selectIndividualTournamentResults(playerName);
             ArrayList<User> activeUsers = UserDB.selectTournamentParticipants();
             
             HttpSession session = request.getSession();
             session.setAttribute("results", arrayOfUserTournamentResults);
             session.setAttribute("activeUsers", activeUsers);
+            session.setAttribute("playerName", playerName);
+            session.setAttribute("remoteUser", remoteUser);
             session.setAttribute("fullName", fullName);
             
             String url = "/login/individualResults.jsp";
