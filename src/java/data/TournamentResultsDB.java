@@ -229,6 +229,44 @@ public class TournamentResultsDB {
             pool.freeConnection(connection);
         }
     }
+    
+    public static ArrayList<SystemResults> selectGTTournamentResults(String tournamentSeason, String system) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<SystemResults> results = new ArrayList<SystemResults>();
+        String query = "SELECT playerName, army, optOut, CASE WHEN GTTournaments.bestOverall = GTTournamentResults.playerName THEN 'Best Overall' WHEN GTTournaments.bestPainted = GTTournamentResults.playerName THEN 'Best Painted' WHEN GTTournaments.bestGeneral = GTTournamentResults.playerName THEN 'Best General' WHEN GTTournaments.bestSport = GTTournamentResults.playerName THEN 'Best Sport' ElSE '' END AS awards, score FROM GTTournamentResults INNER JOIN (SELECT * FROM GTTournaments WHERE "
+                + tournamentSeason +" AND "
+                + system +" ) AS GTTournaments ON GTTournamentResults.fk_tournamentName = GTTournaments.tournamentName AND GTTournamentResults.fk_tournamentDate = GTTournaments.tournamentDate AND GTTournamentResults.fk_system = GTTournaments.system AND GTTournamentResults.fk_tournamentSeason = GTTournaments.tournamentSeason ORDER BY score DESC";
+        System.out.println(query);
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            SystemResults user = null;
+
+            while (rs.next()) {
+
+                user = new SystemResults();
+                user.setPlayerName(rs.getString("playerName"));
+                user.setScore(rs.getString("score"));
+                user.setArmy(rs.getString("army"));
+                user.setOptOut(rs.getString("optOut"));
+                user.setAwards(rs.getString("awards"));
+                results.add(user);
+            }
+
+            return results;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
 
     public static ArrayList<TournamentResults> selectIndividualTournamentResults(String playerName) {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -332,6 +370,37 @@ public class TournamentResultsDB {
         }
     }
     
+    public static ArrayList<Tournament> selectGTTournamentSeasons() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Tournament> seasons = new ArrayList<Tournament>();
+        
+        String query = "SELECT DISTINCT tournamentSeason FROM GTTournaments";
+        
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Tournament event = new Tournament();
+                event.setTournamentSeason(rs.getString("tournamentSeason"));
+                seasons.add(event);
+            }
+            
+            return seasons;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
     public static ArrayList<Tournament> selectSystem() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -340,6 +409,38 @@ public class TournamentResultsDB {
         ArrayList<Tournament> systems = new ArrayList<Tournament>();
         
         String query = "SELECT DISTINCT system FROM Tournaments";
+        
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Tournament event = new Tournament();
+                event.setSystem(rs.getString("system"));
+                systems.add(event);
+            }
+            
+            return systems;
+            
+            } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+ 
+    }   
+    
+    public static ArrayList<Tournament> selectGTSystem() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Tournament> systems = new ArrayList<Tournament>();
+        
+        String query = "SELECT DISTINCT system FROM GTTournaments";
         
         try {
             ps = connection.prepareStatement(query);

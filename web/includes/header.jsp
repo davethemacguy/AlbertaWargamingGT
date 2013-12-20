@@ -40,6 +40,7 @@
                 <ul>
                     <li><a href="/AlbertaWargaming/login/rankings">Season Standings</a></li>
                     <li><a href="/AlbertaWargaming/login/populateTournaments">Tournament Results</a></li>
+                    <li><a href="/AlbertaWargaming/login/populateGTTournaments">GT Tournament Results</a></li>
                     <li><a href="/AlbertaWargaming/login/populateArmyRankings">Army Rankings</a></li>
                     <li><a href="/AlbertaWargaming/login/individualResults">Individual Results</a></li>
                     <li><a href="/AlbertaWargaming/login/populateTopPlayers">Top Players</a></li>

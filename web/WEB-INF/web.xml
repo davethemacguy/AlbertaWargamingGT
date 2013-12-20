@@ -104,6 +104,14 @@
         <servlet-name>PopulateTestPage</servlet-name>
         <servlet-class>user.TestPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PopulateGTTournamentsServlet</servlet-name>
+        <servlet-class>user.PopulateGTTournamentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GTTournamentResultsServlet</servlet-name>
+        <servlet-class>user.GTTournamentResultsServlet</servlet-class>
+    </servlet>
     
     
     <servlet-mapping>
@@ -210,7 +218,14 @@
         <servlet-name>PopulateTestPage</servlet-name>
         <url-pattern>/login/populateTestPage</url-pattern>
    </servlet-mapping>
-   
+   <servlet-mapping>
+       <servlet-name>PopulateGTTournamentsServlet</servlet-name>
+       <url-pattern>/login/populateGTTournaments</url-pattern>
+   </servlet-mapping>
+   <servlet-mapping>
+       <servlet-name>GTTournamentResultsServlet</servlet-name>
+       <url-pattern>/login/gtTournamentRankings</url-pattern>
+   </servlet-mapping>
     
             
     <!-- Define security roles -->
