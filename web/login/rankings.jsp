@@ -40,7 +40,7 @@
                         <form action="rankings" method="post">
                             <select name="fk_tournamentSeason">
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                <option value="fk_tournamentSeason">${currentSeason}</option>
+                                <option value="fk_tournamentSeason = '${currentSeason}'">${currentSeason}</option>
                                 <c:forEach var="season" items="${seasons}">
                                     <c:if test="${season.tournamentSeason != currentSeason}">
                                     <option value="fk_tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
