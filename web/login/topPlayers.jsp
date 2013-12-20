@@ -39,25 +39,22 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><form action="populateTopPlayers" method="post">
-                            
+                    <td>
+                        <form action="populateTopPlayers" method="post">
                             <select name="tournamentSeason">
-                                <option selected="tournamentSeason"></option>
-                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                <c:forEach var="season" items="${seasons}">
+                            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                            <option value="tournamentSeason" selected>${currentSeason}</option>
+                            <c:forEach var="season" items="${seasons}">
+                                <c:if test="${season.tournamentSeason != currentSeason}">
                                     <option value="tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
-                                </c:forEach>
-                            </select>
-                            
+                                </c:if>
+                            </c:forEach>
                             <input type="submit" value="Go!">
                         </form>
                     </td>
                 </tr>
                 <tr>
-                    
                 </tr>
-               
-               
                 <tr>
                     <td>
                         <table class="hovertable" style="width:800px">

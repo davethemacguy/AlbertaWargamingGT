@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -709,6 +710,41 @@ public class TournamentResultsDB {
             DBUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
         }
+ 
+    }   
+    
+    public static String returnCurrentSeason() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String tournamentSeason = null;
+        
+        
+        Calendar currentDate = Calendar.getInstance();
+        
+        int seasonStart=7;
+        int currentMonth = currentDate.get(Calendar.MONTH);
+        int currentYear = currentDate.get(Calendar.YEAR);
+        int startYear;
+        int endYear;
+        
+        
+        
+        
+        if (currentMonth > seasonStart) {
+            startYear = currentYear;
+            endYear = currentYear+1;
+        }   else    {
+            startYear = currentYear-1;
+            endYear = currentYear;
+        }
+            
+        tournamentSeason = ""+startYear+"-"+endYear;
+            
+            return tournamentSeason;
+            
+         
  
     }   
 }

@@ -28,9 +28,11 @@ public class PopulateArmyRankingsServlet extends HttpServlet {
             throws ServletException, IOException { 
         
             ArrayList<Tournament> arrayOfSeasons = TournamentResultsDB.selectTournamentSeasons();
+            String currentSeason = TournamentResultsDB.returnCurrentSeason();
             
             HttpSession session = request.getSession();
             session.setAttribute("seasons", arrayOfSeasons);
+            session.setAttribute("currentSeason", currentSeason);
             
             String url = "/login/armyRankings.jsp";
         

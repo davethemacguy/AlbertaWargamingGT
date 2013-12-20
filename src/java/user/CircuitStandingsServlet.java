@@ -27,6 +27,7 @@ public class CircuitStandingsServlet extends HttpServlet {
         ArrayList<SystemResults> arrayOf40K = TournamentResultsDB.select40K(fk_tournamentSeason);
         ArrayList<SystemResults> arrayOfFantasy = TournamentResultsDB.selectFantasy(fk_tournamentSeason);
         ArrayList<SystemResults> arrayOfWarmaHordes = TournamentResultsDB.selectWarmaHordes(fk_tournamentSeason);
+        String currentSeason = TournamentResultsDB.returnCurrentSeason();
 
        
         
@@ -36,6 +37,7 @@ public class CircuitStandingsServlet extends HttpServlet {
         session.setAttribute("results40K", arrayOf40K);
         session.setAttribute("resultsFantasy", arrayOfFantasy);
         session.setAttribute("resultsWarmaHordes", arrayOfWarmaHordes);
+        session.setAttribute("currentSeason", currentSeason);
         String url = "/login/rankings.jsp";
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

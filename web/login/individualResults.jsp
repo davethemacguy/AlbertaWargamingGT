@@ -58,14 +58,15 @@
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                         <option value="playerName = '${fullName}'" selected>${fullName}</option>
                                         <c:forEach var="name" items="${activeUsers}">
-                                        <option value="playerName = '${name.fullName}'">${name.fullName}</option>
+                                            <c:if test="${name.fullName != fullName}">
+                                            <option value="playerName = '${name.fullName}'">${name.fullName}</option>
+                                            </c:if>
                                         </c:forEach>
                             </select>
                                 <input type="submit" value="Go!">
                            </td>
                 </form>
-                
-                
+              
                 <tr>
                     <td>
                         <table class="hovertable" style="width:600px">

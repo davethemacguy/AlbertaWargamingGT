@@ -22,10 +22,13 @@ public class PopulateTopPlayers extends HttpServlet {
             ArrayList<Tournament> results = TournamentResultsDB.selectTopPlayers(season);
             ArrayList<Tournament> seasons = TournamentResultsDB.selectTournamentSeasons();
             ArrayList<Tournament> systems = TournamentResultsDB.selectSystem();
+            String currentSeason = TournamentResultsDB.returnCurrentSeason();
+
             
             HttpSession session = request.getSession();
             session.setAttribute("results", results);
             session.setAttribute("seasons", seasons);
+            session.setAttribute("currentSeason", currentSeason);
             
             String url = "/login/topPlayers.jsp";
             
