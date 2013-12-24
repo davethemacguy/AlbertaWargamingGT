@@ -21,6 +21,10 @@
                 vertical-align: top;
             }
         </style>
+        <%
+            String userName = request.getRemoteUser();
+            session.setAttribute("userName", userName);
+        %>
     </head>
 
     <body>
@@ -76,7 +80,10 @@
                                                     <i>Excommunicate Traitoris</i>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    ${player40K.playerName}
+                                                    <a href="<c:url value="/login/individualResults">
+                                                    <c:param name="playerName" value="playerName = '${player40K.playerName}'"/>
+                                                    </c:url>"><c:out value="${player40K.playerName}"></c:out>
+                                                    </a>
                                                 </c:otherwise>
                                             </c:choose>
                                         </p></td>

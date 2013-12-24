@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.Gson;
 
 public class UserDB {
 
@@ -317,28 +319,25 @@ public class UserDB {
     }
     
     
-    public static ArrayList<User> selectFirstNames() {
+    public static List<String> selectFirstNames() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        ArrayList<User> firstNames = new ArrayList<User>();
-
         
+        List<String> firstNames = new ArrayList<String>();
+
         String query = "SELECT DISTINCT firstName FROM UserData ORDER BY firstName ASC";
 
             try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
-            User user = null;
 
                     while (rs.next()) {
-                        user = new User();
-                        user.setFirstName(rs.getString("firstName"));
-                
-                        firstNames.add(user);
+                        firstNames.add(rs.getString("firstName"));
                     }
                     return firstNames;
+           
             
             } catch (SQLException e) {
             e.printStackTrace();
@@ -482,15 +481,14 @@ public class UserDB {
         ResultSet rs = null;
         
         
-        String query = "SELECT fullName FROM UserData WHERE userName = ?";
+        String query = "SELECT firstName, lastName FROM UserData WHERE userName='"+currentUser+"'";
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, currentUser);
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                currentUser = rs.getString("fullName");
+                currentUser = rs.getString("firstName")+" "+rs.getString("lastName");
             }
            
             
@@ -505,6 +503,8 @@ public class UserDB {
             pool.freeConnection(connection);
         } 
     } 
+     
+     
 }
     
     

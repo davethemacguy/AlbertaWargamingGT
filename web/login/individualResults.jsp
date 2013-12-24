@@ -56,7 +56,7 @@
                            <td>
                            <select name="playerName">
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                        <option value="playerName = '${fullName}'" selected>${fullName}</option>
+                                <option value="playerName = '${fullName}'" selected>${fullName}</option>
                                         <c:forEach var="name" items="${activeUsers}">
                                             <c:if test="${name.fullName != fullName}">
                                             <option value="playerName = '${name.fullName}'">${name.fullName}</option>
@@ -79,7 +79,7 @@
                             </tr>
                            
                             
-                            <c:forEach var="player" items="${results}">
+                            <c:forEach var="player" items="${userResults}">
                                 <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
                                     <td><p>${player.tournamentDate}</p></td>
                                     <td><p>${player.tournamentName}</p></td>
@@ -94,6 +94,21 @@
                         </table>
                     </td>
                 </tr>
+                
+                <%--
+                <tr>
+                                    <td>Currently Logged In User: ${remoteUser}</td>
+                                </tr>
+                                <tr>
+                                    <td>Selected User: ${playerName}</td>
+                                </tr>
+                                <tr>
+                                    <td>Full Name: ${fullName}</td>
+                                </tr>  
+                                <tr>
+                                    <td>User Name: ${query}</td>
+                                </tr>  
+                --%>
             </table>
             
      

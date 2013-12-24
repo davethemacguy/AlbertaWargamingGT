@@ -291,6 +291,7 @@ public class TournamentResultsDB {
                 event.setSystem(rs.getString("fk_system"));
                 event.setArmy(rs.getString("army"));
                 event.setScore(rs.getString("score"));
+                event.setPlayerName(rs.getString("playerName"));
                 results.add(event);
             }
             return results;
@@ -776,14 +777,14 @@ public class TournamentResultsDB {
         }
     }
     
-    public static ArrayList<Tournament> selectTopPlayers(String tournamentSeason) {
+    public static ArrayList<Tournament> selectTopPlayers(String tournamentSeason, String system) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<Tournament> results = new ArrayList<Tournament>();
         
-        String query = "SELECT tournamentName, tournamentDate, system, bestOverall, bestGeneral, bestPainted, bestSport FROM Tournaments WHERE "+tournamentSeason+" ORDER BY tournamentSeason ASC";
+        String query = "SELECT tournamentName, tournamentDate, tournamentSeason, system, bestOverall, bestGeneral, bestPainted, bestSport FROM Tournaments WHERE "+tournamentSeason+" AND "+system+" ORDER BY tournamentDate DESC";
         
         try {
             ps = connection.prepareStatement(query);
@@ -793,6 +794,7 @@ public class TournamentResultsDB {
                 Tournament event = new Tournament();
                 event.setTournamentName(rs.getString("tournamentName"));
                 event.setTournamentDate(rs.getString("tournamentDate"));
+                event.setTournamentSeason(rs.getString("tournamentSeason"));
                 event.setSystem(rs.getString("system"));
                 event.setBestOverall(rs.getString("bestOverall"));
                 event.setBestGeneral(rs.getString("bestGeneral"));

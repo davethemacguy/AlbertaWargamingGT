@@ -102,6 +102,15 @@
                         </table>
                     </td>
                 </tr>
+                <tr>
+                                    <td>Tournament from Top Players: ${tournamentName}</td>
+                                </tr>
+                                <tr>
+                                    <td>Selected Tournament Date: ${tournamentSeason}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tournament System: ${system}</td>
+                                </tr>
             </table>
         </div>
     </body>

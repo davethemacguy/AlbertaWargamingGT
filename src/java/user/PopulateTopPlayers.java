@@ -17,18 +17,22 @@ public class PopulateTopPlayers extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-            String season = request.getParameter("tournamentSeason");
-            
-            ArrayList<Tournament> results = TournamentResultsDB.selectTopPlayers(season);
+            String currentSeason = TournamentResultsDB.returnCurrentSeason();
             ArrayList<Tournament> seasons = TournamentResultsDB.selectTournamentSeasons();
             ArrayList<Tournament> systems = TournamentResultsDB.selectSystem();
-            String currentSeason = TournamentResultsDB.returnCurrentSeason();
+            
+            String season = request.getParameter("season");
+            String system = request.getParameter("system");
+            
+            ArrayList<Tournament> results = TournamentResultsDB.selectTopPlayers(season, system);
+            
 
             
             HttpSession session = request.getSession();
-            session.setAttribute("results", results);
             session.setAttribute("seasons", seasons);
             session.setAttribute("currentSeason", currentSeason);
+            session.setAttribute("systems", systems);
+            session.setAttribute("results", results);
             
             String url = "/login/topPlayers.jsp";
             

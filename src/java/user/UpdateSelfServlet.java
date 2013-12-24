@@ -21,15 +21,21 @@ public class UpdateSelfServlet extends HttpServlet
             throws ServletException, IOException
     {
         String userName = request.getRemoteUser();
+        String fullName = UserDB.getFullName(userName);
+        String playerName = "playerName = '"+fullName+"'";
+        
         User user = UserDB.selectUserName(userName);
-        String playerName = UserDB.getFullName(userName);
         ArrayList<TournamentResults> results = TournamentResultsDB.selectIndividualTournamentResults(playerName);
 
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        session.setAttribute("fullName", playerName);
+        session.setAttribute("fullName", fullName);
+        session.setAttribute("playerName", playerName);
         session.setAttribute("userName", userName);
         session.setAttribute("results", results);
+        
+       
+       
 
         String url = "/login/updateSelf.jsp";
         RequestDispatcher dispatcher =

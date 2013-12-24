@@ -7,10 +7,7 @@
 package user;
 
 import business.Tournament;
-import business.TournamentResults;
-import business.User;
 import data.TournamentResultsDB;
-import data.UserDB;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -24,38 +21,35 @@ import javax.servlet.http.HttpSession;
  *
  * @author localadmin
  */
-public class TestPage extends HttpServlet {
-    
-    @Override
+public class TopPlayersServlet extends HttpServlet {
+
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        
-            String userName = request.getRemoteUser();
-            String fullName = UserDB.getFullName(userName);
-            String playerName = "playerName = '" + fullName +"'";
-            User user = UserDB.selectUserName(userName);
-            ArrayList<TournamentResults> results = TournamentResultsDB.selectIndividualTournamentResults(playerName);
+
+            String tournamentSeason = request.getParameter("tournamentSeason");
+            String system = request.getParameter("system");
+            
+            ArrayList<Tournament> results = TournamentResultsDB.selectTopPlayers(tournamentSeason, system);
+            
 
             
             HttpSession session = request.getSession();
-            session.setAttribute("userName", userName);
-            session.setAttribute("fullName", fullName);
-            session.setAttribute("playerName", playerName);
-            session.setAttribute("user", user);
             session.setAttribute("results", results);
+            session.setAttribute("tournamentSeason", tournamentSeason);
+            session.setAttribute("system", system);
             
-            String url = "/login/testPage.jsp";
-            RequestDispatcher dispatcher =
+            String url = "/login/topPlayers.jsp";
+            
+        RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);
-            dispatcher.forward(request, response);
+        dispatcher.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
-    }
-    
+    } 
     
 }
