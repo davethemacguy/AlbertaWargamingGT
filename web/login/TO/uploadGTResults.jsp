@@ -129,7 +129,7 @@
                 });       
                 </script>
 
-                <h1>Submit GT Tournament Results Only</h1>
+                <h1><u>Submit GT Tournament Results Only</u></h1>
                 <br>  
                 <table>
                     <tr>

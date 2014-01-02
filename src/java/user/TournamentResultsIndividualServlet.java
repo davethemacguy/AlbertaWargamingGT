@@ -26,7 +26,7 @@ public class TournamentResultsIndividualServlet extends HttpServlet {
         ArrayList<Tournament> arrayOfSeasons = TournamentResultsDB.selectTournamentSeasons();
         ArrayList<Tournament> arrayofSystems = TournamentResultsDB.selectSystem();
 
-        String tournamentInfo = TournamentResultsDB.selectTournamentInfo(tournament);
+        String tournamentInfo = TournamentResultsDB.selectTournamentInfo(tournament, system);
    
         HttpSession session = request.getSession();
         session.setAttribute("tournamentInfo", tournamentInfo);

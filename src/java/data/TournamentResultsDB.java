@@ -466,21 +466,21 @@ public class TournamentResultsDB {
  
     }   
     
-    public static String selectTournamentInfo(String tournament) {
+    public static String selectTournamentInfo(String tournament, String system) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String tournamentInfo = null;
 
-        String query = "SELECT * from Tournaments WHERE " + tournament;
+        String query = "SELECT * from Tournaments WHERE " + tournament + " AND "+ system;
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
 
             
             while (rs.next()) {
-                tournamentInfo = rs.getString("tournamentName") + ", " + rs.getString("system") + ", " + rs.getString("tournamentDate");
+                tournamentInfo = rs.getString("tournamentName") + " – " + rs.getString("system") + " – " + rs.getString("tournamentDate");
             }
 
             return tournamentInfo;

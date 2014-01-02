@@ -78,7 +78,7 @@
                                 <th>Awards</th>
                             </tr>
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                            <c:forEach var="player" items="${tournamentResults}">
+                            <c:forEach var="player" items="${gtTournamentResults}">
                                 <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
                                     <td><p><script type="text/javascript">document.write(colNum40K++);</script></p></td>
                                     <c:choose>

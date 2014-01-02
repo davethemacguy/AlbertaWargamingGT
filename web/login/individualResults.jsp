@@ -56,9 +56,9 @@
                            <td>
                            <select name="playerName">
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                <option value="playerName = '${fullName}'" selected>${fullName}</option>
+                                <option value="playerName = '${selectedUser}'" selected>${selectedUser}</option>
                                         <c:forEach var="name" items="${activeUsers}">
-                                            <c:if test="${name.fullName != fullName}">
+                                            <c:if test="${name.fullName != selectedUser}">
                                             <option value="playerName = '${name.fullName}'">${name.fullName}</option>
                                             </c:if>
                                         </c:forEach>
@@ -94,21 +94,6 @@
                         </table>
                     </td>
                 </tr>
-                
-                <%--
-                <tr>
-                                    <td>Currently Logged In User: ${remoteUser}</td>
-                                </tr>
-                                <tr>
-                                    <td>Selected User: ${playerName}</td>
-                                </tr>
-                                <tr>
-                                    <td>Full Name: ${fullName}</td>
-                                </tr>  
-                                <tr>
-                                    <td>User Name: ${query}</td>
-                                </tr>  
-                --%>
             </table>
             
      

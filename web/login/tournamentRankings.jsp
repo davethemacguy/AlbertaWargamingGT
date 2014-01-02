@@ -92,7 +92,10 @@
                                             <td><p><i>Excommunicate Traitoris</i></p></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td><p>${player.playerName}</p></td>
+                                            <td><p><a href="<c:url value="/login/individualResults">
+                                                    <c:param name="playerName" value="playerName = '${player.playerName}'"/>
+                                                    </c:url>"><c:out value="${player.playerName}"></c:out>
+                                                    </a></p></td>
                                         </c:otherwise>
                                     </c:choose>
                                     <td><p>${player.army}</p></td>
@@ -102,15 +105,6 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
-                                    <td>Tournament from Top Players: ${tournamentName}</td>
-                                </tr>
-                                <tr>
-                                    <td>Selected Tournament Date: ${tournamentSeason}</td>
-                                </tr>
-                                <tr>
-                                    <td>Tournament System: ${system}</td>
-                                </tr>
             </table>
         </div>
     </body>

@@ -93,10 +93,26 @@
                                            </c:url>"><c:out value="${item.tournamentName}"></c:out>
                                         </a>
                                     </td>
-                                    <td><p>${item.bestOverall}</p></td>
-                                    <td><p>${item.bestGeneral}</p></td>
-                                    <td><p>${item.bestPainted}</p></td>
-                                    <td><p>${item.bestSport}</p></td>
+                                    <td><p><a href="<c:url value="/login/individualResults">
+                                                    <c:param name="playerName" value="playerName = '${item.bestOverall}'"/>
+                                                    </c:url>"><c:out value="${item.bestOverall}"></c:out>
+                                                    </a></p>
+                                    </td>
+                                    <td><p><p><a href="<c:url value="/login/individualResults">
+                                                    <c:param name="playerName" value="playerName = '${item.bestGeneral}'"/>
+                                                    </c:url>"><c:out value="${item.bestGeneral}"></c:out>
+                                                    </a></p></p>
+                                    </td>
+                                    <td><p><p><a href="<c:url value="/login/individualResults">
+                                                    <c:param name="playerName" value="playerName = '${item.bestPainted}'"/>
+                                                    </c:url>"><c:out value="${item.bestPainted}"></c:out>
+                                                    </a></p></p>
+                                    </td>
+                                    <td><p><p><a href="<c:url value="/login/individualResults">
+                                                    <c:param name="playerName" value="playerName = '${item.bestSport}'"/>
+                                                    </c:url>"><c:out value="${item.bestSport}"></c:out>
+                                                    </a></p></p>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>

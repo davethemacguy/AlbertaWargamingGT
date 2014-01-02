@@ -104,29 +104,7 @@
                         <td><input type="hidden" name="userDelete" value="n">
                         </td>
                     </tr>
-                    <table>
-                        <tr>
-                            <th>Tournament Name</th>
-                            <th>Tournament Date</th>
-                            <th>Army Played</th>
-                            <th>Score</th>
-                        </tr>
                     
-                    <tr>
-                        <td>
-                            <c:forEach var="item" items="${results}" varStatus="status">;
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
-                                    <td><p>${item.tournamentName}</p></td>
-                                    <td><p>${item.tournamentDate}</p></td>
-                                    <td><input type="text" name="army" value="${item.army}"></td>
-                                    <td><p>${item.score}</p></td>
-                                    <td><input type="hidden" name="tournamentName" value="${item.tournamentName}">
-                                    <td><input type="hidden" name="tournamentDate" value="${item.tournamentDate}">
-                                    <td><input type="hidden" name="armyIndex" value="${status.count}.${item.army}">
-                            </c:forEach>
-                        </td>
-                    </tr>
-                    </table>
                     <tr>
                         <td></td>
                         <td><input type="button" value="Submit" 

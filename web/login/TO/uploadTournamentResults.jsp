@@ -129,7 +129,7 @@
                 });       
                 </script>
 
-                <h1>Submit Tournament Results</h1>
+                <h1><u>Submit Tournament Results</u></h1>
                 <br>  
                 <table>
                     <tr>

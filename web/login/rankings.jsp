@@ -112,7 +112,10 @@
                                                     <i>Excommunicate Traitoris</i>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    ${playerFantasy.playerName}
+                                                    <a href="<c:url value="/login/individualResults">
+                                                    <c:param name="playerName" value="playerName = '${playerFantasy.playerName}'"/>
+                                                    </c:url>"><c:out value="${playerFantasy.playerName}"></c:out>
+                                                    </a>                                                
                                                 </c:otherwise>
                                             </c:choose>
                                         </p></td>
@@ -140,8 +143,10 @@
                                                 <i>Excommunicate Traitoris</i>
                                             </c:when>
                                             <c:otherwise>
-                                                ${playerWarmaHordes.playerName}
-                                            </c:otherwise>
+                                                    <a href="<c:url value="/login/individualResults">
+                                                    <c:param name="playerName" value="playerName = '${playerWarmaHordes.playerName}'"/>
+                                                    </c:url>"><c:out value="${playerWarmaHordes.playerName}"></c:out>
+                                                    </a>                                            </c:otherwise>
                                         </c:choose>
                                         </p></td>
                                     <td><p>${playerWarmaHordes.score}</p></td>

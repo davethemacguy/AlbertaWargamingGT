@@ -33,7 +33,16 @@ public class PopulateIndividualResults extends HttpServlet {
             String playerName = request.getParameter("playerName");
             String remoteUser = request.getRemoteUser();
             String fullName = UserDB.getFullName(remoteUser);
+            String selectedUser = null;
             
+            if(playerName != null) {
+                selectedUser = playerName;
+                selectedUser = selectedUser.replace("playerName = '","");
+                selectedUser = selectedUser.replace("'","");
+            }
+                else {
+                        selectedUser = fullName;
+            }
            
             
             ArrayList<TournamentResults> userResults = TournamentResultsDB.selectIndividualTournamentResults(playerName);
@@ -45,6 +54,7 @@ public class PopulateIndividualResults extends HttpServlet {
             session.setAttribute("playerName", playerName);
             session.setAttribute("remoteUser", remoteUser);
             session.setAttribute("fullName", fullName);
+            session.setAttribute("selectedUser", selectedUser);
                     
             
             String url = "/login/individualResults.jsp";

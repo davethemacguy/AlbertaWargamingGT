@@ -26,7 +26,7 @@ public class GTTournamentResultsServlet extends HttpServlet {
    
 
         HttpSession session = request.getSession();
-        session.setAttribute("tournamentResults", arrayOfTournamentResults);
+        session.setAttribute("gtTournamentResults", arrayOfTournamentResults);
 
         String url = "/login/gtTournamentRankings.jsp";
         RequestDispatcher dispatcher =
