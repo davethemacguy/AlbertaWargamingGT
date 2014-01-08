@@ -13,8 +13,8 @@
         <style type="text/css">
             @-webkit-keyframes greenPulse {
                 from { background-color: #749a02; -webkit-box-shadow: 0 0 18px #0015FF; }
-            50% { background-color: #91bd09; -webkit-box-shadow: 0 0 100px #D4FCCF; }
-            to { background-color: #749a02; -webkit-box-shadow: 0 0 18px #0015FF; }
+                50% { background-color: #91bd09; -webkit-box-shadow: 0 0 100px #D4FCCF; }
+                to { background-color: #749a02; -webkit-box-shadow: 0 0 18px #0015FF; }
             }
             div.hr {
                 background: #FF0000  no-repeat scroll center;
@@ -25,22 +25,12 @@
             div.hr hr {
                 display: none;
             }
-            .title{
-                font-size: 25px;
-                margin-left:50px;
-            }
             .titleDescription{
                 margin-left:50px;
                 margin-right: 50px;
                 margin-bottom: 50px;
             }
-            #container {
-                width: 1130px; 
-                top: 7%; 
-                left: 50%;
-                margin-left: -565px;
-                position: absolute
-            }
+
             #table {
                 padding-top:20px;
                 width:100%;
@@ -111,14 +101,14 @@
             var eventDate = '';
             var events = new Array();
             var gclaData = 'https://www.google.com/calendar/feeds/awgtcircuit%40gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=30&alt=json';
-            $.getJSON(gclaData,callbackFunction);
+            $.getJSON(gclaData, callbackFunction);
             function callbackFunction(data)
             {
                 var table = document.getElementById('table');
                 var boxRow;
                 var descriptionRow;
-                for(var i = 0; i < data.feed.entry.length; i++){
-                    if(i%2 == 0){
+                for (var i = 0; i < data.feed.entry.length; i++) {
+                    if (i % 2 == 0) {
                         boxRow = table.insertRow(-1);
                         descriptionRow = table.insertRow(-1);
                     }
@@ -131,9 +121,9 @@
                     img = img.toString().trim();
                     var url = description.splice(0, 1);
                     url = url.toString().trim();
-                    var cellTop = boxRow.insertCell(i%2);
-                    var cellBottom = descriptionRow.insertCell(i%2);
-                    cellTop.innerHTML = "<div class = 'logoBox'><a href='"+url+"' style='z-index:2;display:block;position:absolute;width:100%;height:100%;' target='_blank'></a><div class='thumb'><img src='"+ img +"'/></div><p>"+ eventName +"<br>"+ date.toLocaleDateString() +"<br>"+place+"</p></div>";
+                    var cellTop = boxRow.insertCell(i % 2);
+                    var cellBottom = descriptionRow.insertCell(i % 2);
+                    cellTop.innerHTML = "<div class = 'logoBox'><a href='" + url + "' style='z-index:2;display:block;position:absolute;width:100%;height:100%;' target='_blank'></a><div class='thumb'><img src='" + img + "'/></div><p>" + eventName + "<br>" + date.toLocaleDateString() + "<br>" + place + "</p></div>";
                     cellBottom.innerHTML = "<div class='tourneyTextDescription'>" + description.toString() + "</div>";
                 }
             }

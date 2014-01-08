@@ -14,21 +14,25 @@
 
         <script language="JavaScript">
             function validate(form) {
-                if (form.firstName.value=="") {
+                if (form.firstName.value==="") {
                     alert("Please fill in your first name");
                     form.firstName.focus();
                 }
-                else if (form.lastName.value=="") {
+                else if (form.lastName.value==="") {
                     alert("Please fill in your last name");
                     form.lastName.focus();
                 }
-                else if (form.emailAddress.value=="") {
+                else if (form.emailAddress.value==="") {
                     alert("Please fill in your email address");
                     form.emailAddress.focus();
                 }
-                else if (form.passWord.value=="") {
+                else if (form.passWord.value==="") {
                     alert("Please fill in your password");
                     form.emailAddress.focus();
+                }
+                else if (form.passWord.value !== form.confirmPassWord.value) {
+                    alert("Passwords do not match");
+                    form.passWord.focus();
                 }
                 else {
                     form.submit();
@@ -49,7 +53,7 @@
             <table cellspacing="8" border="0">
                 <tr>
                     <td align="right">User Name</td>
-                    <td><input type="text" name="userName"></td>
+                    <td><input type="text" placeholder="User Name" name="userName"></td>
                     <td rowspan="6">
                         <div style="width: 400px;height: 150px;overflow:-moz-scrollbars-vertical;overflow-y:auto;">
                             <p>By agreeing to these terms and conditions you indicate your approval for the
@@ -68,22 +72,27 @@
                 </tr>
                 <tr>
                     <td align="right">First name:</td>
-                    <td><input type="text" name="firstName">
+                    <td><input type="text" placeholder="First Name" name="firstName">
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Last name:</td>
-                    <td><input type="text" name="lastName">
+                    <td><input type="text" placeholder="Last Name" name="lastName">
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Email Address</td>
-                    <td><input type="text" name="emailAddress">
+                    <td><input type="text" placeholder="E-Mail Address" name="emailAddress">
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Password</td>
-                    <td><input type="password" name="passWord">
+                    <td><input type="password" placeholder="Password" name="passWord">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">Confirm Password</td>
+                    <td><input type="password" placeholder="Confirm Password" name="confirmPassWord">
                     </td>
                 </tr>
                 <tr>

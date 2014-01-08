@@ -122,10 +122,75 @@
                         //Enable remove button
                         $('#removeWarmaHordes').removeAttr('disabled');
                     });   
+                    
+                    //Infinity Upload
+                    $('#removeInfinity').click(function() {
+                        var numInfinity = $('.clonedInputInfinity').length; // how many "duplicatable" input fields we currently have
+                        $('#inputInfinity' + numInfinity).remove();     // remove the last element
+ 
+                        // if only one element remains, disable the "remove" button
+                        if (numInfinity-1 === 1)
+                            $('#removeInfinity').attr('disabled','disabled');
+                    });
+                    
+                    $('#addPlayerInfinity').click(function() {
+                        var numInfinity     = $('.clonedInputInfinity').length; // how many "duplicatable" input fields we currently have
+                        var newNumInfinity  = new Number(numInfinity + 1);      // the numeric ID of the new input field being added
+ 
+                        // create the new element via clone(), and manipulate it's ID using newNum value
+                        var newElem = $('#inputInfinity' + numInfinity).clone().attr('id', 'inputInfinity' + newNumInfinity);
+ 
+                        // manipulate the name/id values of the input inside the new element
+                        newElem.children(':nth-child(1)').attr('id', 'firstNameInfinity' + newNumInfinity).attr('name', 'firstNameInfinity' + newNumInfinity).attr( 'value', newNumInfinity);
+                        newElem.children(':nth-child(2)').attr('id', 'lastNameInfinity' + newNumInfinity).attr('name', 'lastNameInfinity' + newNumInfinity);
+                        newElem.children(':nth-child(3)').attr('id', 'armyInfinity' + newNumInfinity).attr('name', 'armyInfinity' + newNumInfinity);
+                        newElem.children(':nth-child(4)').attr('id', 'scoreInfinity' + newNumInfinity).attr('name', 'scoreInfinity' + newNumInfinity);
+                        newElem.children(':nth-child(5)').attr('id', 'optOutInfinity' + newNumInfinity).attr('name', 'optOutInfinity' + newNumInfinity);
+ 
+                        // insert the new element after the last "duplicatable" input field
+                        $('#inputInfinity' + numInfinity).after(newElem);
+                
+                        //Enable remove button
+                        $('#removeInfinity').removeAttr('disabled');
+                    });   
+                    
+                    //Xwing Upload
+                    $('#removeXwing').click(function() {
+                        var numXwing = $('.clonedInputXwing').length; // how many "duplicatable" input fields we currently have
+                        $('#inputXwing' + numXwing).remove();     // remove the last element
+ 
+                        // if only one element remains, disable the "remove" button
+                        if (numXwing-1 === 1)
+                            $('#removeXwing').attr('disabled','disabled');
+                    });
+                    
+                    $('#addPlayerXwing').click(function() {
+                        var numXwing     = $('.clonedInputXwing').length; // how many "duplicatable" input fields we currently have
+                        var newNumXwing  = new Number(numXwing + 1);      // the numeric ID of the new input field being added
+ 
+                        // create the new element via clone(), and manipulate it's ID using newNum value
+                        var newElem = $('#inputXwing' + numXwing).clone().attr('id', 'inputXwing' + newNumXwing);
+ 
+                        // manipulate the name/id values of the input inside the new element
+                        newElem.children(':nth-child(1)').attr('id', 'firstNameXwing' + newNumXwing).attr('name', 'firstNameXwing' + newNumXwing).attr( 'value', newNumXwing);
+                        newElem.children(':nth-child(2)').attr('id', 'lastNameXwing' + newNumXwing).attr('name', 'lastNameXwing' + newNumXwing);
+                        newElem.children(':nth-child(3)').attr('id', 'armyXwing' + newNumXwing).attr('name', 'armyXwing' + newNumXwing);
+                        newElem.children(':nth-child(4)').attr('id', 'scoreXwing' + newNumXwing).attr('name', 'scoreXwing' + newNumXwing);
+                        newElem.children(':nth-child(5)').attr('id', 'optOutXwing' + newNumXwing).attr('name', 'optOutXwing' + newNumXwing);
+ 
+                        // insert the new element after the last "duplicatable" input field
+                        $('#inputXwing' + numXwing).after(newElem);
+                
+                        //Enable remove button
+                        $('#removeXwing').removeAttr('disabled');
+                    });   
             
                     $('#remove40K').attr('disabled','disabled');
                     $('#removeFantasy').attr('disabled','disabled');
                     $('#removeWarmaHordes').attr('disabled','disabled');
+                    $('#removeInfinity').attr('disabled','disabled');
+                    $('#removeXwing').attr('disabled','disabled');
+
                 });       
                 </script>
 
@@ -243,6 +308,53 @@
                                     <input type="button" id="addPlayerWarmaHordes" value="Add a player"/>
                                 </div>
                                 <br>
+                                
+                                <label>Game System: Infinity</label>
+                                <br>
+                                Best Overall:<input type="text" name="bestOverallInfinity" id ="bestOverallInfinity">
+                                Best General:<input type="text" name="bestGeneralInfinity" id ="bestGeneralInfinity">
+                                Best Painted:<input type="text" name="bestPaintedInfinity" id ="bestPaintedInfinity">
+                                Best Sport:<input type="text" name="bestSportInfinity" id ="bestSportInfinity">
+                                <br>
+                                <div id="inputInfinity1" style="margin-bottom:4px;" class="clonedInputInfinity">
+                                    First name:<input type="text" name="firstNameInfinity1" id="firstNameInfinity1" value="1">
+                                    Last name:<input type="text" name="lastNameInfinity1" id="lastNameInfinity1">
+                                    Army:<select name="armyInfinity1" id="armyInfinity1">
+                                        <option value="Unknown">Unknown</option>
+                                    </select>
+                                    Score:<input type="text" name="scoreInfinity1" id="scoreInfinity1">
+                                    Circuit Opt-Out:<input type="checkbox" name="optOutInfinity1" id="optOutInfinity1" value="0">
+                                </div>
+                                <div>
+                                    <input type="button" id="removeInfinity" value="Remove this player"/>
+                                    <input type="button" id="addPlayerInfinity" value="Add a player"/>
+                                </div>
+                                <br>
+                                
+                                <label>Game System: Xwing</label>
+                                <br>
+                                Best Overall:<input type="text" name="bestOverallXwing" id ="bestOverallXwing">
+                                Best General:<input type="text" name="bestGeneralXwing" id ="bestGeneralXwing">
+                                Best Painted:<input type="text" name="bestPaintedXwing" id ="bestPaintedXwing">
+                                Best Sport:<input type="text" name="bestSportXwing" id ="bestSportXwing">
+                                <br>
+                                <div id="inputXwing1" style="margin-bottom:4px;" class="clonedInputXwing">
+                                    First name:<input type="text" name="firstNameXwing1" id="firstNameXwing1" value="1">
+                                    Last name:<input type="text" name="lastNameXwing1" id="lastNameXwing1">
+                                    Army:<select name="armyXwing1" id="armyXwing1">
+                                        <option value="Unknown">Unknown</option>
+                                        <option value="Imperials">Imperials</option>
+                                        <option value="Rebels">Rebels</option>
+                                    </select>
+                                    Score:<input type="text" name="scoreXwing1" id="scoreXwing1">
+                                    Circuit Opt-Out:<input type="checkbox" name="optOutXwing1" id="optOutXwing1" value="0">
+                                </div>
+                                <div>
+                                    <input type="button" id="removeXwing" value="Remove this player"/>
+                                    <input type="button" id="addPlayerXwing" value="Add a player"/>
+                                </div>
+                                <br>
+                                
                             </form>
                         </td>
                     </tr>

@@ -47,7 +47,7 @@
                                 <option value="fk_tournamentSeason = '${currentSeason}'">${currentSeason}</option>
                                 <c:forEach var="season" items="${seasons}">
                                     <c:if test="${season.tournamentSeason != currentSeason}">
-                                    <option value="fk_tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
+                                        <option value="fk_tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
                                     </c:if>
                                 </c:forEach>
                             </select>
@@ -56,6 +56,7 @@
                     </td>
                     <td></td>
                 </tr>
+                <tr id="spacer"><td colspan="3"></td></tr>
                 <tr>
                     <th>Warhammer 40,000</th>
                     <th>Warhammer Fantasy</th>
@@ -72,7 +73,7 @@
                             </tr>
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <c:forEach var="player40K" items="${results40K}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                <tr>
                                     <td><p><script type="text/javascript">document.write(colNum40K++);</script></p></td>
                                     <td><p>
                                             <c:choose>
@@ -81,9 +82,9 @@
                                                 </c:when>
                                                 <c:otherwise>
                                                     <a href="<c:url value="/login/individualResults">
-                                                    <c:param name="playerName" value="playerName = '${player40K.playerName}'"/>
-                                                    </c:url>"><c:out value="${player40K.playerName}"></c:out>
-                                                    </a>
+                                                           <c:param name="playerName" value="playerName = '${player40K.playerName}'"/>
+                                                       </c:url>"><c:out value="${player40K.playerName}"></c:out>
+                                                       </a>
                                                 </c:otherwise>
                                             </c:choose>
                                         </p></td>
@@ -104,7 +105,7 @@
 
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <c:forEach var="playerFantasy" items="${resultsFantasy}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                <tr>
                                     <td><p><script type="text/javascript">document.write(colNumFantasy++);</script></p></td>
                                     <td><p>
                                             <c:choose>
@@ -113,9 +114,9 @@
                                                 </c:when>
                                                 <c:otherwise>
                                                     <a href="<c:url value="/login/individualResults">
-                                                    <c:param name="playerName" value="playerName = '${playerFantasy.playerName}'"/>
-                                                    </c:url>"><c:out value="${playerFantasy.playerName}"></c:out>
-                                                    </a>                                                
+                                                           <c:param name="playerName" value="playerName = '${playerFantasy.playerName}'"/>
+                                                       </c:url>"><c:out value="${playerFantasy.playerName}"></c:out>
+                                                       </a>                                                
                                                 </c:otherwise>
                                             </c:choose>
                                         </p></td>
@@ -135,19 +136,19 @@
                             </tr>
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <c:forEach var="playerWarmaHordes" items="${resultsWarmaHordes}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                <tr>
                                     <td><p><script type="text/javascript">document.write(colNumWarmaHordes++);</script></p></td>
                                     <td><p>
-                                        <c:choose>
-                                            <c:when test="${playerWarmaHordes.playerName=='Classified'}">
-                                                <i>Excommunicate Traitoris</i>
-                                            </c:when>
-                                            <c:otherwise>
+                                            <c:choose>
+                                                <c:when test="${playerWarmaHordes.playerName=='Classified'}">
+                                                    <i>Excommunicate Traitoris</i>
+                                                </c:when>
+                                                <c:otherwise>
                                                     <a href="<c:url value="/login/individualResults">
-                                                    <c:param name="playerName" value="playerName = '${playerWarmaHordes.playerName}'"/>
-                                                    </c:url>"><c:out value="${playerWarmaHordes.playerName}"></c:out>
+                                                           <c:param name="playerName" value="playerName = '${playerWarmaHordes.playerName}'"/>
+                                                       </c:url>"><c:out value="${playerWarmaHordes.playerName}"></c:out>
                                                     </a>                                            </c:otherwise>
-                                        </c:choose>
+                                            </c:choose>
                                         </p></td>
                                     <td><p>${playerWarmaHordes.score}</p></td>
                                     <td><p>${playerWarmaHordes.invite}</p></td>

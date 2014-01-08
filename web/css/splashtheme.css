@@ -1,0 +1,89 @@
+body {
+    background: url('/AlbertaWargaming/images/machariusbackground.jpg') no-repeat center center fixed; 
+    -webkit-background-size: 100%; 
+    -moz-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-size: cover; 
+}
+
+#text_box {
+    margin-top: -15px;
+    margin-left: 0px;
+    width: 590px; 
+    height: 150px; 
+    background-image: linear-gradient(#888, #444);
+    opacity:0.7;
+    filter:alpha(opacity=70);
+    font-family: "Arial", Helvetica, sans-serif;
+    color: white;       
+    position: absolute;
+    padding-left: 20px;
+    border-radius: 0 0 20px 0;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#back{
+    position:absolute;
+    text-align: center;
+    margin-left:-35px;
+    margin-top:25px;
+    height: 80px;
+    width: 120px;
+}
+
+#rankings{
+    position:absolute;
+    text-align: center;
+    margin-left:40px;
+    margin-top:25px;
+    height: 80px;
+    width: 120px;
+}
+
+#requestAccess{
+    position:absolute;
+    text-align: center;
+    margin-left:160px;
+    margin-top:25px;
+    height: 80px;
+    width: 120px; 
+}
+
+#info{
+    position:absolute;
+    text-align: center;
+    margin-left:280px;
+    margin-top:25px;
+    height: 80px;
+    width: 120px;
+}
+
+#logo {
+    position: fixed; 
+    text-align: center;
+    margin-left:415px;
+    margin-top:25px;
+    height: 80px;
+}
+
+.glow{
+    
+}
+
+.glow:hover { 
+    opacity: 1; 
+    /*Glow*/ 
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 80px;
+    -webkit-box-shadow: -5px 0px 20px 20px rgba(255,255,255,0.3);
+    -moz-box-shadow: -5px 0px 20px 20px rgba(255,255,255,0.3);
+    box-shadow: -5px 0px 25px 15px rgba(255,255,255,0.3);
+}

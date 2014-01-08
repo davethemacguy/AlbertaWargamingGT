@@ -15,11 +15,11 @@
 
 #menu {
     z-index: 1;
-    left:50%;
-    margin-left: -566px;
+    max-width:1130px;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: -80px;
-    position: fixed;
-    width: 1130px;
     border: 1px solid #222;
     background-color: #888;
     background-image: linear-gradient(#444, #888);
@@ -60,7 +60,8 @@
     padding: 17px 20px 12px;
     color: #c4c4c4;
     text-transform: uppercase;
-    font: bold 13px Tahoma;
+    font-family: Helvetica;
+    font-size: 11px;
     text-decoration: none;
     text-shadow: 0 1px 0 #000;
 }
@@ -69,7 +70,7 @@
     color: #fafafa;
 }
 
-*html #menu li a:hover {  /*IE6 only*/ 
+*html #menu li a:hover{  /*IE6 only*/ 
     color: #fafafa;
 }
 
@@ -87,7 +88,7 @@
     transition: all .2s ease-in-out;  
 }
 
-#menu li:hover > ul {
+#menu li:hover > ul, #menu.btn1 li.btn1 > ul{
     opacity: 1;
     visibility: visible;
     margin: 0;
@@ -122,7 +123,7 @@
     text-transform: none;
 }
 
-#menu ul a:hover {
+#menu ul a:hover, #menu ul a.hover_effect{
     background-color: #0186ba;
     background-image: linear-gradient(#04acec, #0186ba);
 }
@@ -151,11 +152,11 @@
     border-right: 6px solid #3b3b3b;
 }
 
-#menu ul li:first-child a:hover:after {
+#menu ul li:first-child a:hover:after, #menu ul li:first-child a.hover_effect:after {
     border-bottom-color: #04acec; 
 }
 
-#menu ul ul li:first-child a:hover:after {
+#menu ul ul li:first-child a:hover:after, #menu ul ul li:first-child a.hover_effect:after  {
     border-right-color: #0299d3; 
     border-bottom-color: transparent; 	
 }
@@ -168,11 +169,14 @@
 /*Global website formatting*/
 html {
     overflow-y: scroll;
-    background-image: url('http://linds14sr20det.s20.eatj.com/AlbertaWargaming/images/backgroundscroll.jpg'), url('http://linds14sr20det.s20.eatj.com/AlbertaWargaming/images/background.jpg');
+    background-image: url('/AlbertaWargaming/images/backgroundscroll.jpg'), url('/AlbertaWargaming/images/background.jpg');
     background-position: center top, top left;
     background-attachment: fixed, fixed;
-    background-size: 1130px, 100% auto;
+    background-size: 1130px 100%, cover;
     background-repeat: repeat-y;
+    -webkit-background-size: 1130px 100%, cover;
+    -moz-background-size: 1130px 100%, cover;
+    -o-background-size: 1130px 100%, cover;
 }
 
 root { 
@@ -185,11 +189,11 @@ body {
 }
 
 #container {
-    width: 1130px; 
-    top: 7%; 
-    left: 50%;
-    margin-left: -565px;
-    position: absolute;
+    max-width:1130px;
+    width:100%;
+    margin-left: auto ;
+    margin-right: auto ;
+    top: 9%; 
 }
 /*END of global website formatting*/
 
@@ -219,28 +223,42 @@ table.hovertable {
     width:300px;
     margin: auto;
     font-family: verdana,arial,sans-serif;
-    font-size:11px;
+    font-size:11px;  
     color:#333333;
-    border-width: 1px;
+    border-width: 2px;
     border-color: #999999;
     border-collapse: collapse;
 }
+/* unvisited link */
+table.hovertable a:link {
+    color:#2D3F75;
+}
+/* visited link */      
+table.hovertable a:visited {
+    color:#850094;
+}  
 table.hovertable th {
     background-color:#808080;
-    border-width: 1px;
     padding: 8px;
     border-style: solid;
     border-color: #4F4F4F;
 }
+table.hovertable tr:hover {
+
+    background-color:#BFBFBF;
+}
 table.hovertable tr {
     max-width: 330px;
-    background-color:#A1A1A1;
+    background-color:#D9D9D9;
 }
+
 table.hovertable td {
     height: 30px;
-    border-width: 1px;
     border-style: solid;
     border-color: #4F4F4F;
+}
+#spacer td{
+    height:35px;
 }
 /*END of results table formatting*/
 
@@ -250,31 +268,31 @@ table.hovertable td {
 .autocomplete-selected { background: #f0f0f0; }
 .autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
 #searchfield { display: block; width: 100%; text-align: center; margin-bottom: 35px; }
- 
+
 #searchfield form {
-  display: inline-block;
-  background: #eeefed;
-  padding: 0;
-  margin: 0;
-  padding: 5px;
-  border-radius: 3px;
-  margin: 5px 0 0 0;
+    display: inline-block;
+    background: #eeefed;
+    padding: 0;
+    margin: 0;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px 0 0 0;
 }
 #searchfield form .biginput {
-  width: 600px;
-  height: 40px;
-  padding: 0 10px 0 10px;
-  background-color: #fff;
-  border: 1px solid #c8c8c8;
-  border-radius: 3px;
-  color: #aeaeae;
-  font-weight:normal;
-  font-size: 1.5em;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  transition: all 0.2s linear;
+    width: 600px;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    background-color: #fff;
+    border: 1px solid #c8c8c8;
+    border-radius: 3px;
+    color: #aeaeae;
+    font-weight:normal;
+    font-size: 1.5em;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
 }
 #searchfield form .biginput:focus {
-  color: #858585;
+    color: #858585;
 }
 /*END of Autcomplete CSS formatting */

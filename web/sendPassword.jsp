@@ -16,12 +16,12 @@
     <body>
         <div style="text-align: center"><%@include file="/includes/banner.jsp" %><b>Login:</b></div>
         <br>
-        <p style="text-align: center">Your password will be mailed to the e-mail on file for the username entered below.</p>
+        <p style="text-align: center">Enter the e-mail address for the user account password you wish to reset</p>
         <form action="retrievePassword" method="post">
             <table cellspacing="5" border="0">
                 <tr>
-                    <td><input type="text" placeholder="Username" name="username"></td> 
-                    <td align="center"><input type="submit" value="Retrieve my password!"></td>
+                    <td><input type="text" placeholder="E-mail Address" name="email"></td> 
+                    <td align="center"><input type="submit" value="Send password reset email!"></td>
                 </tr>
             </table>
         </form> 

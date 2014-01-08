@@ -42,21 +42,16 @@
                     <td>
                     </td>
                     <td>
-                        
-                        
-                        
-                      <form action="armyRankings" method="post">
-                      
+                        <form action="armyRankings" method="post">               
                             <select name="fk_tournamentSeason">
                                 <option value="fk_tournamentSeason" selected>${currentSeason}</option>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 <c:forEach var="season" items="${seasons}">
                                     <c:if test="${season.tournamentSeason != currentSeason}">
-                                    <option value="fk_tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
+                                        <option value="fk_tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
                                     </c:if>
                                 </c:forEach>
                             </select>
-                          
                             <select name="dataSelection">
                                 <option selected="selected"></option>
                                 <option value="Popularity">Popularity</option>
@@ -71,8 +66,7 @@
                 </tr>
                 <tr>
                     <td colspan ="3">
-                        <h3>${dataSelectionType}</h3>
-                          
+                        <h3>${dataSelectionType}</h3>   
                     </td>
                 </tr>
                 <tr>
@@ -90,7 +84,7 @@
                             </tr>
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <c:forEach var="army40K" items="${armyData40K}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                <tr>
                                     <c:if test = "${army40K.armyName!='Unknown'}">
                                         <td><p><script type="text/javascript">document.write(colNum40K++);</script></p></td>
                                         <td><p>${army40K.armyName}</p></td>
@@ -109,7 +103,7 @@
                             </tr>
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <c:forEach var="armyFantasy" items="${armyDataFantasy}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                <tr>
                                     <c:if test = "${armyFantasy.armyName!='Unknown'}">
                                         <td><p><script type="text/javascript">document.write(colNumFantasy++);</script></p></td>
                                         <td><p>${armyFantasy.armyName}</p></td>
@@ -128,7 +122,7 @@
                             </tr>
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <c:forEach var="armyWarmaHordes" items="${armyDataWarmaHordes}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                <tr>
                                     <c:if test = "${armyWarmaHordes.armyName!='Unknown'}">
                                         <td><p><script type="text/javascript">document.write(colNumWarmaHordes++);</script></p></td>
                                         <td><p>${armyWarmaHordes.armyName}</p></td>

@@ -16,10 +16,9 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
-        String query =
-                "INSERT INTO UserData (userName, firstName, lastName, emailAddress, userRole, passWord,  userDelete, creationTime) "
+        String query
+                = "INSERT INTO UserData (userName, firstName, lastName, emailAddress, userRole, passWord,  userDelete, creationTime) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
 
         try {
             ps = connection.prepareStatement(query);
@@ -31,7 +30,7 @@ public class UserDB {
             ps.setString(6, user.getPassWord());
             ps.setString(7, user.getUserDelete());
             ps.setLong(8, user.getCreationTime());
-            
+
             return ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -65,8 +64,6 @@ public class UserDB {
             ps.setString(6, user.getUserDelete());
             ps.setString(7, user.getUserID());
 
-
-
             return ps.executeUpdate();
         } catch (SQLException e) {
             return 0;
@@ -99,7 +96,6 @@ public class UserDB {
             ps.setString(5, user.getUserRole());
             ps.setString(6, user.getUserDelete());
             ps.setString(7, user.getUserID());
-
 
             return ps.executeUpdate();
         } catch (SQLException e) {
@@ -268,7 +264,6 @@ public class UserDB {
                 user.setUserRole(rs.getString("userRole"));
                 user.setUserDelete(rs.getString("userDelete"));
 
-
                 users.add(user);
             }
 
@@ -283,8 +278,8 @@ public class UserDB {
             pool.freeConnection(connection);
         }
     }
-    
-    public static ArrayList<User> selectTournamentParticipants(){
+
+    public static ArrayList<User> selectTournamentParticipants() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -292,7 +287,7 @@ public class UserDB {
         ArrayList<User> users = new ArrayList<User>();
 
         String query = "SELECT DISTINCT playerName FROM TournamentResults ORDER BY playerName ASC";
-          
+
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -301,7 +296,6 @@ public class UserDB {
             while (rs.next()) {
                 user = new User();
                 user.setFullName(rs.getString("playerName"));
-               
 
                 users.add(user);
             }
@@ -317,29 +311,27 @@ public class UserDB {
             pool.freeConnection(connection);
         }
     }
-    
-    
+
     public static List<String> selectFirstNames() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        
+
         List<String> firstNames = new ArrayList<String>();
 
         String query = "SELECT DISTINCT firstName FROM UserData ORDER BY firstName ASC";
 
-            try {
+        try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
 
-                    while (rs.next()) {
-                        firstNames.add(rs.getString("firstName"));
-                    }
-                    return firstNames;
-           
-            
-            } catch (SQLException e) {
+            while (rs.next()) {
+                firstNames.add(rs.getString("firstName"));
+            }
+            return firstNames;
+
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         } finally {
@@ -347,19 +339,19 @@ public class UserDB {
             DBUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
         }
-        
+
     }
-    
+
     public static ArrayList<User> selectLastNames() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         ArrayList<User> lastNames = new ArrayList<User>();
-        
-                String query = "SELECT DISTINCT lastName FROM UserData ORDER BY lastName ASC";
 
-            try {
+        String query = "SELECT DISTINCT lastName FROM UserData ORDER BY lastName ASC";
+
+        try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
             User user = null;
@@ -367,7 +359,6 @@ public class UserDB {
             while (rs.next()) {
                 user = new User();
                 user.setLastName(rs.getString("lastName"));
-               
 
                 lastNames.add(user);
             }
@@ -382,9 +373,9 @@ public class UserDB {
             DBUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
         }
-        
+
     }
- 
+
     public static boolean noUsers() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -469,31 +460,27 @@ public class UserDB {
             pool.freeConnection(connection);
         }
         return userID;
-        
-        
-    
+
     }
-    
-     public static String getFullName(String currentUser) {
+
+    public static String getFullName(String currentUser) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        
-        
-        String query = "SELECT firstName, lastName FROM UserData WHERE userName='"+currentUser+"'";
+
+        String query = "SELECT firstName, lastName FROM UserData WHERE userName='" + currentUser + "'";
 
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
-            
+
             if (rs.next()) {
-                currentUser = rs.getString("firstName")+" "+rs.getString("lastName");
+                currentUser = rs.getString("firstName") + " " + rs.getString("lastName");
             }
-           
-            
+
             return currentUser;
-           
+
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -501,17 +488,40 @@ public class UserDB {
             DBUtil.closeResultSet(rs);
             DBUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
-        } 
-    } 
-     
-     
+        }
+    }
+
+    public static User selectUserByEmail(String email) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String query = "SELECT * FROM UserData "
+                + "WHERE emailAddress = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            User user = null;
+            if (rs.next()) {
+                user = new User();
+                user.setUserName(rs.getString("userName"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                user.setEmailAddress(rs.getString("emailAddress"));
+                user.setUserID(rs.getString("userID"));
+                user.setUserRole(rs.getString("userRole"));
+                user.setPassWord(rs.getString("passWord"));
+                user.setUserDelete(rs.getString("userDelete"));
+            }
+            return user;
+        } catch (SQLException e) {
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
 }
-    
-    
-    
-    
-    
-    
-    
-    
-    

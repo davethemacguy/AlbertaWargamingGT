@@ -16,12 +16,7 @@
     <body>
         <div style="text-align: center"><%@include file="/includes/banner.jsp" %><b>Login:</b></div>
         <br>
-
-        <% if (session.getAttribute("status") == "success") {%>
-        <p style="text-align: center">The password has been mailed to: <%= session.getAttribute("email")%></p>
-        <% } else {%>
-        <p style="text-align: center">User not found.</p>
-        <% }%>
+        <p style="text-align: center">The password reset was successful.</p>
         <br>
         <form style="text-align: center" action="/AlbertaWargaming" method="get">
             <input type="submit" value="Return to Homepage">

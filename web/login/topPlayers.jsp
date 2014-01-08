@@ -39,35 +39,29 @@
                     </td>
                 </tr>
                 <tr>
-                </tr>
-                
-                
-                            <form action="topPlayers" method="post">
-                <tr>
                     <td>
+                        <form action="topPlayers" method="post">
                             <select name="tournamentSeason">
-                            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                            <option value="tournamentSeason = '${currentSeason}'" selected>${currentSeason}</option>
-                            
-                            <c:forEach var="season" items="${seasons}">
-                                <c:if test="${season.tournamentSeason != currentSeason}">
-                                    <option value="tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
-                                </c:if>
-                            </c:forEach>
+                                <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                <option value="tournamentSeason = '${currentSeason}'" selected>${currentSeason}</option>
+
+                                <c:forEach var="season" items="${seasons}">
+                                    <c:if test="${season.tournamentSeason != currentSeason}">
+                                        <option value="tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
+                                    </c:if>
+                                </c:forEach>
                             </select>
-                         
+
                             <select name="system">
-                            <c:forEach var="system" items="${systems}">
-                                <option value="system = '${system.system}'">${system.system}</option>
-                            </c:forEach>
+                                <c:forEach var="system" items="${systems}">
+                                    <option value="system = '${system.system}'">${system.system}</option>
+                                </c:forEach>
                             </select>
-                                <input type="submit" value="Go!">
+                            <input type="submit" value="Go!">
+                        </form>
                     </td>
                 </tr>
-                </form>
-
-                <tr>
-                </tr>
+                <tr id="spacer"><td></td></tr>
                 <tr>
                     <td>
                         <table class="hovertable" style="width:800px">
@@ -79,41 +73,40 @@
                                 <th>Best Presentation</th>
                                 <th>Best Sport</th>
                             </tr>
-
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                               <c:forEach var="item" items="${results}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                            <c:forEach var="item" items="${results}">
+                                <tr>
                                     <td><p>${item.tournamentDate}</p></td>
                                     <%-- <td><p>${item.tournamentName}</p></td> --%>
                                     <td>
                                         <a href="<c:url value="/login/tournamentRankings">
-                                            <c:param name="tournament" value="tournamentName ='${item.tournamentName}'"/>
-                                            <c:param name="tournamentSeason" value="tournamentSeason ='${item.tournamentSeason}'"/>
-                                            <c:param name="system" value="system ='${item.system}'"/>
+                                               <c:param name="tournament" value="tournamentName ='${item.tournamentName}'"/>
+                                               <c:param name="tournamentSeason" value="tournamentSeason ='${item.tournamentSeason}'"/>
+                                               <c:param name="system" value="system ='${item.system}'"/>
                                            </c:url>"><c:out value="${item.tournamentName}"></c:out>
-                                        </a>
-                                    </td>
-                                    <td><p><a href="<c:url value="/login/individualResults">
-                                                    <c:param name="playerName" value="playerName = '${item.bestOverall}'"/>
-                                                    </c:url>"><c:out value="${item.bestOverall}"></c:out>
-                                                    </a></p>
-                                    </td>
-                                    <td><p><p><a href="<c:url value="/login/individualResults">
-                                                    <c:param name="playerName" value="playerName = '${item.bestGeneral}'"/>
-                                                    </c:url>"><c:out value="${item.bestGeneral}"></c:out>
-                                                    </a></p></p>
-                                    </td>
-                                    <td><p><p><a href="<c:url value="/login/individualResults">
-                                                    <c:param name="playerName" value="playerName = '${item.bestPainted}'"/>
-                                                    </c:url>"><c:out value="${item.bestPainted}"></c:out>
-                                                    </a></p></p>
-                                    </td>
-                                    <td><p><p><a href="<c:url value="/login/individualResults">
-                                                    <c:param name="playerName" value="playerName = '${item.bestSport}'"/>
-                                                    </c:url>"><c:out value="${item.bestSport}"></c:out>
-                                                    </a></p></p>
-                                    </td>
-                                </tr>
+                                           </a>
+                                        </td>
+                                        <td><p><a href="<c:url value="/login/individualResults">
+                                                  <c:param name="playerName" value="playerName = '${item.bestOverall}'"/>
+                                              </c:url>"><c:out value="${item.bestOverall}"></c:out>
+                                              </a></p>
+                                        </td>
+                                        <td><p><p><a href="<c:url value="/login/individualResults">
+                                                     <c:param name="playerName" value="playerName = '${item.bestGeneral}'"/>
+                                                 </c:url>"><c:out value="${item.bestGeneral}"></c:out>
+                                                 </a></p>
+                                        </td>
+                                        <td><p><p><a href="<c:url value="/login/individualResults">
+                                                     <c:param name="playerName" value="playerName = '${item.bestPainted}'"/>
+                                                 </c:url>"><c:out value="${item.bestPainted}"></c:out>
+                                                 </a></p>
+                                        </td>
+                                        <td><p><p><a href="<c:url value="/login/individualResults">
+                                                     <c:param name="playerName" value="playerName = '${item.bestSport}'"/>
+                                                 </c:url>"><c:out value="${item.bestSport}"></c:out>
+                                                 </a></p>
+                                        </td>
+                                    </tr>
                             </c:forEach>
                         </table>
                     </td>

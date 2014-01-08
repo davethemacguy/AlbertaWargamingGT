@@ -93,8 +93,32 @@
         <servlet-class>user.LoginRedirectServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ConvertPasswordServlet</servlet-name>
-        <servlet-class>user.ConvertPasswordServlet</servlet-class>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <servlet-class>user.ResetPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmResetPasswordServlet</servlet-name>
+        <servlet-class>user.ConfirmResetPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PopulateTopPlayers</servlet-name>
+        <servlet-class>user.PopulateTopPlayers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TestPage</servlet-name>
+        <servlet-class>user.TestPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PopulateGTTournamentsServlet</servlet-name>
+        <servlet-class>user.PopulateGTTournamentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GTTournamentResultsServlet</servlet-name>
+        <servlet-class>user.GTTournamentResultsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TopPlayersServlet</servlet-name>
+        <servlet-class>user.TopPlayersServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PopulateTopPlayers</servlet-name>
@@ -211,8 +235,12 @@
         <url-pattern>/loginredir</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ConvertPasswordServlet</servlet-name>
-        <url-pattern>/login/admin/convertpasswords</url-pattern>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <url-pattern>/ResetPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmResetPasswordServlet</servlet-name>
+        <url-pattern>/confirmResetPassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PopulateTopPlayers</servlet-name>
@@ -221,21 +249,20 @@
     <servlet-mapping>
         <servlet-name>TestPage</servlet-name>
         <url-pattern>/login/populateTestPage</url-pattern>
-   </servlet-mapping>
-   <servlet-mapping>
-       <servlet-name>PopulateGTTournamentsServlet</servlet-name>
-       <url-pattern>/login/populateGTTournaments</url-pattern>
-   </servlet-mapping>
-   <servlet-mapping>
-       <servlet-name>GTTournamentResultsServlet</servlet-name>
-       <url-pattern>/login/gtTournamentRankings</url-pattern>
-   </servlet-mapping>
-   <servlet-mapping>
-       <servlet-name>TopPlayersServlet</servlet-name>
-       <url-pattern>/login/topPlayers</url-pattern>
-   </servlet-mapping>
-    
-            
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopulateGTTournamentsServlet</servlet-name>
+        <url-pattern>/login/populateGTTournaments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GTTournamentResultsServlet</servlet-name>
+        <url-pattern>/login/gtTournamentRankings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TopPlayersServlet</servlet-name>
+        <url-pattern>/login/topPlayers</url-pattern>
+    </servlet-mapping>
+          
     <!-- Define security roles -->
     <security-role>
         <description>Administrators</description>
@@ -300,6 +327,6 @@
         <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list> 
 </web-app>

@@ -34,32 +34,31 @@
 
             <table id="tableParams">
                 <tr>
-                    <td><form action="gtTournamentRankings" method="post">
-                            
+                    <td>
+                        <form action="gtTournamentRankings" method="post">
                             <select name="tournamentSeason">
                                 <option value="tournamentSeason = '${currentSeason}'" selected>${currentSeason}</option>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 <c:forEach var="season" items="${seasons}">
                                     <c:if test="${season.tournamentSeason != currentSeason}">
-                                    <option value="tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
+                                        <option value="tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
                                     </c:if>
                                 </c:forEach>
                             </select>
-                                
-                                <select name="system">
+                            <select name="system">
                                 <option selected="selected"></option>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 <c:forEach var="system" items="${systems}">
                                     <option value="system = '${system.system}'">${system.system}</option>
                                 </c:forEach>
                             </select>
-                            
                             <input type="submit" value="Go!">
                         </form>
                     </td>
                 </tr>
+                <tr id="spacer"><td></td></tr>
                 <tr>
-                    <td colspan ="1">
+                    <td>
                         <h3>${tournamentInfo}</h3>
                     </td>
                 </tr>
@@ -79,7 +78,7 @@
                             </tr>
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <c:forEach var="player" items="${gtTournamentResults}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                <tr>
                                     <td><p><script type="text/javascript">document.write(colNum40K++);</script></p></td>
                                     <c:choose>
                                         <c:when test="${player.optOut=='0'}">

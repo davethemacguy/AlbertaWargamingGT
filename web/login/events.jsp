@@ -16,12 +16,7 @@
             50% { background-color: #91bd09; -webkit-box-shadow: 0 0 100px #D4FCCF; }
             to { background-color: #749a02; -webkit-box-shadow: 0 0 18px #0015FF; }
             }
-            div.hr {
-                background: #FF0000  no-repeat scroll center;
-                margin-left: 50px;
-                width:40%;
-                height:5px;
-            }
+            
             div.hr hr {
                 display: none;
             }
@@ -33,13 +28,6 @@
                 margin-left:50px;
                 margin-right: 50px;
                 margin-bottom: 25px;
-            }
-            #container {
-                width: 1130px; 
-                top: 7%; 
-                left: 50%;
-                margin-left: -565px;
-                position: absolute
             }
             #table {
                 padding-top:10px;

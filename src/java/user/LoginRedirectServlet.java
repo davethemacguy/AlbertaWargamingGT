@@ -26,18 +26,16 @@ public class LoginRedirectServlet extends HttpServlet {
         String userName = request.getParameter("j_username");
         String passWord = request.getParameter("j_password");
         try {
+            System.out.println(UserDB.selectUserName(userName));
+            System.out.println(passWord);
             crypto.setPassWordHash(1000, passWord, UserDB.selectUserName(userName).getCreationTime());
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(AddUserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         String contextUrl = request.getContextPath();
-
-        // TODO: is there a way we can do this without having password in the URL?
         String req = contextUrl + mAuthURL
                 + "?j_username=" + userName
                 + "&j_password=" + crypto.getPassWordHash();
-
         response.sendRedirect(response.encodeRedirectURL(req));
     }
 }

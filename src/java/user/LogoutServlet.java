@@ -15,8 +15,7 @@ public class LogoutServlet extends HttpServlet
             HttpServletResponse response) 
             throws ServletException, IOException
     {
-        HttpSession session = request.getSession();  
-        session.invalidate();
+        request.getSession().invalidate();
         
         String url = "/index.jsp";
         RequestDispatcher dispatcher =

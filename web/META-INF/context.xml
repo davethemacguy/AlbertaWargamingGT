@@ -39,18 +39,18 @@
 <!--
     <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" logAbandoned="true" maxActive="100" maxIdle="30" maxWait="10000" name="jdbc/linds14sr20det" password="1234" removeAbandoned="true" removeAbandonedTimeout="60" type="javax.sql.DataSource" url="jdbc:mysql://localhost/linds14sr20det?autoReconnect=true" username="root"/>
 
-    <Resource auth="Container" 
-          driverClassName="com.mysql.jdbc.Driver" 
-          logAbandoned="true" 
-          maxActive="100" 
-          maxIdle="30" 
-          maxWait="10000" 
-          name="jdbc/linds14sr20det" 
-          password="Archon22!" 
-          removeAbandoned="true" 
-          removeAbandonedTimeout="60" 
-          type="javax.sql.DataSource" 
-          url="jdbc:mysql://localhost/linds14sr20det?autoReconnect=true" 
-          username="linds14sr20det"/>
--->
+        <Resource auth="Container" 
+              driverClassName="com.mysql.jdbc.Driver" 
+              logAbandoned="true" 
+              maxActive="100" 
+              maxIdle="30" 
+              maxWait="10000" 
+              name="jdbc/linds14sr20det" 
+              password="Archon22!" 
+              removeAbandoned="true" 
+              removeAbandonedTimeout="60" 
+              type="javax.sql.DataSource" 
+              url="jdbc:mysql://localhost/linds14sr20det?autoReconnect=true" 
+              username="linds14sr20det"/>
+    -->
 </Context>

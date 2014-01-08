@@ -35,7 +35,6 @@
             <table id="tableParams">
                 <tr>
                     <td><form action="tournamentRankings" method="post">
-                            
                             <select name="tournamentSeason">
                                 <option selected="selected"></option>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -43,7 +42,7 @@
                                     <option value="tournamentSeason = '${season.tournamentSeason}'">${season.tournamentSeason}</option>
                                 </c:forEach>
                             </select>
-                            
+
                             <select name="system">
                                 <option selected="selected"></option>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -51,7 +50,7 @@
                                     <option value="system = '${system.system}'">${system.system}</option>
                                 </c:forEach>
                             </select>
-                            
+
                             <select name="tournament">
                                 <option selected="selected"></option>
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -85,7 +84,7 @@
                             </tr>
                             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <c:forEach var="player" items="${tournamentResults}">
-                                <tr onmouseover="this.style.backgroundColor='#BFBFBF';" onmouseout="this.style.backgroundColor='#A1A1A1';">
+                                <tr>
                                     <td><p><script type="text/javascript">document.write(colNum40K++);</script></p></td>
                                     <c:choose>
                                         <c:when test="${player.optOut=='0'}">
@@ -93,11 +92,11 @@
                                         </c:when>
                                         <c:otherwise>
                                             <td><p><a href="<c:url value="/login/individualResults">
-                                                    <c:param name="playerName" value="playerName = '${player.playerName}'"/>
-                                                    </c:url>"><c:out value="${player.playerName}"></c:out>
-                                                    </a></p></td>
-                                        </c:otherwise>
-                                    </c:choose>
+                                                          <c:param name="playerName" value="playerName = '${player.playerName}'"/>
+                                                      </c:url>"><c:out value="${player.playerName}"></c:out>
+                                                      </a></p></td>
+                                                </c:otherwise>
+                                            </c:choose>
                                     <td><p>${player.army}</p></td>
                                     <td><p>${player.awards}</p></td>
                                 </tr>
