@@ -31,19 +31,17 @@ public class TestPage extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
-            String userName = request.getRemoteUser();
-            String fullName = UserDB.getFullName(userName);
-            String playerName = "playerName = '" + fullName +"'";
-            User user = UserDB.selectUserName(userName);
-            ArrayList<TournamentResults> results = TournamentResultsDB.selectIndividualTournamentResults(playerName);
+            String tournament = "Onslaught (Fall)";
+            String season = "2012-2013";
+            String system = "40K";
+            int count = TournamentResultsDB.selectTournamentParticipants(tournament, system, season);
 
             
             HttpSession session = request.getSession();
-            session.setAttribute("userName", userName);
-            session.setAttribute("fullName", fullName);
-            session.setAttribute("playerName", playerName);
-            session.setAttribute("user", user);
-            session.setAttribute("results", results);
+            session.setAttribute("tournament", tournament);
+            session.setAttribute("season", season);
+            session.setAttribute("system", system);
+            session.setAttribute("count", count);
             
             String url = "/login/testPage.jsp";
             RequestDispatcher dispatcher =

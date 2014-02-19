@@ -52,7 +52,7 @@
                 </tr>
             </table>
 
-            <form action="updateUser" method="post">
+            <form action="/login/admin/updateUser" method="post">
                 <table>
                     <tr>
                         <td>Full Name:</td>

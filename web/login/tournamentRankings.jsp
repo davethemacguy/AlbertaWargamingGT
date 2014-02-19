@@ -104,6 +104,21 @@
                         </table>
                     </td>
                 </tr>
+                <tr>
+                    <td>Results: ${tournamentResults}</td>
+                </tr>
+                <tr>
+                    <td>Selected Tournament: ${selectedTournament}</td>
+                </tr>
+                <tr>
+                    <td>System: ${system}</td>
+                </tr>
+                <tr>
+                    <td>Season: ${tournamentSeason}</td>
+                </tr>
+                <tr>
+                    <td>Army: ${player.army}</td>
+                </tr>
             </table>
         </div>
     </body>

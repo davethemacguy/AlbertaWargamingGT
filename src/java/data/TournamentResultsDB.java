@@ -189,6 +189,76 @@ public class TournamentResultsDB {
             pool.freeConnection(connection);
         }
     }
+    
+    public static ArrayList<SystemResults> selectInfinity(String fk_tournamentSeason) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<SystemResults> results = new ArrayList<SystemResults>();
+
+        String query = "SELECT playerName, finalScore, IF(invite>0, 'yes', 'no') AS invite, IF(optOut=0, 'yes', 'no') AS optOut FROM (SELECT playerName, SUM(optOut) AS optOut, SUM(scoreFinal+overAll) AS finalScore, SUM(overAll) AS invite FROM (SELECT *, IF(test.playerName=Tournaments.bestOverall, 10, 0) AS overAll, IF(test.playerName=Tournaments.bestSport OR test.playerName=Tournaments.bestPainted OR test.playerName=Tournaments.bestGeneral, test.score+5, test.score) AS scoreFinal FROM Tournaments INNER JOIN (SELECT * FROM TournamentResults WHERE fk_system = 'Infinity' AND "+ fk_tournamentSeason +") AS test ON test.fk_system =Tournaments.system AND test.fk_tournamentName=Tournaments.tournamentName AND test.fk_tournamentDate=Tournaments.tournamentDate) AS test1 GROUP BY playerName) AS finalTable ORDER BY invite DESC, finalScore DESC;";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            SystemResults user = null;
+
+            while (rs.next()) {
+
+                user = new SystemResults();
+                user.setPlayerName(rs.getString("playerName"));
+                user.setScore(rs.getString("finalScore"));
+                user.setInvite(rs.getString("invite"));
+                user.setOptOut(rs.getString("optOut"));
+                results.add(user);
+            }
+
+            return results;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
+    public static ArrayList<SystemResults> selectXwing(String fk_tournamentSeason) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<SystemResults> results = new ArrayList<SystemResults>();
+
+        String query = "SELECT playerName, finalScore, IF(invite>0, 'yes', 'no') AS invite, IF(optOut=0, 'yes', 'no') AS optOut FROM (SELECT playerName, SUM(optOut) AS optOut, SUM(scoreFinal+overAll) AS finalScore, SUM(overAll) AS invite FROM (SELECT *, IF(test.playerName=Tournaments.bestOverall, 10, 0) AS overAll, IF(test.playerName=Tournaments.bestSport OR test.playerName=Tournaments.bestPainted OR test.playerName=Tournaments.bestGeneral, test.score+5, test.score) AS scoreFinal FROM Tournaments INNER JOIN (SELECT * FROM TournamentResults WHERE fk_system = 'Xwing' AND "+ fk_tournamentSeason +") AS test ON test.fk_system =Tournaments.system AND test.fk_tournamentName=Tournaments.tournamentName AND test.fk_tournamentDate=Tournaments.tournamentDate) AS test1 GROUP BY playerName) AS finalTable ORDER BY invite DESC, finalScore DESC;";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            SystemResults user = null;
+
+            while (rs.next()) {
+
+                user = new SystemResults();
+                user.setPlayerName(rs.getString("playerName"));
+                user.setScore(rs.getString("finalScore"));
+                user.setInvite(rs.getString("invite"));
+                user.setOptOut(rs.getString("optOut"));
+                results.add(user);
+            }
+
+            return results;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
 
     public static ArrayList<SystemResults> selectTournamentResults(String tournament, String tournamentSeason, String system) {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -489,6 +559,36 @@ public class TournamentResultsDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
+    public static int selectTournamentParticipants(String tournament, String system, String season) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int playerCount = 0;
+
+        String query = "SELECT Count(DISTINCT playerName) AS tournamentParticipants FROM TournamentResults WHERE fk_tournament =" + tournament + " AND fk_system ="+ system +" AND fk_tournamentSeason ="+ season;
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            
+            while (rs.next()) {
+                playerCount = rs.getInt("tournamentParticipants");
+            }
+
+            return playerCount;
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
         } finally {
             DBUtil.closeResultSet(rs);
             DBUtil.closePreparedStatement(ps);

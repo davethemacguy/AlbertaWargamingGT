@@ -38,7 +38,7 @@
     <body>
         <div id="container">
             <div id="tableParams">
-                <form action=<%request.getContextPath();%>"/AlbertaWargaming/login/updateUser" method="post">
+                <form action="/AlbertaWargaming/login/admin/updateUser" method="post">
                     <table>
                         <tr>
                             <td>First name:</td>
@@ -76,9 +76,44 @@
                                 <select name="userRole">
                                     <option value="admin">Administrator</option>
                                     <option value="TO">Tournament Organizer</option>
-                                    <option value="Player">Player</option>
+                                    <option value="user" selected>Player</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
+                            <td>Card ID:</td>
+                            <td><input type="text" name="cardID" value="${user.cardID}">
+                        </tr>
+                        <tr>
+                            <td>Card Verified:</td>
+                            <td>
+                                <select name="cardVerified">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Is Private?</td>
+                            <td>
+                                <select name="isPrivate">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Is Flagged?</td>
+                            <td>
+                                <select name="blackFlagged">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No" selected>No</option>
+                                </select>
+                            </td>
+                        
+                        <tr>    
+                            <td>Reason for Flagging:</td>
+                            <td><input type="text" name="flagReason" value="${user.flagReason}">   
                         </tr>
                         <tr>
                             <td></td>
@@ -88,9 +123,6 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="hidden" name="userDelete"
-                                       value="n">
-                            </td>
                         </tr>
                         <tr>
                             <td></td>

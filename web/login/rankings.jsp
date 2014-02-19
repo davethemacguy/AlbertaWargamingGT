@@ -37,6 +37,8 @@
             <script type="text/javascript">var colNum40K = 1;</script>
             <script type="text/javascript">var colNumFantasy = 1;</script>
             <script type="text/javascript">var colNumWarmaHordes = 1;</script>
+            <script type="text/javascript">var colNumInfinity = 1;</script>
+            <script type="text/javascript">var colNumXwing = 1;</script>
             <table id="tableParams">
                 <tr>
                     <td></td>
@@ -157,7 +159,78 @@
                         </table>
                     </td>
                 </tr>
+                <tr>
+                    <th>Infinity</th>
+                    <th>Xwing</th>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="hovertable">
+                            <tr>
+                                <th></th>
+                                <th>Player</th>
+                                <th>Score</th>
+                                <th>Auto-Invite</th>
+                            </tr>
+                            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                            <c:forEach var="playerInfinity" items="${resultsInfinity}">
+                                <tr>
+                                    <td><p><script type="text/javascript">document.write(colNumInfinity++);</script></p></td>
+                                    <td><p>
+                                            <c:choose>
+                                                <c:when test="${playerInfinity.playerName=='Classified'}">
+                                                    <i>Excommunicate Traitoris</i>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a href="<c:url value="/login/individualResults">
+                                                           <c:param name="playerName" value="playerName = '${playerInfinity.playerName}'"/>
+                                                       </c:url>"><c:out value="${playerInfinity.playerName}"></c:out>
+                                                       </a>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </p></td>
+                                    <td><p>${playerInfinity.score}</p></td>
+                                    <td><p>${playerInfinity.invite}</p></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="hovertable">
+                            <tr>
+                                <th></th>
+                                <th>Player</th>
+                                <th>Score</th>
+                                <th>Auto-Invite</th>
+                            </tr>
+                            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                            <c:forEach var="playerXwing" items="${resultsXwing}">
+                                <tr>
+                                    <td><p><script type="text/javascript">document.write(colNumXwing++);</script></p></td>
+                                    <td><p>
+                                            <c:choose>
+                                                <c:when test="${playerXwing.playerName=='Classified'}">
+                                                    <i>Excommunicate Traitoris</i>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a href="<c:url value="/login/individualResults">
+                                                           <c:param name="playerName" value="playerName = '${playerXwing.playerName}'"/>
+                                                       </c:url>"><c:out value="${playerXwing.playerName}"></c:out>
+                                                    </a>                                            </c:otherwise>
+                                            </c:choose>
+                                        </p></td>
+                                    <td><p>${playerXwing.score}</p></td>
+                                    <td><p>${playerXwing.invite}</p></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </td>
+                </tr>
             </table>
+                            
+            <br>
+                            
+                            
         </div>
     </body>
 </html>

@@ -71,10 +71,46 @@
                                 <select name="userRole">
                                     <option value="admin">Administrator</option>
                                     <option value="TO">Tournament Organizer</option>
-                                    <option value="Player">Player</option>
+                                    <option value="user" selected>Player</option>
                                 </select>
                             </td>
                         </tr>
+                        <tr>
+                            <td>Card ID:</td>
+                            <td><input type="text" name="cardID">
+                        </tr>
+                        <tr>
+                            <td>Card Verified:</td>
+                                    <td>
+                                        <select name="cardVerified">
+                                            <option value="y">Yes</option>
+                                            <option value="n" selected>No</option>
+                                        </select>
+                                    </td>
+                        </tr>
+                        <tr>
+                            <td>Is Private?</td>
+                            <td>
+                                <select name="isPrivate">
+                                    <option value="y">Yes</option>
+                                    <option value="n" selected>No</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Is Flagged?</td>
+                            <td>
+                                <select name="blackFlagged">
+                                    <option value="y">Yes</option>
+                                    <option value="n" selected>No</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Reason for Flag</td>
+                            <td><input type="text" name="flagReason"</td>
+                        </tr>
+                        
                         <tr>
                             <td></td>
                             <td><input type="hidden" name="userDelete" value="n"></td>

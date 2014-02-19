@@ -50,7 +50,7 @@
     </servlet>
     <servlet>
         <servlet-name>UpdateUserServlet</servlet-name>
-        <servlet-class>user.LoginRedirectServlet</servlet-class>
+        <servlet-class>user.UpdateUserServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteUserServlet</servlet-name>
@@ -140,6 +140,45 @@
         <servlet-name>TopPlayersServlet</servlet-name>
         <servlet-class>user.TopPlayersServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DisplayFlaggedUsers</servlet-name>
+        <servlet-class>user.DisplayFlaggedUsers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PopulateCreateTournamentServlet</servlet-name>
+        <servlet-class>user.PopulateCreateTournamentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PopulateMyTournamentsServlet</servlet-name>
+        <servlet-class>user.PopulateMyTournamentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PopulateManageTournamentsServlet</servlet-name>
+        <servlet-class>user.PopulateManageTournamentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageIndividualTournament</servlet-name>
+        <servlet-class>user.ManageIndividualTournament</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateTournament</servlet-name>
+        <servlet-class>user.UpdateTournament</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateTournamentServlet</servlet-name>
+        <servlet-class>user.CreateTournamentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>user.UpdateUserServlet</servlet-class>
+    </servlet>
+    
+    
+    
+    
+    
+    
+    
     
     
     <servlet-mapping>
@@ -200,7 +239,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateUserServlet</servlet-name>
-        <url-pattern>/login/updateUser</url-pattern>
+        <url-pattern>/login/admin/updateUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteUserServlet</servlet-name>
@@ -261,6 +300,34 @@
     <servlet-mapping>
         <servlet-name>TopPlayersServlet</servlet-name>
         <url-pattern>/login/topPlayers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayFlaggedUsers</servlet-name>
+        <url-pattern>/login/admin/flaggedUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopulateCreateTournamentServlet</servlet-name>
+        <url-pattern>/login/TO/populateCreateTournament</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopulateMyTournamentsServlet</servlet-name>
+        <url-pattern>/login/TO/populateMyTournaments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopulateManageTournamentsServlet</servlet-name>
+        <url-pattern>/login/admin/populateManageTournaments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageIndividualTournament</servlet-name>
+        <url-pattern>/login/TO/individualTournament</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTournament</servlet-name>
+        <url-pattern>/login/TO/UpdateTournament</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateTournamentServlet</servlet-name>
+        <url-pattern>/login/TO/createTournament</url-pattern>
     </servlet-mapping>
           
     <!-- Define security roles -->

@@ -72,11 +72,13 @@
                         <%if (request.isUserInRole("TO") || request.isUserInRole("admin")) {%> 
                     <li><a href="/AlbertaWargaming/login/TO/uploadTournamentResults.jsp">Upload Tournament Results</a></li>
                     <li><a href="/AlbertaWargaming/login/TO/uploadGTResults.jsp">Upload GT Results</a></li>
-                        <%-- <li><a href="/AlbertaWargaming/login/TO/populateAutocomplete">Test Upload</a></li> --%>
+                    <li><a href="/AlbertaWargaming/login/TO/createTournament.jsp">Create Tournament</a></li>
+                    <li><a href="/AlbertaWargaming/login/TO/populateMyTournaments">My Tournaments</a></li>
                         <%}%>
                         <%if (request.isUserInRole("admin")) {%> 
                     <li><a href="/AlbertaWargaming/login/admin/displayUsers">Manage Users</a></li>
-                        <%-- <li><a href="/AlbertaWargaming/login/populateTestPage">Test Page</a></li> --%>
+                    <li><a href="/AlbertaWargaming/login/admin/flaggedUsers">Flagged Users</a></li>
+                    <li><a href="/AlbertaWargaming/login/admin/populateManageTournaments">Manage Tournaments</a></li>
                         <%}%>
                 </ul>
             </li>

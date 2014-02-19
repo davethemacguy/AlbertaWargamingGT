@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.gson.Gson;
 
 public class UserDB {
 
@@ -17,8 +16,8 @@ public class UserDB {
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO UserData (userName, firstName, lastName, emailAddress, userRole, passWord,  userDelete, creationTime) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                = "INSERT INTO UserData (userName, firstName, lastName, emailAddress, userRole, passWord, userDelete, creationTime, cardID, cardVerified, isPrivate, blackFlagged, fullName) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             ps = connection.prepareStatement(query);
@@ -30,6 +29,11 @@ public class UserDB {
             ps.setString(6, user.getPassWord());
             ps.setString(7, user.getUserDelete());
             ps.setLong(8, user.getCreationTime());
+            ps.setString(9, user.getCardID());
+            ps.setString(10, user.getCardVerified());
+            ps.setString(11, user.getIsPrivate());
+            ps.setString(12, user.getBlackFlagged());
+            ps.setString(13, user.getFullName());
 
             return ps.executeUpdate();
 
@@ -51,18 +55,30 @@ public class UserDB {
                 + "lastName = ?, "
                 + "emailAddress = ?, "
                 + "passWord = ?, "
+                + "userName = ?, "
                 + "userRole = ?, "
-                + "userDelete = ? "
-                + "WHERE userID = ? ";
+                + "userDelete = ?, "
+                + "cardID = ?, "
+                + "cardVerified = ?, "
+                + "isPrivate = ?, "
+                + "blackFlagged = ?, "
+                + "flagReason = ? "
+                + "WHERE userID = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, user.getFirstName());
             ps.setString(2, user.getLastName());
             ps.setString(3, user.getEmailAddress());
             ps.setString(4, user.getPassWord());
-            ps.setString(5, user.getUserRole());
-            ps.setString(6, user.getUserDelete());
-            ps.setString(7, user.getUserID());
+            ps.setString(5, user.getUserName());
+            ps.setString(6, user.getUserRole());
+            ps.setString(7, user.getUserDelete());
+            ps.setString(8, user.getCardID());
+            ps.setString(9, user.getCardVerified());
+            ps.setString(10, user.getIsPrivate());
+            ps.setString(11, user.getBlackFlagged());
+            ps.setString(12, user.getFlagReason());
+            ps.setString(13, user.getUserID());
 
             return ps.executeUpdate();
         } catch (SQLException e) {
@@ -140,6 +156,7 @@ public class UserDB {
             ps = connection.prepareStatement(query);
             ps.setString(1, userID);
             rs = ps.executeQuery();
+            
             User user = null;
             if (rs.next()) {
                 user = new User();
@@ -151,6 +168,11 @@ public class UserDB {
                 user.setUserRole(rs.getString("userRole"));
                 user.setPassWord(rs.getString("passWord"));
                 user.setUserDelete(rs.getString("userDelete"));
+                user.setCardID(rs.getString("cardID"));
+                user.setCardVerified(rs.getString("cardVerified"));
+                user.setIsPrivate(rs.getString("isPrivate"));
+                user.setBlackFlagged(rs.getString("blackFlagged"));
+                user.setFlagReason(rs.getString("flagReason"));
             }
             return user;
         } catch (SQLException e) {
@@ -187,6 +209,11 @@ public class UserDB {
                 user.setUserDelete(rs.getString("userDelete"));
                 user.setFullName(rs.getString("fullName"));
                 user.setCreationTime(rs.getLong("creationTime"));
+                user.setCardID(rs.getString("cardID"));
+                user.setCardVerified(rs.getString("cardVerified"));
+                user.setIsPrivate(rs.getString("isPrivate"));
+                user.setBlackFlagged(rs.getString("blackFlagged"));
+                user.setFlagReason(rs.getString("flagReason"));
             }
             return user;
         } catch (SQLException e) {
@@ -205,8 +232,54 @@ public class UserDB {
         ResultSet rs = null;
         ArrayList<User> users = new ArrayList<User>();
 
+        String query = "SELECT * FROM UserData WHERE userDelete = 'n' ORDER BY firstName ASC";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            User user = null;
+
+            while (rs.next()) {
+                user = new User();
+                user.setUserName(rs.getString("userName"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                user.setFullName(rs.getString("fullName"));
+                user.setEmailAddress(rs.getString("emailAddress"));
+                user.setUserID(rs.getString("userID"));
+                user.setPassWord(rs.getString("passWord"));
+                user.setUserRole(rs.getString("userRole"));
+                user.setUserDelete(rs.getString("userDelete"));
+                user.setCreationTime(rs.getLong("creationTime"));
+                user.setCardID(rs.getString("cardID"));
+                user.setCardVerified(rs.getString("cardVerified"));
+                user.setIsPrivate(rs.getString("isPrivate"));
+                user.setBlackFlagged(rs.getString("blackFlagged"));
+                user.setFlagReason(rs.getString("flagReason"));
+
+                users.add(user);
+            }
+
+            return users;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
+    public static ArrayList<User> selectFlaggedUsers() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<User> users = new ArrayList<User>();
+
         String query = "SELECT * FROM UserData "
-                + "WHERE userDelete = 'n' ORDER BY firstName ASC";
+                + "WHERE blackFlagged = 'y' ORDER BY firstName ASC";
         try {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
@@ -223,6 +296,13 @@ public class UserDB {
                 user.setUserRole(rs.getString("userRole"));
                 user.setUserDelete(rs.getString("userDelete"));
                 user.setCreationTime(rs.getLong("creationTime"));
+                user.setCardID(rs.getString("cardID"));
+                user.setCardVerified(rs.getString("cardVerified"));
+                user.setIsPrivate(rs.getString("isPrivate"));
+                user.setBlackFlagged(rs.getString("blackFlagged"));
+                user.setFlagReason(rs.getString("flagReason"));
+                user.setFullName(rs.getString("fullName"));
+                user.setFlagCount(rs.getInt("flagCount"));
 
                 users.add(user);
             }
@@ -278,7 +358,7 @@ public class UserDB {
             pool.freeConnection(connection);
         }
     }
-
+    
     public static ArrayList<User> selectTournamentParticipants() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -286,7 +366,7 @@ public class UserDB {
         ResultSet rs = null;
         ArrayList<User> users = new ArrayList<User>();
 
-        String query = "SELECT DISTINCT playerName FROM TournamentResults ORDER BY playerName ASC";
+        String query = "SELECT DISTINCT fullName, cardID FROM UserData ORDER BY fullName ASC";
 
         try {
             ps = connection.prepareStatement(query);
@@ -295,8 +375,8 @@ public class UserDB {
 
             while (rs.next()) {
                 user = new User();
-                user.setFullName(rs.getString("playerName"));
-
+                user.setFullName(rs.getString("fullName"));
+                user.setCardID(rs.getString("cardID"));
                 users.add(user);
             }
 
@@ -364,6 +444,40 @@ public class UserDB {
             }
 
             return lastNames;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+
+    }
+    
+    public static ArrayList<User> selectFullNames() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<User> fullNames = new ArrayList<User>();
+
+        String query = "SELECT DISTINCT fullName FROM UserData ORDER BY fullName ASC";
+
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            User user = null;
+
+            while (rs.next()) {
+                user = new User();
+                user.setFullName(rs.getString("fullName"));
+
+                fullNames.add(user);
+            }
+
+            return fullNames;
 
         } catch (SQLException e) {
             e.printStackTrace();

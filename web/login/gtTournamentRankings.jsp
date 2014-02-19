@@ -18,7 +18,7 @@
                 text-align:center;
             }
             #tableParams td{
-                vertical-align: top;
+                vertical-align: center;
             }
         </style>
     </head>
@@ -85,7 +85,10 @@
                                             <td><p><i>Excommunicate Traitoris</i></p></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td><p>${player.playerName}</p></td>
+                                            <td><a href="<c:url value="/login/individualResults">
+                                                           <c:param name="playerName" value="playerName = '${player.playerName}'"/>
+                                                       </c:url>"><c:out value="${player.playerName}"></c:out>
+                                                       </a></td>
                                         </c:otherwise>
                                     </c:choose>
                                     <td><p>${player.army}</p></td>
