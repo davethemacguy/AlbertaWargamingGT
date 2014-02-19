@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class UpdateUserServlet extends HttpServlet
-{
+public class UpdateUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, 
@@ -26,6 +25,11 @@ public class UpdateUserServlet extends HttpServlet
         String userID = request.getParameter("userID");
         String userRole = request.getParameter("userRole");
         String userDelete = request.getParameter("userDelete");
+        String cardID = request.getParameter("cardID");
+        String cardVerified = request.getParameter("cardVerified");
+        String isPrivate = request.getParameter("isPrivate");
+        String blackFlagged = request.getParameter("blackFlagged");
+        String flagReason = request.getParameter("flagReason");
         String url = "/login/indexProtected.jsp";
 
         HttpSession session = request.getSession();
@@ -40,6 +44,11 @@ public class UpdateUserServlet extends HttpServlet
         user.setUserRole(userRole);
         user.setCreationTime(user.getCreationTime());
         user.setUserDelete(userDelete);
+        user.setCardID(cardID);
+        user.setCardVerified(cardVerified);
+        user.setIsPrivate(isPrivate);
+        user.setBlackFlagged(blackFlagged);
+        user.setFlagReason(flagReason);
       
         UserDB.update(user);     
         

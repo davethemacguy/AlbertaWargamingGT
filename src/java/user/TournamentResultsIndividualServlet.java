@@ -35,6 +35,7 @@ public class TournamentResultsIndividualServlet extends HttpServlet {
         session.setAttribute("systems", arrayofSystems);
         session.setAttribute("selectedTournament", tournament);
         session.setAttribute("tournamentSeason", tournamentSeason);
+        session.setAttribute("system", system);
 
         String url = "/login/tournamentRankings.jsp";
         RequestDispatcher dispatcher =

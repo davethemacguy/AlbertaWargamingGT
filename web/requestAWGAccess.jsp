@@ -105,6 +105,26 @@
                     </td>
                 </tr>
                 <tr>
+                    <td align="right"></td>
+                    <td><input type="hidden" name="cardID" value="0"></td>
+                </tr>
+                <tr>
+                    <td align="right"></td>
+                    <td><input type="hidden" name="cardVerified" value="n"></td>
+                </tr>
+                <tr>
+                    <td align="right"></td>
+                    <td><input type="hidden" name="isPrivate" value="n"></td>
+                </tr>
+                <tr>
+                    <td align="right"></td>
+                    <td><input type="hidden" name="blackFlagged" value="n"></td>
+                </tr>
+                <tr>
+                    <td align="right"></td>
+                    <td><input type="hidden" name="flagReason" value=""></td>
+                </tr>
+                <tr>
                     <td colspan="3" align="center"><input type="button" value="I agree and Submit!" 
                                                           onClick="validate(this.form)"></td>
                 </tr>

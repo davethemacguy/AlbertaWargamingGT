@@ -31,6 +31,14 @@ public class AddUserServlet extends HttpServlet {
         String passWord = request.getParameter("passWord");
         String userRole = request.getParameter("userRole");
         String userDelete = request.getParameter("userDelete");
+        String cardID = request.getParameter("cardID");
+        String cardVerified = request.getParameter("cardVerified");
+        String isPrivate = request.getParameter("isPrivate");
+        String blackFlagged = request.getParameter("blackFlagged");
+        
+        String fullName = firstName+" "+lastName;
+        
+        
         long epoch = System.currentTimeMillis()/1000;
         
         try {
@@ -42,11 +50,16 @@ public class AddUserServlet extends HttpServlet {
         user.setUserName(userName);
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setFullName(fullName);
         user.setEmailAddress(emailAddress);
         user.setUserRole(userRole);
         user.setPassWord(crypto.getPassWordHash());
         user.setUserDelete(userDelete);
         user.setCreationTime(epoch);
+        user.setCardID(cardID);
+        user.setCardVerified(cardVerified);
+        user.setIsPrivate(isPrivate);
+        user.setBlackFlagged(blackFlagged);
 
         int i = UserDB.add(user);
 
